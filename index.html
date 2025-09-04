@@ -1161,29 +1161,6 @@
       box-shadow: 0 8px 25px rgba(255, 68, 68, 0.5);
     }
 
-    /* Notificación */
-    .notification {
-      position: fixed;
-      top: 30px;
-      right: 30px;
-      background: linear-gradient(145deg, rgba(0, 255, 136, 0.95), rgba(0, 200, 100, 0.95));
-      color: #000;
-      padding: 18px 30px;
-      border-radius: 12px;
-      font-weight: 600;
-      font-family: 'Rajdhani', sans-serif;
-      font-size: 16px;
-      z-index: 1500;
-      transform: translateX(120%);
-      transition: all 0.5s ease;
-      box-shadow: 0 5px 25px rgba(0, 255, 136, 0.3);
-      border: 1px solid rgba(0, 255, 136, 0.4);
-    }
-
-    .notification.show {
-      transform: translateX(0);
-    }
-
     /* Responsive */
     @media (max-width: 768px) {
       .sidebar-menu {
@@ -1282,13 +1259,6 @@
 
       .grid-items {
         gap: 10px;
-      }
-
-      .notification {
-        right: 15px;
-        top: 20px;
-        font-size: 14px;
-        padding: 15px 20px;
       }
     }
   </style>
