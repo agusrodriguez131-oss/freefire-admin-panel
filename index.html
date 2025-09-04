@@ -14,14 +14,8 @@
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <style>
-    /* ==========================================
-       🎨 SECCIÓN PARA CAMBIAR IMÁGENES FÁCILMENTE
-       ========================================== */
     :root {
-      /* IMAGEN DE FONDO PRINCIPAL (se mantiene fija al hacer scroll) */
       --imagen-fondo-principal: url('https://cdn.amxinfra.com/clarosports/images/2025/08/free-fire-24-de-agosto-235449.jpg');
-      
-      /* IMAGEN DE FONDO DEL MENÚ LATERAL */
       --imagen-fondo-menu: url('');
     }
 
@@ -47,7 +41,6 @@
       position: relative;
     }
 
-    /* Efectos de fondo sutiles */
     body::before {
       content: '';
       position: fixed;
@@ -61,7 +54,6 @@
       z-index: 1;
     }
 
-    /* Menú lateral con imagen de fondo */
     .sidebar-menu {
       width: 70px;
       background: 
@@ -130,33 +122,6 @@
       box-shadow: 0 0 20px rgba(255, 204, 0, 0.6);
     }
 
-    .menu-item::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      left: 65px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: linear-gradient(145deg, rgba(0, 0, 0, 0.95), rgba(20, 20, 30, 0.95));
-      color: #ffcc00;
-      padding: 8px 15px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
-      z-index: 1000;
-      border: 1px solid rgba(255, 204, 0, 0.3);
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-    }
-
-    .menu-item:hover::after {
-      opacity: 1;
-      transform: translateY(-50%) translateX(5px);
-    }
-
-    /* Contenedor principal */
     .main-container {
       margin-left: 70px;
       width: calc(100% - 70px);
@@ -170,7 +135,6 @@
       z-index: 10;
     }
 
-    /* Panel de administrador LIMPIO */
     .panel-admin {
       display: flex;
       flex-direction: column;
@@ -206,7 +170,6 @@
       }
     }
 
-    /* FOTO DE PERFIL */
     .foto-perfil {
       width: 95px;
       height: 95px;
@@ -252,7 +215,6 @@
       letter-spacing: 2px;
     }
 
-    /* RECURSOS CON EFECTOS DINÁMICOS */
     .recursos-panel {
       display: flex;
       gap: 30px;
@@ -277,7 +239,6 @@
       animation: resourceFloat 8s ease-in-out infinite;
     }
 
-    /* Recurso solo imagen - SIN INPUT */
     .recurso-solo-imagen {
       padding: 18px;
       justify-content: center;
@@ -335,7 +296,6 @@
       animation-duration: 0.5s;
     }
 
-    /* ICONOS DE RECURSOS SIN ROTACIÓN */
     .icono-real {
       width: 45px;
       height: 45px;
@@ -358,7 +318,6 @@
       box-shadow: 0 8px 25px rgba(255, 204, 0, 0.6);
     }
 
-    /* VALORES DE RECURSOS CON EFECTOS */
     .valor-real {
       width: 160px;
       padding: 14px;
@@ -399,7 +358,6 @@
       transform: translateX(100%);
     }
 
-    /* PARTÍCULAS FLOTANTES DE FONDO */
     .panel-admin::after {
       content: '';
       position: absolute;
@@ -426,7 +384,6 @@
       100% { transform: translateY(-100px); }
     }
 
-    /* Buscador LIMPIO */
     .buscador-id {
       display: flex;
       align-items: center;
@@ -508,7 +465,6 @@
       box-shadow: 0 8px 25px rgba(255, 204, 0, 0.5);
     }
 
-    /* Campo para nombre manual LIMPIO */
     .campo-nombre-manual {
       display: flex;
       align-items: center;
@@ -580,7 +536,6 @@
       box-shadow: 0 8px 20px rgba(255, 102, 0, 0.5);
     }
 
-    /* Contenido de secciones */
     .content-container {
       width: 100%;
       max-width: 1000px;
@@ -617,7 +572,6 @@
       }
     }
 
-    /* Scrollbar personalizada */
     .section-content::-webkit-scrollbar {
       width: 10px;
     }
@@ -672,7 +626,6 @@
       font-weight: 400;
     }
 
-    /* Grid de estadísticas - ESPACIADO REDUCIDO */
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -728,7 +681,6 @@
       font-family: 'Rajdhani', sans-serif;
     }
 
-    /* Grid de personajes - ESPACIADO REDUCIDO */
     .grid-personajes {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -811,7 +763,6 @@
       color: #fff;
     }
 
-    /* Grid de items generales - ESPACIADO REDUCIDO */
     .grid-items {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -888,7 +839,6 @@
       color: #fff;
     }
 
-    /* Controles de Volumen */
     .volume-controls {
       background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(20, 20, 40, 0.7));
       backdrop-filter: blur(15px);
@@ -1003,7 +953,6 @@
       box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
     }
 
-    /* Botón DAR */
     .btn-dar {
       padding: 25px 100px;
       background: linear-gradient(145deg, #ffcc00, #ff9900);
@@ -1051,7 +1000,6 @@
       transform: translateY(-5px) scale(1);
     }
 
-    /* Modal */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -1161,7 +1109,6 @@
       box-shadow: 0 8px 25px rgba(255, 68, 68, 0.5);
     }
 
-    /* Responsive */
     @media (max-width: 768px) {
       .sidebar-menu {
         width: 60px;
@@ -1264,39 +1211,36 @@
   </style>
 </head>
 <body>
-  <!-- Menú lateral -->
   <div class="sidebar-menu">
-    <div class="menu-item active" data-sound="inicio" onclick="cambiarSeccion('inicio')">
+    <div class="menu-item active" onclick="cambiarSeccion('inicio')">
       <img src="imagenes/inicio.png" alt="Inicio" style="width: 24px; height: 24px;">
     </div>
-    <div class="menu-item" data-sound="personajes" onclick="cambiarSeccion('personajes')">
+    <div class="menu-item" onclick="cambiarSeccion('personajes')">
       <img src="imagenes/personajes.png" alt="Personajes" style="width: 24px; height: 24px;">
     </div>
-    <div class="menu-item" data-sound="armas" onclick="cambiarSeccion('armas')">
+    <div class="menu-item" onclick="cambiarSeccion('armas')">
       <img src="imagenes/armas.png" alt="Armas" style="width: 24px; height: 24px;">
     </div>
-    <div class="menu-item" data-sound="vehiculos" onclick="cambiarSeccion('vehiculos')">
+    <div class="menu-item" onclick="cambiarSeccion('vehiculos')">
       <img src="imagenes/vehiculos.png" alt="Vehículos" style="width: 24px; height: 24px;">
     </div>
-    <div class="menu-item" data-sound="mascotas" onclick="cambiarSeccion('mascotas')">
+    <div class="menu-item" onclick="cambiarSeccion('mascotas')">
       <img src="imagenes/mascotas.png" alt="Mascotas" style="width: 24px; height: 24px;">
     </div>
-    <div class="menu-item" data-sound="emotes" onclick="cambiarSeccion('emotes')">
+    <div class="menu-item" onclick="cambiarSeccion('emotes')">
       <img src="imagenes/emotes.png" alt="Emotes" style="width: 24px; height: 24px;">
     </div>
-    <div class="menu-item" data-sound="configuracion" onclick="cambiarSeccion('configuracion')">
+    <div class="menu-item" onclick="cambiarSeccion('configuracion')">
       <img src="imagenes/configuracion.png" alt="Configuración" style="width: 24px; height: 24px;">
     </div>
-    <div class="menu-item" data-sound="ayuda" onclick="cambiarSeccion('ayuda')">
+    <div class="menu-item" onclick="cambiarSeccion('ayuda')">
       <img src="imagenes/ayuda.png" alt="Ayuda" style="width: 24px; height: 24px;">
     </div>
   </div>
 
   <div class="main-container">
-    <!-- Panel de administrador -->
     <section class="panel-admin">
       <div class="perfil-info">
-        <!-- CAMBIAR FOTO DE PERFIL AQUÍ -->
         <img src="Imagenes/logooficial.jpeg" alt="Foto de SakuraOldMvp" class="foto-perfil">
         <div class="datos-usuario">
           <div class="nombre-usuario">
@@ -1327,21 +1271,17 @@
       </div>
     </section>
 
-    <!-- Buscador -->
     <section class="buscador-id">
       <input type="text" id="playerID" placeholder="Ingresa tu ID de Free Fire">
       <button class="btn-buscar" type="button">🔍</button>
     </section>
 
-    <!-- Campo para nombre manual -->
     <section class="campo-nombre-manual" id="campoNombreManual">
       <input type="text" id="nombreJugador" placeholder="Escribe el nombre del jugador aquí">
       <button class="btn-nueva-id" onclick="nuevaBusqueda()">🔄 Nueva ID</button>
     </section>
 
-    <!-- Contenido de secciones -->
     <div class="content-container">
-      <!-- SECCIÓN INICIO -->
       <section class="section-content active" id="section-inicio">
         <div class="section-header">
           <h2>Panel de Inicio</h2>
@@ -1400,7 +1340,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN PERSONAJES (SIN MODIFICAR) -->
       <section class="section-content" id="section-personajes">
         <div class="section-header">
           <h2>Personajes y Skins</h2>
@@ -1458,7 +1397,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN ARMAS (CON ELEMENTOS ADICIONALES) -->
       <section class="section-content" id="section-armas">
         <div class="section-header">
           <h2>Arsenal de Armas</h2>
@@ -1508,7 +1446,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN VEHÍCULOS (CON ELEMENTOS ADICIONALES) -->
       <section class="section-content" id="section-vehiculos">
         <div class="section-header">
           <h2>Garage de Vehículos</h2>
@@ -1550,7 +1487,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN MASCOTAS (CON ELEMENTOS ADICIONALES) -->
       <section class="section-content" id="section-mascotas">
         <div class="section-header">
           <h2>Mascotas Compañeras</h2>
@@ -1588,7 +1524,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN EMOTES (CON 19 ELEMENTOS TOTAL) -->
       <section class="section-content" id="section-emotes">
         <div class="section-header">
           <h2>Gestos y Emotes</h2>
@@ -1674,7 +1609,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN CONFIGURACIÓN (CON CONTROLES DE VOLUMEN) -->
       <section class="section-content" id="section-configuracion">
         <div class="section-header">
           <h2>Configuración del Panel</h2>
@@ -1707,7 +1641,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN AYUDA (CON ELEMENTOS ADICIONALES) -->
       <section class="section-content" id="section-ayuda">
         <div class="section-header">
           <h2>Centro de Ayuda</h2>
@@ -1747,11 +1680,9 @@
       </section>
     </div>
 
-    <!-- Botón DAR -->
     <button class="btn-dar" type="button">DAR</button>
   </div>
 
-  <!-- Modal de éxito -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-content">
       <div class="modal-header">
@@ -1779,15 +1710,13 @@
   </div>
 
   <script>
-    // CONFIGURACIÓN DE SONIDOS CON VOLÚMENES SEPARADOS
     const audioConfig = {
-      enabled: true,    // Cambiar a false si no tienes archivos de sonido
-      volumeMenu: 0.5,  // Volumen del menú (más bajo)
-      volumeDAR: 0.9,   // Volumen del botón DAR (más alto)
+      enabled: true,
+      volumeMenu: 0.5,
+      volumeDAR: 0.9,
       basePath: 'sounds/'
     };
 
-    // RUTAS DE SONIDOS
     const menuSounds = {
       inicio: 'sounds/click.mp3',
       personajes: 'sounds/click.mp3', 
@@ -1800,26 +1729,20 @@
       regalo: 'sounds/regalo.mp3'
     };
 
-    // Variables globales
     let itemsSeleccionados = [];
     let seccionActual = 'inicio';
-
-    // VARIABLES PARA CONTROLAR LA SATURACIÓN DE AUDIO
     let audioPreviewTimeout = null;
     let currentPreviewAudio = null;
 
-    // FUNCIÓN PARA REPRODUCIR SONIDOS CON VOLÚMENES SEPARADOS Y SIN SATURACIÓN
     function playMenuSound(soundKey, isPreview = false) {
       if (!audioConfig.enabled || !menuSounds[soundKey]) return;
       
-      // No funciona en protocolo file://
       if (window.location.protocol === 'file:') {
         console.log(`🔇 Sonido "${soundKey}" omitido (usa servidor web)`);
         return;
       }
       
       try {
-        // Si es una preview (desde slider), detener audio anterior
         if (isPreview) {
           if (currentPreviewAudio) {
             currentPreviewAudio.pause();
@@ -1830,16 +1753,14 @@
         const audio = new Audio();
         audio.src = menuSounds[soundKey];
         
-        // VOLÚMENES SEPARADOS SEGÚN EL TIPO DE SONIDO
         if (soundKey === 'regalo') {
-          audio.volume = audioConfig.volumeDAR;  // Volumen específico para el botón DAR
+          audio.volume = audioConfig.volumeDAR;
           console.log(`🎵 Sonido DAR - Volumen: ${Math.round(audioConfig.volumeDAR * 100)}%`);
         } else {
-          audio.volume = audioConfig.volumeMenu; // Volumen específico para menú
+          audio.volume = audioConfig.volumeMenu;
           console.log(`🎵 Sonido menú - Volumen: ${Math.round(audioConfig.volumeMenu * 100)}%`);
         }
         
-        // Si es preview, guardar referencia
         if (isPreview) {
           currentPreviewAudio = audio;
         }
@@ -1852,20 +1773,16 @@
       }
     }
 
-    // FUNCIÓN PARA PREVIEW SIN SATURACIÓN
     function playPreviewSound(soundKey) {
-      // Cancelar timeout anterior
       if (audioPreviewTimeout) {
         clearTimeout(audioPreviewTimeout);
       }
       
-      // Establecer nuevo timeout para evitar saturación
       audioPreviewTimeout = setTimeout(() => {
         playMenuSound(soundKey, true);
-      }, 150); // 150ms de delay para evitar múltiples reproducciones
+      }, 150);
     }
 
-    // FUNCIÓN PARA CAMBIAR SECCIONES
     function cambiarSeccion(seccion) {
       playMenuSound(seccion);
       
@@ -1873,7 +1790,7 @@
         item.classList.remove('active');
       });
       
-      const clickedItem = document.querySelector(`[data-sound="${seccion}"]`);
+      const clickedItem = document.querySelector(`[onclick="cambiarSeccion('${seccion}')"]`);
       if (clickedItem) {
         clickedItem.classList.add('active');
       }
@@ -1886,16 +1803,13 @@
       if (sectionElement) {
         sectionElement.classList.add('active');
         seccionActual = seccion;
-        mostrarNotificacion(`Navegando a: ${seccion.charAt(0).toUpperCase() + seccion.slice(1)}`);
       }
     }
 
-    // FUNCIÓN DE BÚSQUEDA
     function buscarID() {
       const id = document.getElementById("playerID").value.trim();
       
       if (!id) {
-        mostrarNotificacion("Por favor ingresa un ID válido");
         return;
       }
 
@@ -1913,11 +1827,8 @@
       setTimeout(() => {
         document.getElementById('nombreJugador').focus();
       }, 300);
-      
-      mostrarNotificacion("Usuario encontrado - Ingresa el nombre del jugador");
     }
 
-    // FUNCIÓN PARA NUEVA BÚSQUEDA
     function nuevaBusqueda() {
       const campoBusqueda = document.getElementById("playerID");
       campoBusqueda.value = '';
@@ -1930,34 +1841,37 @@
       document.getElementById('nombreJugador').value = '';
       
       campoBusqueda.focus();
-      mostrarNotificacion("Nueva búsqueda - Ingresa otra ID");
     }
 
-    // FUNCIÓN PARA SELECCIONAR ITEMS
     function toggleItemSelection(elemento, nombre, tipo) {
       const itemId = `${tipo}-${nombre.replace(/\s+/g, '-').toLowerCase()}`;
       
       if (elemento.classList.contains('seleccionado')) {
         elemento.classList.remove('seleccionado');
         itemsSeleccionados = itemsSeleccionados.filter(item => item.id !== itemId);
-        mostrarNotificacion(`${nombre} deseleccionado`);
       } else {
         elemento.classList.add('seleccionado');
+        
+        let imagenSrc = '';
+        const imagen = elemento.querySelector('.personaje-imagen, .item-imagen');
+        if (imagen) {
+          imagenSrc = imagen.src;
+        }
+        
         const nuevoItem = {
           id: itemId,
           nombre: nombre,
           tipo: tipo,
-          elemento: elemento
+          elemento: elemento,
+          imagen: imagenSrc
         };
         itemsSeleccionados.push(nuevoItem);
-        mostrarNotificacion(`${nombre} seleccionado`);
         playMenuSound('inicio');
       }
       
       actualizarBotonDAR();
     }
 
-    // Actualizar botón DAR
     function actualizarBotonDAR() {
       const btnDar = document.querySelector('.btn-dar');
       const totalItems = itemsSeleccionados.length;
@@ -1973,7 +1887,6 @@
       }
     }
 
-    // FUNCIONES UTILITARIAS
     function generarTiempoAleatorio() {
       const horas = Math.floor(Math.random() * 7) + 19;
       const minutos = Math.floor(Math.random() * 60);
@@ -1996,7 +1909,6 @@
       return `${diaSemana}, ${dia} de ${mes} de ${ano} - ${horas}:${minutos}:${segundos}`;
     }
 
-    // FUNCIÓN DAR RECOMPENSA
     function darRecompensa() {
       const campoID = document.getElementById("playerID");
       const nombreJugador = document.getElementById("nombreJugador").value.trim();
@@ -2005,21 +1917,17 @@
       const id = idMatch ? idMatch[1] : null;
       
       if (!id) {
-        mostrarNotificacion("Primero busca un ID válido");
         return;
       }
       
       if (!nombreJugador) {
-        mostrarNotificacion("Ingresa el nombre del jugador");
         return;
       }
       
       if (itemsSeleccionados.length === 0) {
-        mostrarNotificacion("Selecciona al menos un item");
         return;
       }
       
-      // REPRODUCIR SONIDO ESPECÍFICO DEL BOTÓN DAR
       playMenuSound('regalo');
 
       setTimeout(() => {
@@ -2027,7 +1935,6 @@
       }, 500);
     }
 
-    // MODAL DE ÉXITO
     function mostrarModalExito(usuario, playerId) {
       const modal = document.getElementById('modalOverlay');
       const playerName = document.getElementById('playerName');
@@ -2043,7 +1950,6 @@
       totalArticulos.textContent = `Artículos seleccionados: ${itemsSeleccionados.length}`;
       tiempoEntrega.textContent = `Tu pedido llegará a tu cuenta en ${generarTiempoAleatorio()}`;
       
-      // Generar grid de items enviados con imágenes reales
       itemsEnviados.innerHTML = '';
       
       if (itemsSeleccionados.length === 0) {
@@ -2062,7 +1968,6 @@
             box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important;
           `;
           
-          // Usar la imagen real del artículo seleccionado
           itemDiv.innerHTML = `
             <img src="${item.imagen}" alt="${item.nombre}" style="width: 60px !important; height: 60px !important; border-radius: 8px !important; margin: 0 auto 10px !important; display: block !important; object-fit: cover !important; border: 1px solid rgba(255, 204, 0, 0.3) !important;">
             <div style="font-size: 12px !important; color: #ffcc00 !important; font-weight: bold !important;">${item.nombre}</div>
@@ -2085,47 +1990,22 @@
       });
       
       actualizarBotonDAR();
-      mostrarNotificacion('Pedido completado - selecciones reiniciadas');
     }
 
-    function mostrarNotificacion(mensaje) {
-      const existingNotification = document.querySelector('.notification');
-      if (existingNotification) {
-        existingNotification.remove();
-      }
-      
-      const notification = document.createElement('div');
-      notification.className = 'notification';
-      notification.textContent = mensaje;
-      document.body.appendChild(notification);
-      
-      setTimeout(() => notification.classList.add('show'), 100);
-      setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => notification.remove(), 500);
-      }, 3000);
-    }
-
-    // CONTROLES DE SONIDO MEJORADOS PARA LA CONSOLA
     window.audioControls = {
       enable: function() {
         audioConfig.enabled = true;
         console.log('🔊 Sonidos ACTIVADOS');
-        mostrarNotificacion('Sonidos activados');
       },
       disable: function() {
         audioConfig.enabled = false;
         console.log('🔇 Sonidos DESACTIVADOS');
-        mostrarNotificacion('Sonidos desactivados');
       },
       
-      // CONTROLES SEPARADOS PARA CADA SONIDO
       setMenuVolume: function(volume) {
         const vol = Math.max(0, Math.min(100, volume)) / 100;
         audioConfig.volumeMenu = vol;
         console.log(`🎵 Volumen MENÚ: ${volume}%`);
-        mostrarNotificacion(`Volumen menú: ${volume}%`);
-        // Probar sonido del menú
         setTimeout(() => playMenuSound('inicio'), 200);
       },
       
@@ -2133,12 +2013,9 @@
         const vol = Math.max(0, Math.min(100, volume)) / 100;
         audioConfig.volumeDAR = vol;
         console.log(`🎁 Volumen BOTÓN DAR: ${volume}%`);
-        mostrarNotificacion(`Volumen botón DAR: ${volume}%`);
-        // Probar sonido del botón DAR
         setTimeout(() => playMenuSound('regalo'), 200);
       },
       
-      // Control general (mantiene compatibilidad)
       setVolume: function(volume) {
         this.setMenuVolume(volume);
         this.setDarVolume(volume);
@@ -2155,14 +2032,12 @@
         playMenuSound('regalo');
       },
       
-      // Función de prueba general
       test: function() {
         console.log('🔊 Probando ambos sonidos...');
         this.testMenu();
         setTimeout(() => this.testDAR(), 1000);
       },
       
-      // Mostrar configuración actual
       status: function() {
         console.log('📊 CONFIGURACIÓN DE AUDIO:');
         console.log(`   Estado: ${audioConfig.enabled ? 'Activado' : 'Desactivado'}`);
@@ -2171,9 +2046,7 @@
       }
     };
 
-    // EVENT LISTENERS
     document.addEventListener('DOMContentLoaded', function() {
-      // Botones principales
       document.querySelector('.btn-buscar').addEventListener('click', buscarID);
       document.getElementById("playerID").addEventListener("keypress", function(event) {
         if (event.key === "Enter") buscarID();
@@ -2181,12 +2054,10 @@
       document.querySelector('.btn-dar').addEventListener('click', darRecompensa);
       document.querySelector('.btn-continuar').addEventListener('click', cerrarModal);
       
-      // Modal
       document.getElementById('modalOverlay').addEventListener('click', function(event) {
         if (event.target === this) cerrarModal();
       });
 
-      // Items seleccionables
       function initItemListeners() {
         document.querySelectorAll('.personaje').forEach(personaje => {
           const nombre = personaje.querySelector('.nombre-skin').textContent;
@@ -2207,41 +2078,35 @@
 
       initItemListeners();
 
-      // CONTROLES DE VOLUMEN SIN SATURACIÓN
       const volumenMenu = document.getElementById('volumenMenu');
       const textoMenu = document.getElementById('textoMenu');
       const volumenDAR = document.getElementById('volumenDAR');
       const textoDAR = document.getElementById('textoDAR');
       
-      // Control del menú
       if (volumenMenu && textoMenu) {
         volumenMenu.addEventListener('input', function() {
           const vol = this.value;
           audioConfig.volumeMenu = vol / 100;
           textoMenu.textContent = vol + '%';
           
-          // Probar sonido del menú SIN SATURACIÓN
           if (vol > 0) {
             playPreviewSound('inicio');
           }
         });
       }
       
-      // Control del botón DAR
       if (volumenDAR && textoDAR) {
         volumenDAR.addEventListener('input', function() {
           const vol = this.value;
           audioConfig.volumeDAR = vol / 100;
           textoDAR.textContent = vol + '%';
           
-          // Probar sonido del botón DAR SIN SATURACIÓN
           if (vol > 0) {
             playPreviewSound('regalo');
           }
         });
       }
 
-      // Estado inicial
       console.log('🎮 Free Fire Admin Panel cargado correctamente');
       console.log('🔊 Sonidos configurados - Para GitHub Pages funciona automáticamente');
       console.log('💡 Controles: audioControls.enable(), .disable(), .test(), .setVolume(50)');
