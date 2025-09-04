@@ -1452,6 +1452,7 @@ const menuSounds = {
   emotes: SONIDO_MENU,
   configuracion: SONIDO_MENU,
   ayuda: SONIDO_MENU
+  regalo: 'sounds/regalo.mp3'
 };
 
 // CONFIGURACIÓN DE AUDIO
@@ -1716,7 +1717,7 @@ if (window.location.protocol === 'file:') {
         mostrarNotificacion("Selecciona al menos un item");
         return;
       }
-      
+      playMenuSound('regalo');
       setTimeout(() => {
         mostrarModalExito(nombreJugador, id);
       }, 500);
