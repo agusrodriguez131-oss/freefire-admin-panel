@@ -255,7 +255,7 @@
     /* RECURSOS CON EFECTOS DINÁMICOS */
     .recursos-panel {
       display: flex;
-      gap: 50px;
+      gap: 30px;
       justify-content: center;
       width: 100%;
       animation: slideInFromRight 1s ease-out 0.3s both;
@@ -277,14 +277,11 @@
       animation: resourceFloat 8s ease-in-out infinite;
     }
 
-    /* Recurso solo imagen (sin input) */
+    /* Recurso solo imagen - SIN INPUT */
     .recurso-solo-imagen {
       padding: 18px;
       justify-content: center;
-    }
-
-    .recurso-solo-imagen .icono-real {
-      margin: 0;
+      gap: 0;
     }
 
     .recurso-real::before {
@@ -302,6 +299,17 @@
     .recurso-real:nth-child(1) { --delay: 0s; animation-delay: 0s; }
     .recurso-real:nth-child(2) { --delay: 1s; animation-delay: 1s; }
     .recurso-real:nth-child(3) { --delay: 2s; animation-delay: 2s; }
+
+    @keyframes slideInFromRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
     @keyframes resourceFloat {
       0%, 100% { transform: translateY(0px); }
@@ -1353,21 +1361,20 @@
       <div class="recursos-panel">
         <div class="recurso-real">
           <div class="icono-real">
-            <img src="Imagenes/Moneda.png" alt="Oro" style="width: 28px; height: 28px;">
+            <img src="Imagenes/oro.png" alt="Oro" style="width: 28px; height: 28px;">
           </div>
           <input type="number" id="oro" value="4173265" class="valor-real">
         </div>
         <div class="recurso-real">
           <div class="icono-real">
-            <img src="Imagenes/Diamante.png" alt="Diamante" style="width: 28px; height: 28px;">
+            <img src="Imagenes/diamante.png" alt="Diamante" style="width: 28px; height: 28px;">
           </div>
           <input type="number" id="diamante" value="93028" class="valor-real">
         </div>
-        <div class="recurso-real">
+        <div class="recurso-real recurso-solo-imagen">
           <div class="icono-real">
-            <img src="Imagenes/TercerRecurso.png" alt="Tercer Recurso" style="width: 28px; height: 28px;">
+            <img src="Imagenes/tercer-recurso.png" alt="Tercer Recurso" style="width: 28px; height: 28px;">
           </div>
-          <input type="number" id="tercerRecurso" value="15420" class="valor-real">
         </div>
       </div>
     </section>
