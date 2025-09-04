@@ -1177,7 +1177,24 @@
         </div>
       </div>
     </section>
-
+<!-- Controles de Volumen Separados -->
+    <section style="background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.8)); backdrop-filter: blur(15px); padding: 25px; border-radius: 20px; border: 2px solid rgba(255, 204, 0, 0.4); width: 100%; max-width: 500px; margin: 0 auto 20px; display: flex; flex-direction: column; gap: 20px;">
+      
+      <!-- Volumen del Menú -->
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <div style="color: #00ffff; font-weight: 600; font-family: 'Rajdhani', sans-serif; font-size: 16px; min-width: 120px;">🎵 Menú:</div>
+        <input type="range" id="volumenMenu" min="0" max="100" value="50" style="flex: 1; height: 8px; background: linear-gradient(45deg, #00ffff, #0088ff); border-radius: 5px; outline: none;">
+        <div id="textoMenu" style="color: #fff; font-weight: 600; font-family: 'Rajdhani', sans-serif; min-width: 45px;">50%</div>
+      </div>
+      
+      <!-- Volumen del Botón DAR -->
+      <div style="display: flex; align-items: center; gap: 15px;">
+        <div style="color: #ffcc00; font-weight: 600; font-family: 'Rajdhani', sans-serif; font-size: 16px; min-width: 120px;">🎁 Botón DAR:</div>
+        <input type="range" id="volumenDAR" min="0" max="100" value="90" style="flex: 1; height: 8px; background: linear-gradient(45deg, #ffcc00, #ff9900); border-radius: 5px; outline: none;">
+        <div id="textoDAR" style="color: #fff; font-weight: 600; font-family: 'Rajdhani', sans-serif; min-width: 45px;">90%</div>
+      </div>
+      
+    </section>
     <!-- Buscador -->
     <section class="buscador-id">
       <input type="text" id="playerID" placeholder="Ingresa tu ID de Free Fire">
@@ -1805,6 +1822,39 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('⚠️ Archivo local - Para sonidos sube a GitHub Pages o usa servidor local');
   }
 });
+    // Controles visuales para volúmenes separados
+  const volumenMenu = document.getElementById('volumenMenu');
+  const textoMenu = document.getElementById('textoMenu');
+  const volumenDAR = document.getElementById('volumenDAR');
+  const textoDAR = document.getElementById('textoDAR');
+  
+  // Control del menú
+  if (volumenMenu && textoMenu) {
+    volumenMenu.addEventListener('input', function() {
+      const vol = this.value;
+      audioConfig.volumeMenu = vol / 100;
+      textoMenu.textContent = vol + '%';
+      
+      // Probar sonido del menú al mover el slider
+      if (vol > 0) {
+        setTimeout(() => playMenuSound('inicio'), 100);
+      }
+    });
+  }
+  
+  // Control del botón DAR
+  if (volumenDAR && textoDAR) {
+    volumenDAR.addEventListener('input', function() {
+      const vol = this.value;
+      audioConfig.volumeDAR = vol / 100;
+      textoDAR.textContent = vol + '%';
+      
+      // Probar sonido del botón DAR al mover el slider
+      if (vol > 0) {
+        setTimeout(() => playMenuSound('regalo'), 100);
+      }
+    });
+  }
   </script>
 </body>
 </html>
