@@ -25,45 +25,6 @@
       --imagen-fondo-menu: url('');
     }
 
-    /* 
-    📝 INSTRUCCIONES PARA CAMBIAR IMÁGENES:
-    
-    ✅ FONDO PRINCIPAL: Cambiar arriba en --imagen-fondo-principal
-    ✅ FONDO DEL MENÚ: Cambiar arriba en --imagen-fondo-menu  
-    ✅ FOTO DE PERFIL: Buscar "🔄 CAMBIAR FOTO DE PERFIL AQUÍ" más abajo en el HTML
-    
-    💡 FORMATOS RECOMENDADOS:
-    - JPG/JPEG para fotos
-    - PNG para transparencias
-    - Tamaños: 1920x1080 para fondos, 95x95 para perfil
-    
-    🌐 EJEMPLOS DE RUTAS:
-    - Local: url('images/mi-imagen.jpg')
-    - Online: url('https://ejemplo.com/imagen.jpg')
-
-    🔊 INSTRUCCIONES PARA ACTIVAR SONIDOS:
-    
-    Los sonidos están ACTIVADOS por defecto.
-    Para usar sonidos, necesitas usar GitHub Pages o servidor web:
-    
-    OPCIÓN 1 - GitHub Pages (RECOMENDADO):
-    1. Sube archivos a GitHub
-    2. Activa GitHub Pages en configuración
-    3. Crea carpeta "sounds" con tus archivos MP3
-    4. Los sonidos funcionarán automáticamente
-    
-    OPCIÓN 2 - Servidor local con Python:
-    1. Abre terminal/cmd en la carpeta del proyecto
-    2. Ejecuta: python -m http.server 8000
-    3. Ve a: http://localhost:8000
-    
-    OPCIÓN 3 - Live Server (VS Code):
-    1. Instala extensión "Live Server" 
-    2. Click derecho en index.html > "Open with Live Server"
-    */
-
-    /* ========================================== */
-
     * {
       margin: 0;
       padding: 0;
@@ -278,20 +239,6 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-    }
-
-    .logo-verificado {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(145deg, #ffcc00, #ff9900);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      font-weight: bold;
-      font-size: 18px;
-      box-shadow: 0 0 15px rgba(255, 204, 0, 0.4);
     }
 
     .admin-titulo {
@@ -839,6 +786,121 @@
       color: #fff;
     }
 
+    /* Controles de Volumen */
+    .volume-controls {
+      background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(20, 20, 40, 0.7));
+      backdrop-filter: blur(15px);
+      padding: 30px;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 204, 0, 0.4);
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(255, 204, 0, 0.2);
+    }
+
+    .volume-controls h3 {
+      color: #ffcc00;
+      font-size: 24px;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      text-align: center;
+      margin-bottom: 25px;
+      background: linear-gradient(45deg, #ffcc00, #ff9900);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .volume-slider-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .volume-label {
+      color: #fff;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      min-width: 140px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .volume-slider {
+      flex: 1;
+      height: 12px;
+      border-radius: 6px;
+      outline: none;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.1);
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .volume-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ffcc00, #ff9900);
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+
+    .volume-slider::-moz-range-thumb {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #ffcc00, #ff9900);
+      cursor: pointer;
+      border: none;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+
+    .volume-text {
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Rajdhani', sans-serif;
+      min-width: 50px;
+      font-size: 18px;
+    }
+
+    .volume-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .volume-test-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Rajdhani', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .volume-test-btn.menu-btn {
+      background: linear-gradient(145deg, #00ffff, #0088ff);
+      color: #000;
+    }
+
+    .volume-test-btn.dar-btn {
+      background: linear-gradient(145deg, #ffcc00, #ff9900);
+      color: #000;
+    }
+
+    .volume-test-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+    }
+
     /* Botón DAR */
     .btn-dar {
       padding: 25px 100px;
@@ -1073,6 +1135,16 @@
         padding: 18px 60px;
         font-size: 22px;
       }
+
+      .volume-slider-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .volume-label {
+        min-width: auto;
+      }
     }
 
     @media (max-width: 480px) {
@@ -1152,7 +1224,7 @@
     <!-- Panel de administrador -->
     <section class="panel-admin">
       <div class="perfil-info">
-        <!-- 🔄 CAMBIAR FOTO DE PERFIL AQUÍ -->
+        <!-- CAMBIAR FOTO DE PERFIL AQUÍ -->
         <img src="Imagenes/logooficial.jpeg" alt="Foto de SakuraOldMvp" class="foto-perfil">
         <div class="datos-usuario">
           <div class="nombre-usuario">
@@ -1177,24 +1249,7 @@
         </div>
       </div>
     </section>
-<!-- Controles de Volumen Separados -->
-    <section style="background: linear-gradient(145deg, rgba(0, 0, 0, 0.8), rgba(20, 20, 40, 0.8)); backdrop-filter: blur(15px); padding: 25px; border-radius: 20px; border: 2px solid rgba(255, 204, 0, 0.4); width: 100%; max-width: 500px; margin: 0 auto 20px; display: flex; flex-direction: column; gap: 20px;">
-      
-      <!-- Volumen del Menú -->
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <div style="color: #00ffff; font-weight: 600; font-family: 'Rajdhani', sans-serif; font-size: 16px; min-width: 120px;">🎵 Menú:</div>
-        <input type="range" id="volumenMenu" min="0" max="100" value="50" style="flex: 1; height: 8px; background: linear-gradient(45deg, #00ffff, #0088ff); border-radius: 5px; outline: none;">
-        <div id="textoMenu" style="color: #fff; font-weight: 600; font-family: 'Rajdhani', sans-serif; min-width: 45px;">50%</div>
-      </div>
-      
-      <!-- Volumen del Botón DAR -->
-      <div style="display: flex; align-items: center; gap: 15px;">
-        <div style="color: #ffcc00; font-weight: 600; font-family: 'Rajdhani', sans-serif; font-size: 16px; min-width: 120px;">🎁 Botón DAR:</div>
-        <input type="range" id="volumenDAR" min="0" max="100" value="90" style="flex: 1; height: 8px; background: linear-gradient(45deg, #ffcc00, #ff9900); border-radius: 5px; outline: none;">
-        <div id="textoDAR" style="color: #fff; font-weight: 600; font-family: 'Rajdhani', sans-serif; min-width: 45px;">90%</div>
-      </div>
-      
-    </section>
+
     <!-- Buscador -->
     <section class="buscador-id">
       <input type="text" id="playerID" placeholder="Ingresa tu ID de Free Fire">
@@ -1237,10 +1292,38 @@
               <p>Online</p>
             </div>
           </div>
+          <div class="stat-card">
+            <div class="stat-icon">💎</div>
+            <div class="stat-info">
+              <h3>Diamantes Generados</h3>
+              <p>2,456,789</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🏆</div>
+            <div class="stat-info">
+              <h3>Torneos Activos</h3>
+              <p>15</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🚀</div>
+            <div class="stat-info">
+              <h3>Uptime Sistema</h3>
+              <p>99.9%</p>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">👥</div>
+            <div class="stat-info">
+              <h3>Administradores</h3>
+              <p>8</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- SECCIÓN PERSONAJES -->
+      <!-- SECCIÓN PERSONAJES (SIN MODIFICAR) -->
       <section class="section-content" id="section-personajes">
         <div class="section-header">
           <h2>Personajes y Skins</h2>
@@ -1298,7 +1381,7 @@
         </div>
       </section>
 
-      <!-- SECCIÓN ARMAS -->
+      <!-- SECCIÓN ARMAS (CON ELEMENTOS ADICIONALES) -->
       <section class="section-content" id="section-armas">
         <div class="section-header">
           <h2>Arsenal de Armas</h2>
@@ -1329,10 +1412,26 @@
             <img src="https://via.placeholder.com/200x150/00CED1/ffffff?text=UMP45" alt="UMP45 Pro" class="item-imagen">
             <p class="item-name">UMP45 Pro</p>
           </div>
+          <div class="item-card" data-tipo="arma">
+            <img src="https://via.placeholder.com/200x150/9932CC/ffffff?text=MP40" alt="MP40 Vintage" class="item-imagen">
+            <p class="item-name">MP40 Vintage</p>
+          </div>
+          <div class="item-card" data-tipo="arma">
+            <img src="https://via.placeholder.com/200x150/FFD700/000000?text=GROZA" alt="Groza Dorada" class="item-imagen">
+            <p class="item-name">Groza Dorada</p>
+          </div>
+          <div class="item-card" data-tipo="arma">
+            <img src="https://via.placeholder.com/200x150/DC143C/ffffff?text=M1014" alt="M1014 Sangre" class="item-imagen">
+            <p class="item-name">M1014 Sangre</p>
+          </div>
+          <div class="item-card" data-tipo="arma">
+            <img src="https://via.placeholder.com/200x150/7B68EE/ffffff?text=VSS" alt="VSS Fantasma" class="item-imagen">
+            <p class="item-name">VSS Fantasma</p>
+          </div>
         </div>
       </section>
 
-      <!-- SECCIÓN VEHÍCULOS -->
+      <!-- SECCIÓN VEHÍCULOS (CON ELEMENTOS ADICIONALES) -->
       <section class="section-content" id="section-vehiculos">
         <div class="section-header">
           <h2>Garage de Vehículos</h2>
@@ -1355,10 +1454,26 @@
             <img src="https://via.placeholder.com/200x150/C0C0C0/000000?text=LAMBO" alt="Lamborghini Plata" class="item-imagen">
             <p class="item-name">Lamborghini Plata</p>
           </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <img src="https://via.placeholder.com/200x150/DC143C/ffffff?text=FERRARI" alt="Ferrari Rojo" class="item-imagen">
+            <p class="item-name">Ferrari Rojo</p>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <img src="https://via.placeholder.com/200x150/000000/ffffff?text=BATMAN" alt="Batimóvil" class="item-imagen">
+            <p class="item-name">Batimóvil</p>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <img src="https://via.placeholder.com/200x150/00FF00/000000?text=MONSTER" alt="Monster Truck" class="item-imagen">
+            <p class="item-name">Monster Truck</p>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <img src="https://via.placeholder.com/200x150/1E90FF/ffffff?text=JET" alt="Jet Privado" class="item-imagen">
+            <p class="item-name">Jet Privado</p>
+          </div>
         </div>
       </section>
 
-      <!-- SECCIÓN MASCOTAS -->
+      <!-- SECCIÓN MASCOTAS (CON ELEMENTOS ADICIONALES) -->
       <section class="section-content" id="section-mascotas">
         <div class="section-header">
           <h2>Mascotas Compañeras</h2>
@@ -1377,10 +1492,26 @@
             <img src="https://via.placeholder.com/200x150/00CED1/ffffff?text=LOBO" alt="Lobo Alfa" class="item-imagen">
             <p class="item-name">Lobo Alfa</p>
           </div>
+          <div class="item-card" data-tipo="mascota">
+            <img src="https://via.placeholder.com/200x150/FFD700/000000?text=LEON" alt="León Dorado" class="item-imagen">
+            <p class="item-name">León Dorado</p>
+          </div>
+          <div class="item-card" data-tipo="mascota">
+            <img src="https://via.placeholder.com/200x150/32CD32/ffffff?text=DRAGON" alt="Dragón Verde" class="item-imagen">
+            <p class="item-name">Dragón Verde</p>
+          </div>
+          <div class="item-card" data-tipo="mascota">
+            <img src="https://via.placeholder.com/200x150/FF4500/ffffff?text=TIGER" alt="Tigre Feroz" class="item-imagen">
+            <p class="item-name">Tigre Feroz</p>
+          </div>
+          <div class="item-card" data-tipo="mascota">
+            <img src="https://via.placeholder.com/200x150/8A2BE2/ffffff?text=PHOENIX" alt="Fénix Místico" class="item-imagen">
+            <p class="item-name">Fénix Místico</p>
+          </div>
         </div>
       </section>
 
-      <!-- SECCIÓN EMOTES -->
+      <!-- SECCIÓN EMOTES (CON 19 ELEMENTOS TOTAL) -->
       <section class="section-content" id="section-emotes">
         <div class="section-header">
           <h2>Gestos y Emotes</h2>
@@ -1399,22 +1530,142 @@
             <img src="https://via.placeholder.com/200x150/FF8C00/ffffff?text=SALUDO" alt="Saludo Real" class="item-imagen">
             <p class="item-name">Saludo Real</p>
           </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/9932CC/ffffff?text=ROBOT" alt="Robot Dance" class="item-imagen">
+            <p class="item-name">Robot Dance</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/FFD700/000000?text=WINNER" alt="Celebración" class="item-imagen">
+            <p class="item-name">Celebración</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/DC143C/ffffff?text=ANGRY" alt="Grito Feroz" class="item-imagen">
+            <p class="item-name">Grito Feroz</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/00CED1/ffffff?text=CHILL" alt="Relajado" class="item-imagen">
+            <p class="item-name">Relajado</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/FF69B4/ffffff?text=LOVE" alt="Corazón" class="item-imagen">
+            <p class="item-name">Corazón</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/32CD32/ffffff?text=PEACE" alt="Paz" class="item-imagen">
+            <p class="item-name">Paz</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/4169E1/ffffff?text=COOL" alt="Genial" class="item-imagen">
+            <p class="item-name">Genial</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/FF4500/ffffff?text=FIRE" alt="En Llamas" class="item-imagen">
+            <p class="item-name">En Llamas</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/8B4513/ffffff?text=TOUGH" alt="Rudo" class="item-imagen">
+            <p class="item-name">Rudo</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/FF6347/ffffff?text=LAUGH" alt="Risa" class="item-imagen">
+            <p class="item-name">Risa</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/9370DB/ffffff?text=MAGIC" alt="Mágico" class="item-imagen">
+            <p class="item-name">Mágico</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/20B2AA/ffffff?text=WAVE" alt="Saludo Amistoso" class="item-imagen">
+            <p class="item-name">Saludo Amistoso</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/B22222/ffffff?text=POWER" alt="Poder" class="item-imagen">
+            <p class="item-name">Poder</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/00BFFF/ffffff?text=FLEX" alt="Presumir" class="item-imagen">
+            <p class="item-name">Presumir</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/FFB6C1/000000?text=SHY" alt="Tímido" class="item-imagen">
+            <p class="item-name">Tímido</p>
+          </div>
+          <div class="item-card" data-tipo="emote">
+            <img src="https://via.placeholder.com/200x150/7B68EE/ffffff?text=NINJA" alt="Ninja" class="item-imagen">
+            <p class="item-name">Ninja</p>
+          </div>
         </div>
       </section>
 
-      <!-- SECCIÓN CONFIGURACIÓN -->
+      <!-- SECCIÓN CONFIGURACIÓN (CON CONTROLES DE VOLUMEN) -->
       <section class="section-content" id="section-configuracion">
         <div class="section-header">
           <h2>Configuración del Panel</h2>
           <p>Ajustes y preferencias del administrador</p>
         </div>
+        
+        <div class="volume-controls">
+          <h3>Control de Volumen de Audio</h3>
+          
+          <div class="volume-slider-container">
+            <div class="volume-label">
+              🎵 Menú:
+            </div>
+            <input type="range" id="volumenMenu" min="0" max="100" value="50" class="volume-slider">
+            <div id="textoMenu" class="volume-text">50%</div>
+          </div>
+          
+          <div class="volume-slider-container">
+            <div class="volume-label">
+              🎁 Botón DAR:
+            </div>
+            <input type="range" id="volumenDAR" min="0" max="100" value="90" class="volume-slider">
+            <div id="textoDAR" class="volume-text">90%</div>
+          </div>
+          
+          <div class="volume-buttons">
+            <button class="volume-test-btn menu-btn" onclick="audioControls.testMenu()">Probar Menú</button>
+            <button class="volume-test-btn dar-btn" onclick="audioControls.testDAR()">Probar DAR</button>
+          </div>
+        </div>
       </section>
 
-      <!-- SECCIÓN AYUDA -->
+      <!-- SECCIÓN AYUDA (CON ELEMENTOS ADICIONALES) -->
       <section class="section-content" id="section-ayuda">
         <div class="section-header">
           <h2>Centro de Ayuda</h2>
           <p>Guías y soporte técnico</p>
+        </div>
+        
+        <div class="grid-items">
+          <div class="item-card" style="border: 3px solid #00ff88; cursor: default;">
+            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #00ff88, #00cc66); display: flex; align-items: center; justify-content: center; font-size: 60px;">📚</div>
+            <p class="item-name" style="color: #00ff88;">Guía de Inicio</p>
+          </div>
+          <div class="item-card" style="border: 3px solid #ffcc00; cursor: default;">
+            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #ffcc00, #ff9900); display: flex; align-items: center; justify-content: center; font-size: 60px;">❓</div>
+            <p class="item-name" style="color: #ffcc00;">FAQ</p>
+          </div>
+          <div class="item-card" style="border: 3px solid #ff6666; cursor: default;">
+            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #ff6666, #ff4444); display: flex; align-items: center; justify-content: center; font-size: 60px;">🛠️</div>
+            <p class="item-name" style="color: #ff6666;">Solución de Problemas</p>
+          </div>
+          <div class="item-card" style="border: 3px solid #8a2be2; cursor: default;">
+            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #8a2be2, #6a1ba2); display: flex; align-items: center; justify-content: center; font-size: 60px;">📞</div>
+            <p class="item-name" style="color: #8a2be2;">Contacto</p>
+          </div>
+          <div class="item-card" style="border: 3px solid #00ffff; cursor: default;">
+            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #00ffff, #0088ff); display: flex; align-items: center; justify-content: center; font-size: 60px;">🎮</div>
+            <p class="item-name" style="color: #00ffff;">Controles</p>
+          </div>
+          <div class="item-card" style="border: 3px solid #ff8c00; cursor: default;">
+            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #ff8c00, #ff6600); display: flex; align-items: center; justify-content: center; font-size: 60px;">🔒</div>
+            <p class="item-name" style="color: #ff8c00;">Seguridad</p>
+          </div>
+          <div class="item-card" style="border: 3px solid #32cd32; cursor: default;">
+            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #32cd32, #228b22); display: flex; align-items: center; justify-content: center; font-size: 60px;">📝</div>
+            <p class="item-name" style="color: #32cd32;">Tutoriales</p>
+          </div>
         </div>
       </section>
     </div>
@@ -1451,410 +1702,489 @@
   </div>
 
   <script>
-    // ==========================================
-// SISTEMA DE SONIDOS SIMPLIFICADO
-// ==========================================
-
-// CONFIGURACIÓN DE SONIDOS
-const audioConfig = {
-  enabled: true,    // Cambiar a false si no tienes archivos de sonido
-  volume: 0.7,
-  basePath: 'sounds/'
-};
-
-// RUTAS DE SONIDOS
-const menuSounds = {
-  inicio: 'sounds/click.mp3',
-  personajes: 'sounds/click.mp3', 
-  armas: 'sounds/click.mp3',
-  vehiculos: 'sounds/click.mp3',
-  mascotas: 'sounds/click.mp3',
-  emotes: 'sounds/click.mp3',
-  configuracion: 'sounds/click.mp3',
-  ayuda: 'sounds/click.mp3',
-  regalo: 'sounds/regalo.mp3'
-};
-
-// FUNCIÓN PARA REPRODUCIR SONIDOS
-function playMenuSound(soundKey) {
-  if (!audioConfig.enabled || !menuSounds[soundKey]) return;
-  
-  // No funciona en protocolo file://
-  if (window.location.protocol === 'file:') {
-    console.log(`🔇 Sonido "${soundKey}" omitido (usa servidor web)`);
-    return;
-  }
-  
-  try {
-    const audio = new Audio();
-    audio.src = menuSounds[soundKey];
-    audio.volume = audioConfig.volume;
-    audio.play().catch(error => {
-      console.log(`🔇 Sonido "${soundKey}" no disponible`);
-    });
-  } catch (error) {
-    console.log(`🔇 Error de audio: ${error.message}`);
-  }
-}
-
-// Variables globales
-let itemsSeleccionados = [];
-let seccionActual = 'inicio';
-
-// FUNCIÓN PARA CAMBIAR SECCIONES
-function cambiarSeccion(seccion) {
-  playMenuSound(seccion);
-  
-  document.querySelectorAll('.menu-item').forEach(item => {
-    item.classList.remove('active');
-  });
-  
-  const clickedItem = document.querySelector(`[data-sound="${seccion}"]`);
-  if (clickedItem) {
-    clickedItem.classList.add('active');
-  }
-  
-  document.querySelectorAll('.section-content').forEach(section => {
-    section.classList.remove('active');
-  });
-  
-  const sectionElement = document.getElementById(`section-${seccion}`);
-  if (sectionElement) {
-    sectionElement.classList.add('active');
-    seccionActual = seccion;
-    mostrarNotificacion(`Navegando a: ${seccion.charAt(0).toUpperCase() + seccion.slice(1)}`);
-  }
-}
-
-// FUNCIÓN DE BÚSQUEDA
-function buscarID() {
-  const id = document.getElementById("playerID").value.trim();
-  
-  if (!id) {
-    mostrarNotificacion("Por favor ingresa un ID válido");
-    return;
-  }
-
-  playMenuSound('inicio');
-
-  const campoBusqueda = document.getElementById("playerID");
-  campoBusqueda.value = `ID: ${id} - Usuario Encontrado`;
-  campoBusqueda.style.color = "#00ff88";
-  campoBusqueda.style.fontWeight = "700";
-  campoBusqueda.readOnly = true;
-  
-  const campoNombre = document.getElementById('campoNombreManual');
-  campoNombre.style.display = 'flex';
-  
-  setTimeout(() => {
-    document.getElementById('nombreJugador').focus();
-  }, 300);
-  
-  mostrarNotificacion("Usuario encontrado - Ingresa el nombre del jugador");
-}
-
-// FUNCIÓN PARA NUEVA BÚSQUEDA
-function nuevaBusqueda() {
-  const campoBusqueda = document.getElementById("playerID");
-  campoBusqueda.value = '';
-  campoBusqueda.placeholder = "Ingresa tu ID de Free Fire";
-  campoBusqueda.style.color = "#fff";
-  campoBusqueda.style.fontWeight = "500";
-  campoBusqueda.readOnly = false;
-  
-  document.getElementById('campoNombreManual').style.display = 'none';
-  document.getElementById('nombreJugador').value = '';
-  
-  campoBusqueda.focus();
-  mostrarNotificacion("Nueva búsqueda - Ingresa otra ID");
-}
-
-// FUNCIÓN PARA SELECCIONAR ITEMS
-function toggleItemSelection(elemento, nombre, tipo) {
-  const itemId = `${tipo}-${nombre.replace(/\s+/g, '-').toLowerCase()}`;
-  
-  if (elemento.classList.contains('seleccionado')) {
-    elemento.classList.remove('seleccionado');
-    itemsSeleccionados = itemsSeleccionados.filter(item => item.id !== itemId);
-    mostrarNotificacion(`${nombre} deseleccionado`);
-  } else {
-    elemento.classList.add('seleccionado');
-    const nuevoItem = {
-      id: itemId,
-      nombre: nombre,
-      tipo: tipo,
-      elemento: elemento
+    // CONFIGURACIÓN DE SONIDOS CON VOLÚMENES SEPARADOS
+    const audioConfig = {
+      enabled: true,    // Cambiar a false si no tienes archivos de sonido
+      volumeMenu: 0.5,  // Volumen del menú (más bajo)
+      volumeDAR: 0.9,   // Volumen del botón DAR (más alto)
+      basePath: 'sounds/'
     };
-    itemsSeleccionados.push(nuevoItem);
-    mostrarNotificacion(`${nombre} seleccionado`);
-    playMenuSound('inicio');
-  }
-  
-  actualizarBotonDAR();
-}
 
-// Actualizar botón DAR
-function actualizarBotonDAR() {
-  const btnDar = document.querySelector('.btn-dar');
-  const totalItems = itemsSeleccionados.length;
-  
-  if (totalItems > 0) {
-    btnDar.textContent = `DAR (${totalItems})`;
-    btnDar.style.background = 'linear-gradient(145deg, #00ff88, #00cc66)';
-    btnDar.style.boxShadow = '0 10px 30px rgba(0, 255, 136, 0.6)';
-  } else {
-    btnDar.textContent = 'DAR';
-    btnDar.style.background = 'linear-gradient(145deg, #ffcc00, #ff9900)';
-    btnDar.style.boxShadow = '0 10px 30px rgba(255, 204, 0, 0.6)';
-  }
-}
+    // RUTAS DE SONIDOS
+    const menuSounds = {
+      inicio: 'sounds/click.mp3',
+      personajes: 'sounds/click.mp3', 
+      armas: 'sounds/click.mp3',
+      vehiculos: 'sounds/click.mp3',
+      mascotas: 'sounds/click.mp3',
+      emotes: 'sounds/click.mp3',
+      configuracion: 'sounds/click.mp3',
+      ayuda: 'sounds/click.mp3',
+      regalo: 'sounds/regalo.mp3'
+    };
 
-// FUNCIONES UTILITARIAS
-function generarTiempoAleatorio() {
-  const horas = Math.floor(Math.random() * 7) + 19;
-  const minutos = Math.floor(Math.random() * 60);
-  return `${horas}h ${minutos}min`;
-}
+    // Variables globales
+    let itemsSeleccionados = [];
+    let seccionActual = 'inicio';
 
-function obtenerFechaHoraActual() {
-  const ahora = new Date();
-  const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-  const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-  
-  const diaSemana = diasSemana[ahora.getDay()];
-  const dia = String(ahora.getDate()).padStart(2, '0');
-  const mes = meses[ahora.getMonth()];
-  const ano = ahora.getFullYear();
-  const horas = String(ahora.getHours()).padStart(2, '0');
-  const minutos = String(ahora.getMinutes()).padStart(2, '0');
-  const segundos = String(ahora.getSeconds()).padStart(2, '0');
-  
-  return `${diaSemana}, ${dia} de ${mes} de ${ano} - ${horas}:${minutos}:${segundos}`;
-}
+    // VARIABLES PARA CONTROLAR LA SATURACIÓN DE AUDIO
+    let audioPreviewTimeout = null;
+    let currentPreviewAudio = null;
 
-// FUNCIÓN DAR RECOMPENSA
-function darRecompensa() {
-  const campoID = document.getElementById("playerID");
-  const nombreJugador = document.getElementById("nombreJugador").value.trim();
-  
-  const idMatch = campoID.value.match(/ID: (\d+)/);
-  const id = idMatch ? idMatch[1] : null;
-  
-  if (!id) {
-    mostrarNotificacion("Primero busca un ID válido");
-    return;
-  }
-  
-  if (!nombreJugador) {
-    mostrarNotificacion("Ingresa el nombre del jugador");
-    return;
-  }
-  
-  if (itemsSeleccionados.length === 0) {
-    mostrarNotificacion("Selecciona al menos un item");
-    return;
-  }
-  
-  // REPRODUCIR SONIDO ESPECÍFICO DEL BOTÓN DAR
-  playMenuSound('regalo');
-
-  setTimeout(() => {
-    mostrarModalExito(nombreJugador, id);
-  }, 500);
-}
-
-// MODAL DE ÉXITO
-function mostrarModalExito(usuario, playerId) {
-  const modal = document.getElementById('modalOverlay');
-  const playerName = document.getElementById('playerName');
-  const playerIdElement = document.getElementById('playerIDDisplay');
-  const itemsEnviados = document.getElementById('itemsEnviados');
-  const tiempoEntrega = document.getElementById('tiempoEntrega');
-  const fechaHora = document.getElementById('fechaHora');
-  const totalArticulos = document.getElementById('totalArticulos');
-  
-  playerName.textContent = `Jugador: ${usuario}`;
-  playerIdElement.textContent = `ID: ${playerId}`;
-  fechaHora.textContent = obtenerFechaHoraActual();
-  totalArticulos.textContent = `Artículos seleccionados: ${itemsSeleccionados.length}`;
-  tiempoEntrega.textContent = `Tu pedido llegará a tu cuenta en ${generarTiempoAleatorio()}`;
-  
-  // Generar grid de items enviados
-  itemsEnviados.innerHTML = '';
-  
-  if (itemsSeleccionados.length === 0) {
-    itemsEnviados.innerHTML = '<div style="text-align: center; color: #ffcc00; padding: 20px;">No hay artículos seleccionados</div>';
-  } else {
-    itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; margin: 20px 0 !important;';
-    
-    itemsSeleccionados.forEach((item) => {
-      let bgColor = '#555';
-      let emoji = '📦';
-      let textColor = '#fff';
+    // FUNCIÓN PARA REPRODUCIR SONIDOS CON VOLÚMENES SEPARADOS Y SIN SATURACIÓN
+    function playMenuSound(soundKey, isPreview = false) {
+      if (!audioConfig.enabled || !menuSounds[soundKey]) return;
       
-      switch(item.tipo) {
-        case 'personaje': bgColor = '#666'; emoji = '👤'; break;
-        case 'arma': bgColor = '#8B4513'; emoji = '🔫'; break;
-        case 'vehiculo': bgColor = '#FFD700'; emoji = '🚗'; textColor = '#000'; break;
-        case 'mascota': bgColor = '#FF69B4'; emoji = '🐕'; break;
-        case 'emote': bgColor = '#FF1493'; emoji = '💃'; break;
+      // No funciona en protocolo file://
+      if (window.location.protocol === 'file:') {
+        console.log(`🔇 Sonido "${soundKey}" omitido (usa servidor web)`);
+        return;
       }
       
-      const itemDiv = document.createElement('div');
-      itemDiv.style.cssText = `
-        background: linear-gradient(145deg, #333, #444) !important;
-        border: 2px solid #ffcc00 !important;
-        border-radius: 12px !important;
-        padding: 15px 10px !important;
-        text-align: center !important;
-        box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important;
-      `;
+      try {
+        // Si es una preview (desde slider), detener audio anterior
+        if (isPreview) {
+          if (currentPreviewAudio) {
+            currentPreviewAudio.pause();
+            currentPreviewAudio.currentTime = 0;
+          }
+        }
+        
+        const audio = new Audio();
+        audio.src = menuSounds[soundKey];
+        
+        // VOLÚMENES SEPARADOS SEGÚN EL TIPO DE SONIDO
+        if (soundKey === 'regalo') {
+          audio.volume = audioConfig.volumeDAR;  // Volumen específico para el botón DAR
+          console.log(`🎵 Sonido DAR - Volumen: ${Math.round(audioConfig.volumeDAR * 100)}%`);
+        } else {
+          audio.volume = audioConfig.volumeMenu; // Volumen específico para menú
+          console.log(`🎵 Sonido menú - Volumen: ${Math.round(audioConfig.volumeMenu * 100)}%`);
+        }
+        
+        // Si es preview, guardar referencia
+        if (isPreview) {
+          currentPreviewAudio = audio;
+        }
+        
+        audio.play().catch(error => {
+          console.log(`🔇 Sonido "${soundKey}" no disponible`);
+        });
+      } catch (error) {
+        console.log(`🔇 Error de audio: ${error.message}`);
+      }
+    }
+
+    // FUNCIÓN PARA PREVIEW SIN SATURACIÓN
+    function playPreviewSound(soundKey) {
+      // Cancelar timeout anterior
+      if (audioPreviewTimeout) {
+        clearTimeout(audioPreviewTimeout);
+      }
       
-      itemDiv.innerHTML = `
-        <div style="width: 60px !important; height: 60px !important; background: ${bgColor} !important; border-radius: 8px !important; margin: 0 auto 10px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 28px !important; color: ${textColor} !important;">${emoji}</div>
-        <div style="font-size: 12px !important; color: #ffcc00 !important; font-weight: bold !important;">${item.nombre}</div>
-      `;
+      // Establecer nuevo timeout para evitar saturación
+      audioPreviewTimeout = setTimeout(() => {
+        playMenuSound(soundKey, true);
+      }, 150); // 150ms de delay para evitar múltiples reproducciones
+    }
+
+    // FUNCIÓN PARA CAMBIAR SECCIONES
+    function cambiarSeccion(seccion) {
+      playMenuSound(seccion);
       
-      itemsEnviados.appendChild(itemDiv);
-    });
-  }
-  
-  modal.style.display = 'flex';
-}
-
-function cerrarModal() {
-  const modal = document.getElementById('modalOverlay');
-  modal.style.display = 'none';
-  
-  itemsSeleccionados = [];
-  document.querySelectorAll('.personaje, .item-card').forEach(elemento => {
-    elemento.classList.remove('seleccionado');
-  });
-  
-  actualizarBotonDAR();
-  mostrarNotificacion('Pedido completado - selecciones reiniciadas');
-}
-
-function mostrarNotificacion(mensaje) {
-  const existingNotification = document.querySelector('.notification');
-  if (existingNotification) {
-    existingNotification.remove();
-  }
-  
-  const notification = document.createElement('div');
-  notification.className = 'notification';
-  notification.textContent = mensaje;
-  document.body.appendChild(notification);
-  
-  setTimeout(() => notification.classList.add('show'), 100);
-  setTimeout(() => {
-    notification.classList.remove('show');
-    setTimeout(() => notification.remove(), 500);
-  }, 3000);
-}
-
-// CONTROLES DE SONIDO PARA LA CONSOLA
-window.audioControls = {
-  enable: function() {
-    audioConfig.enabled = true;
-    console.log('🔊 Sonidos ACTIVADOS');
-    mostrarNotificacion('Sonidos activados');
-  },
-  disable: function() {
-    audioConfig.enabled = false;
-    console.log('🔇 Sonidos DESACTIVADOS');
-    mostrarNotificacion('Sonidos desactivados');
-  },
-  setVolume: function(volume) {
-    const vol = Math.max(0, Math.min(100, volume)) / 100;
-    audioConfig.volume = vol;
-    console.log(`🔊 Volumen: ${volume}%`);
-    mostrarNotificación(`Volumen: ${volume}%`);
-  },
-  test: function() {
-    console.log('🔊 Probando sonido DAR...');
-    playMenuSound('regalo');
-  }
-};
-
-// EVENT LISTENERS
-document.addEventListener('DOMContentLoaded', function() {
-  // Botones principales
-  document.querySelector('.btn-buscar').addEventListener('click', buscarID);
-  document.getElementById("playerID").addEventListener("keypress", function(event) {
-    if (event.key === "Enter") buscarID();
-  });
-  document.querySelector('.btn-dar').addEventListener('click', darRecompensa);
-  document.querySelector('.btn-continuar').addEventListener('click', cerrarModal);
-  
-  // Modal
-  document.getElementById('modalOverlay').addEventListener('click', function(event) {
-    if (event.target === this) cerrarModal();
-  });
-
-  // Items seleccionables
-  function initItemListeners() {
-    document.querySelectorAll('.personaje').forEach(personaje => {
-      const nombre = personaje.querySelector('.nombre-skin').textContent;
-      const tipo = personaje.getAttribute('data-tipo') || 'personaje';
-      personaje.addEventListener('click', function() {
-        toggleItemSelection(this, nombre, tipo);
+      document.querySelectorAll('.menu-item').forEach(item => {
+        item.classList.remove('active');
       });
-    });
-
-    document.querySelectorAll('.item-card').forEach(itemCard => {
-      const nombre = itemCard.querySelector('.item-name').textContent;
-      const tipo = itemCard.getAttribute('data-tipo') || 'item';
-      itemCard.addEventListener('click', function() {
-        toggleItemSelection(this, nombre, tipo);
+      
+      const clickedItem = document.querySelector(`[data-sound="${seccion}"]`);
+      if (clickedItem) {
+        clickedItem.classList.add('active');
+      }
+      
+      document.querySelectorAll('.section-content').forEach(section => {
+        section.classList.remove('active');
       });
-    });
-  }
-
-  initItemListeners();
-
-  // Estado inicial
-  console.log('🎮 Free Fire Admin Panel cargado correctamente');
-  console.log('🔊 Sonidos configurados - Para GitHub Pages funciona automáticamente');
-  console.log('💡 Controles: audioControls.enable(), .disable(), .test(), .setVolume(50)');
-  
-  if (window.location.protocol === 'file:') {
-    console.log('⚠️ Archivo local - Para sonidos sube a GitHub Pages o usa servidor local');
-  }
-});
-    // Controles visuales para volúmenes separados
-  const volumenMenu = document.getElementById('volumenMenu');
-  const textoMenu = document.getElementById('textoMenu');
-  const volumenDAR = document.getElementById('volumenDAR');
-  const textoDAR = document.getElementById('textoDAR');
-  
-  // Control del menú
-  if (volumenMenu && textoMenu) {
-    volumenMenu.addEventListener('input', function() {
-      const vol = this.value;
-      audioConfig.volumeMenu = vol / 100;
-      textoMenu.textContent = vol + '%';
       
-      // Probar sonido del menú al mover el slider
-      if (vol > 0) {
-        setTimeout(() => playMenuSound('inicio'), 100);
+      const sectionElement = document.getElementById(`section-${seccion}`);
+      if (sectionElement) {
+        sectionElement.classList.add('active');
+        seccionActual = seccion;
+        mostrarNotificacion(`Navegando a: ${seccion.charAt(0).toUpperCase() + seccion.slice(1)}`);
+      }
+    }
+
+    // FUNCIÓN DE BÚSQUEDA
+    function buscarID() {
+      const id = document.getElementById("playerID").value.trim();
+      
+      if (!id) {
+        mostrarNotificacion("Por favor ingresa un ID válido");
+        return;
+      }
+
+      playMenuSound('inicio');
+
+      const campoBusqueda = document.getElementById("playerID");
+      campoBusqueda.value = `ID: ${id} - Usuario Encontrado`;
+      campoBusqueda.style.color = "#00ff88";
+      campoBusqueda.style.fontWeight = "700";
+      campoBusqueda.readOnly = true;
+      
+      const campoNombre = document.getElementById('campoNombreManual');
+      campoNombre.style.display = 'flex';
+      
+      setTimeout(() => {
+        document.getElementById('nombreJugador').focus();
+      }, 300);
+      
+      mostrarNotificacion("Usuario encontrado - Ingresa el nombre del jugador");
+    }
+
+    // FUNCIÓN PARA NUEVA BÚSQUEDA
+    function nuevaBusqueda() {
+      const campoBusqueda = document.getElementById("playerID");
+      campoBusqueda.value = '';
+      campoBusqueda.placeholder = "Ingresa tu ID de Free Fire";
+      campoBusqueda.style.color = "#fff";
+      campoBusqueda.style.fontWeight = "500";
+      campoBusqueda.readOnly = false;
+      
+      document.getElementById('campoNombreManual').style.display = 'none';
+      document.getElementById('nombreJugador').value = '';
+      
+      campoBusqueda.focus();
+      mostrarNotificacion("Nueva búsqueda - Ingresa otra ID");
+    }
+
+    // FUNCIÓN PARA SELECCIONAR ITEMS
+    function toggleItemSelection(elemento, nombre, tipo) {
+      const itemId = `${tipo}-${nombre.replace(/\s+/g, '-').toLowerCase()}`;
+      
+      if (elemento.classList.contains('seleccionado')) {
+        elemento.classList.remove('seleccionado');
+        itemsSeleccionados = itemsSeleccionados.filter(item => item.id !== itemId);
+        mostrarNotificacion(`${nombre} deseleccionado`);
+      } else {
+        elemento.classList.add('seleccionado');
+        const nuevoItem = {
+          id: itemId,
+          nombre: nombre,
+          tipo: tipo,
+          elemento: elemento
+        };
+        itemsSeleccionados.push(nuevoItem);
+        mostrarNotificacion(`${nombre} seleccionado`);
+        playMenuSound('inicio');
+      }
+      
+      actualizarBotonDAR();
+    }
+
+    // Actualizar botón DAR
+    function actualizarBotonDAR() {
+      const btnDar = document.querySelector('.btn-dar');
+      const totalItems = itemsSeleccionados.length;
+      
+      if (totalItems > 0) {
+        btnDar.textContent = `DAR (${totalItems})`;
+        btnDar.style.background = 'linear-gradient(145deg, #00ff88, #00cc66)';
+        btnDar.style.boxShadow = '0 10px 30px rgba(0, 255, 136, 0.6)';
+      } else {
+        btnDar.textContent = 'DAR';
+        btnDar.style.background = 'linear-gradient(145deg, #ffcc00, #ff9900)';
+        btnDar.style.boxShadow = '0 10px 30px rgba(255, 204, 0, 0.6)';
+      }
+    }
+
+    // FUNCIONES UTILITARIAS
+    function generarTiempoAleatorio() {
+      const horas = Math.floor(Math.random() * 7) + 19;
+      const minutos = Math.floor(Math.random() * 60);
+      return `${horas}h ${minutos}min`;
+    }
+
+    function obtenerFechaHoraActual() {
+      const ahora = new Date();
+      const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+      const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+      
+      const diaSemana = diasSemana[ahora.getDay()];
+      const dia = String(ahora.getDate()).padStart(2, '0');
+      const mes = meses[ahora.getMonth()];
+      const ano = ahora.getFullYear();
+      const horas = String(ahora.getHours()).padStart(2, '0');
+      const minutos = String(ahora.getMinutes()).padStart(2, '0');
+      const segundos = String(ahora.getSeconds()).padStart(2, '0');
+      
+      return `${diaSemana}, ${dia} de ${mes} de ${ano} - ${horas}:${minutos}:${segundos}`;
+    }
+
+    // FUNCIÓN DAR RECOMPENSA
+    function darRecompensa() {
+      const campoID = document.getElementById("playerID");
+      const nombreJugador = document.getElementById("nombreJugador").value.trim();
+      
+      const idMatch = campoID.value.match(/ID: (\d+)/);
+      const id = idMatch ? idMatch[1] : null;
+      
+      if (!id) {
+        mostrarNotificacion("Primero busca un ID válido");
+        return;
+      }
+      
+      if (!nombreJugador) {
+        mostrarNotificacion("Ingresa el nombre del jugador");
+        return;
+      }
+      
+      if (itemsSeleccionados.length === 0) {
+        mostrarNotificacion("Selecciona al menos un item");
+        return;
+      }
+      
+      // REPRODUCIR SONIDO ESPECÍFICO DEL BOTÓN DAR
+      playMenuSound('regalo');
+
+      setTimeout(() => {
+        mostrarModalExito(nombreJugador, id);
+      }, 500);
+    }
+
+    // MODAL DE ÉXITO
+    function mostrarModalExito(usuario, playerId) {
+      const modal = document.getElementById('modalOverlay');
+      const playerName = document.getElementById('playerName');
+      const playerIdElement = document.getElementById('playerIDDisplay');
+      const itemsEnviados = document.getElementById('itemsEnviados');
+      const tiempoEntrega = document.getElementById('tiempoEntrega');
+      const fechaHora = document.getElementById('fechaHora');
+      const totalArticulos = document.getElementById('totalArticulos');
+      
+      playerName.textContent = `Jugador: ${usuario}`;
+      playerIdElement.textContent = `ID: ${playerId}`;
+      fechaHora.textContent = obtenerFechaHoraActual();
+      totalArticulos.textContent = `Artículos seleccionados: ${itemsSeleccionados.length}`;
+      tiempoEntrega.textContent = `Tu pedido llegará a tu cuenta en ${generarTiempoAleatorio()}`;
+      
+      // Generar grid de items enviados
+      itemsEnviados.innerHTML = '';
+      
+      if (itemsSeleccionados.length === 0) {
+        itemsEnviados.innerHTML = '<div style="text-align: center; color: #ffcc00; padding: 20px;">No hay artículos seleccionados</div>';
+      } else {
+        itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; margin: 20px 0 !important;';
+        
+        itemsSeleccionados.forEach((item) => {
+          let bgColor = '#555';
+          let emoji = '📦';
+          let textColor = '#fff';
+          
+          switch(item.tipo) {
+            case 'personaje': bgColor = '#666'; emoji = '👤'; break;
+            case 'arma': bgColor = '#8B4513'; emoji = '🔫'; break;
+            case 'vehiculo': bgColor = '#FFD700'; emoji = '🚗'; textColor = '#000'; break;
+            case 'mascota': bgColor = '#FF69B4'; emoji = '🐕'; break;
+            case 'emote': bgColor = '#FF1493'; emoji = '💃'; break;
+          }
+          
+          const itemDiv = document.createElement('div');
+          itemDiv.style.cssText = `
+            background: linear-gradient(145deg, #333, #444) !important;
+            border: 2px solid #ffcc00 !important;
+            border-radius: 12px !important;
+            padding: 15px 10px !important;
+            text-align: center !important;
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important;
+          `;
+          
+          itemDiv.innerHTML = `
+            <div style="width: 60px !important; height: 60px !important; background: ${bgColor} !important; border-radius: 8px !important; margin: 0 auto 10px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 28px !important; color: ${textColor} !important;">${emoji}</div>
+            <div style="font-size: 12px !important; color: #ffcc00 !important; font-weight: bold !important;">${item.nombre}</div>
+          `;
+          
+          itemsEnviados.appendChild(itemDiv);
+        });
+      }
+      
+      modal.style.display = 'flex';
+    }
+
+    function cerrarModal() {
+      const modal = document.getElementById('modalOverlay');
+      modal.style.display = 'none';
+      
+      itemsSeleccionados = [];
+      document.querySelectorAll('.personaje, .item-card').forEach(elemento => {
+        elemento.classList.remove('seleccionado');
+      });
+      
+      actualizarBotonDAR();
+      mostrarNotificacion('Pedido completado - selecciones reiniciadas');
+    }
+
+    function mostrarNotificacion(mensaje) {
+      const existingNotification = document.querySelector('.notification');
+      if (existingNotification) {
+        existingNotification.remove();
+      }
+      
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = mensaje;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => notification.classList.add('show'), 100);
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => notification.remove(), 500);
+      }, 3000);
+    }
+
+    // CONTROLES DE SONIDO MEJORADOS PARA LA CONSOLA
+    window.audioControls = {
+      enable: function() {
+        audioConfig.enabled = true;
+        console.log('🔊 Sonidos ACTIVADOS');
+        mostrarNotificacion('Sonidos activados');
+      },
+      disable: function() {
+        audioConfig.enabled = false;
+        console.log('🔇 Sonidos DESACTIVADOS');
+        mostrarNotificacion('Sonidos desactivados');
+      },
+      
+      // CONTROLES SEPARADOS PARA CADA SONIDO
+      setMenuVolume: function(volume) {
+        const vol = Math.max(0, Math.min(100, volume)) / 100;
+        audioConfig.volumeMenu = vol;
+        console.log(`🎵 Volumen MENÚ: ${volume}%`);
+        mostrarNotificacion(`Volumen menú: ${volume}%`);
+        // Probar sonido del menú
+        setTimeout(() => playMenuSound('inicio'), 200);
+      },
+      
+      setDarVolume: function(volume) {
+        const vol = Math.max(0, Math.min(100, volume)) / 100;
+        audioConfig.volumeDAR = vol;
+        console.log(`🎁 Volumen BOTÓN DAR: ${volume}%`);
+        mostrarNotificacion(`Volumen botón DAR: ${volume}%`);
+        // Probar sonido del botón DAR
+        setTimeout(() => playMenuSound('regalo'), 200);
+      },
+      
+      // Control general (mantiene compatibilidad)
+      setVolume: function(volume) {
+        this.setMenuVolume(volume);
+        this.setDarVolume(volume);
+        console.log(`🔊 Volumen GENERAL: ${volume}%`);
+      },
+      
+      testMenu: function() {
+        console.log('🎵 Probando sonido del MENÚ...');
+        playMenuSound('inicio');
+      },
+      
+      testDAR: function() {
+        console.log('🎁 Probando sonido del BOTÓN DAR...');
+        playMenuSound('regalo');
+      },
+      
+      // Función de prueba general
+      test: function() {
+        console.log('🔊 Probando ambos sonidos...');
+        this.testMenu();
+        setTimeout(() => this.testDAR(), 1000);
+      },
+      
+      // Mostrar configuración actual
+      status: function() {
+        console.log('📊 CONFIGURACIÓN DE AUDIO:');
+        console.log(`   Estado: ${audioConfig.enabled ? 'Activado' : 'Desactivado'}`);
+        console.log(`   Volumen menú: ${Math.round(audioConfig.volumeMenu * 100)}%`);
+        console.log(`   Volumen DAR: ${Math.round(audioConfig.volumeDAR * 100)}%`);
+      }
+    };
+
+    // EVENT LISTENERS
+    document.addEventListener('DOMContentLoaded', function() {
+      // Botones principales
+      document.querySelector('.btn-buscar').addEventListener('click', buscarID);
+      document.getElementById("playerID").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") buscarID();
+      });
+      document.querySelector('.btn-dar').addEventListener('click', darRecompensa);
+      document.querySelector('.btn-continuar').addEventListener('click', cerrarModal);
+      
+      // Modal
+      document.getElementById('modalOverlay').addEventListener('click', function(event) {
+        if (event.target === this) cerrarModal();
+      });
+
+      // Items seleccionables
+      function initItemListeners() {
+        document.querySelectorAll('.personaje').forEach(personaje => {
+          const nombre = personaje.querySelector('.nombre-skin').textContent;
+          const tipo = personaje.getAttribute('data-tipo') || 'personaje';
+          personaje.addEventListener('click', function() {
+            toggleItemSelection(this, nombre, tipo);
+          });
+        });
+
+        document.querySelectorAll('.item-card').forEach(itemCard => {
+          const nombre = itemCard.querySelector('.item-name').textContent;
+          const tipo = itemCard.getAttribute('data-tipo') || 'item';
+          itemCard.addEventListener('click', function() {
+            toggleItemSelection(this, nombre, tipo);
+          });
+        });
+      }
+
+      initItemListeners();
+
+      // CONTROLES DE VOLUMEN SIN SATURACIÓN
+      const volumenMenu = document.getElementById('volumenMenu');
+      const textoMenu = document.getElementById('textoMenu');
+      const volumenDAR = document.getElementById('volumenDAR');
+      const textoDAR = document.getElementById('textoDAR');
+      
+      // Control del menú
+      if (volumenMenu && textoMenu) {
+        volumenMenu.addEventListener('input', function() {
+          const vol = this.value;
+          audioConfig.volumeMenu = vol / 100;
+          textoMenu.textContent = vol + '%';
+          
+          // Probar sonido del menú SIN SATURACIÓN
+          if (vol > 0) {
+            playPreviewSound('inicio');
+          }
+        });
+      }
+      
+      // Control del botón DAR
+      if (volumenDAR && textoDAR) {
+        volumenDAR.addEventListener('input', function() {
+          const vol = this.value;
+          audioConfig.volumeDAR = vol / 100;
+          textoDAR.textContent = vol + '%';
+          
+          // Probar sonido del botón DAR SIN SATURACIÓN
+          if (vol > 0) {
+            playPreviewSound('regalo');
+          }
+        });
+      }
+
+      // Estado inicial
+      console.log('🎮 Free Fire Admin Panel cargado correctamente');
+      console.log('🔊 Sonidos configurados - Para GitHub Pages funciona automáticamente');
+      console.log('💡 Controles: audioControls.enable(), .disable(), .test(), .setVolume(50)');
+      console.log('🎵 Controles específicos: audioControls.setMenuVolume(30), audioControls.setDarVolume(90)');
+      
+      if (window.location.protocol === 'file:') {
+        console.log('⚠️ Archivo local - Para sonidos sube a GitHub Pages o usa servidor local');
       }
     });
-  }
-  
-  // Control del botón DAR
-  if (volumenDAR && textoDAR) {
-    volumenDAR.addEventListener('input', function() {
-      const vol = this.value;
-      audioConfig.volumeDAR = vol / 100;
-      textoDAR.textContent = vol + '%';
-      
-      // Probar sonido del botón DAR al mover el slider
-      if (vol > 0) {
-        setTimeout(() => playMenuSound('regalo'), 100);
-      }
-    });
-  }
   </script>
 </body>
 </html>
