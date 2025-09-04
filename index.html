@@ -43,24 +43,23 @@
 
     🔊 INSTRUCCIONES PARA ACTIVAR SONIDOS:
     
-    Los sonidos están DESACTIVADOS por defecto para evitar errores.
-    Para activarlos, necesitas usar un servidor web:
+    Los sonidos están ACTIVADOS por defecto.
+    Para usar sonidos, necesitas usar GitHub Pages o servidor web:
     
-    OPCIÓN 1 - Servidor local con Python:
+    OPCIÓN 1 - GitHub Pages (RECOMENDADO):
+    1. Sube archivos a GitHub
+    2. Activa GitHub Pages en configuración
+    3. Crea carpeta "sounds" con tus archivos MP3
+    4. Los sonidos funcionarán automáticamente
+    
+    OPCIÓN 2 - Servidor local con Python:
     1. Abre terminal/cmd en la carpeta del proyecto
     2. Ejecuta: python -m http.server 8000
     3. Ve a: http://localhost:8000
-    4. Cambia audioConfig.enabled = true
     
-    OPCIÓN 2 - Live Server (VS Code):
+    OPCIÓN 3 - Live Server (VS Code):
     1. Instala extensión "Live Server" 
     2. Click derecho en index.html > "Open with Live Server"
-    3. Cambia audioConfig.enabled = true
-    
-    OPCIÓN 3 - GitHub Pages:
-    1. Sube archivos a GitHub
-    2. Activa GitHub Pages
-    3. Usa URLs https://usuario.github.io/repo/sounds/archivo.mp3
     */
 
     /* ========================================== */
@@ -1174,7 +1173,7 @@
           <div class="icono-real">
             <img src="Imagenes/Diamante.png" alt="Diamante" style="width: 28px; height: 28px;">
           </div>
-          <input type="number" id="diamante" value="93.028" class="valor-real">
+          <input type="number" id="diamante" value="93028" class="valor-real">
         </div>
       </div>
     </section>
@@ -1436,481 +1435,376 @@
 
   <script>
     // ==========================================
-// ARREGLO INMEDIATO - REEMPLAZA TODA LA SECCIÓN DE SONIDOS
+// SISTEMA DE SONIDOS SIMPLIFICADO
 // ==========================================
 
-// SONIDO ÚNICO PARA TODO - MUY SIMPLE
-const SONIDO_MENU = 'sounds/click.mp3';
+// CONFIGURACIÓN DE SONIDOS
+const audioConfig = {
+  enabled: true,    // Cambiar a false si no tienes archivos de sonido
+  volume: 0.7,
+  basePath: 'sounds/'
+};
 
-// LA VARIABLE DEBE LLAMARSE menuSounds (como antes)
+// RUTAS DE SONIDOS
 const menuSounds = {
-  inicio: SONIDO_MENU,
-  personajes: SONIDO_MENU, 
-  armas: SONIDO_MENU,
-  vehiculos: SONIDO_MENU,
-  mascotas: SONIDO_MENU,
-  emotes: SONIDO_MENU,
-  configuracion: SONIDO_MENU,
-  ayuda: SONIDO_MENU
+  inicio: 'sounds/click.mp3',
+  personajes: 'sounds/click.mp3', 
+  armas: 'sounds/click.mp3',
+  vehiculos: 'sounds/click.mp3',
+  mascotas: 'sounds/click.mp3',
+  emotes: 'sounds/click.mp3',
+  configuracion: 'sounds/click.mp3',
+  ayuda: 'sounds/click.mp3',
   regalo: 'sounds/regalo.mp3'
 };
 
-// CONFIGURACIÓN DE AUDIO
-const audioConfig = {
-  enabled: true,    // CAMBIAR A false SI NO TIENES EL ARCHIVO AÚN
-  volume: 0.7,
-  preload: 'none',
-  crossOrigin: 'anonymous',
-  timeout: 3000
-};
-
-// Variables globales (MANTENER)
-let itemsSeleccionados = [];
-let seccionActual = 'inicio';
-let audioInstances = {};
-let audioContextEnabled = false;
-
-// FUNCIÓN ORIGINAL (NO CAMBIAR)
+// FUNCIÓN PARA REPRODUCIR SONIDOS
 function playMenuSound(soundKey) {
   if (!audioConfig.enabled || !menuSounds[soundKey]) return;
   
+  // No funciona en protocolo file://
   if (window.location.protocol === 'file:') {
-    console.log(`🔇 Sonido "${soundKey}" omitido (usa servidor local)`);
+    console.log(`🔇 Sonido "${soundKey}" omitido (usa servidor web)`);
     return;
   }
   
   try {
-    if (!audioInstances[soundKey]) {
-      audioInstances[soundKey] = new Audio();
-      const audio = audioInstances[soundKey];
-      audio.volume = audioConfig.volume;
-      audio.preload = audioConfig.preload;
-      audio.src = menuSounds[soundKey];
-    }
-
-    const audio = audioInstances[soundKey];
-    audio.currentTime = 0;
-    
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(error => {
-        console.log(`🔇 Sonido "${soundKey}" no disponible`);
-      });
-    }
+    const audio = new Audio();
+    audio.src = menuSounds[soundKey];
+    audio.volume = audioConfig.volume;
+    audio.play().catch(error => {
+      console.log(`🔇 Sonido "${soundKey}" no disponible`);
+    });
   } catch (error) {
-    console.log(`🔇 Audio: ${error.message}`);
+    console.log(`🔇 Error de audio: ${error.message}`);
   }
 }
 
-// CONTROLES SIMPLIFICADOS
+// Variables globales
+let itemsSeleccionados = [];
+let seccionActual = 'inicio';
+
+// FUNCIÓN PARA CAMBIAR SECCIONES
+function cambiarSeccion(seccion) {
+  playMenuSound(seccion);
+  
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  
+  const clickedItem = document.querySelector(`[data-sound="${seccion}"]`);
+  if (clickedItem) {
+    clickedItem.classList.add('active');
+  }
+  
+  document.querySelectorAll('.section-content').forEach(section => {
+    section.classList.remove('active');
+  });
+  
+  const sectionElement = document.getElementById(`section-${seccion}`);
+  if (sectionElement) {
+    sectionElement.classList.add('active');
+    seccionActual = seccion;
+    mostrarNotificacion(`Navegando a: ${seccion.charAt(0).toUpperCase() + seccion.slice(1)}`);
+  }
+}
+
+// FUNCIÓN DE BÚSQUEDA
+function buscarID() {
+  const id = document.getElementById("playerID").value.trim();
+  
+  if (!id) {
+    mostrarNotificacion("Por favor ingresa un ID válido");
+    return;
+  }
+
+  playMenuSound('inicio');
+
+  const campoBusqueda = document.getElementById("playerID");
+  campoBusqueda.value = `ID: ${id} - Usuario Encontrado`;
+  campoBusqueda.style.color = "#00ff88";
+  campoBusqueda.style.fontWeight = "700";
+  campoBusqueda.readOnly = true;
+  
+  const campoNombre = document.getElementById('campoNombreManual');
+  campoNombre.style.display = 'flex';
+  
+  setTimeout(() => {
+    document.getElementById('nombreJugador').focus();
+  }, 300);
+  
+  mostrarNotificacion("Usuario encontrado - Ingresa el nombre del jugador");
+}
+
+// FUNCIÓN PARA NUEVA BÚSQUEDA
+function nuevaBusqueda() {
+  const campoBusqueda = document.getElementById("playerID");
+  campoBusqueda.value = '';
+  campoBusqueda.placeholder = "Ingresa tu ID de Free Fire";
+  campoBusqueda.style.color = "#fff";
+  campoBusqueda.style.fontWeight = "500";
+  campoBusqueda.readOnly = false;
+  
+  document.getElementById('campoNombreManual').style.display = 'none';
+  document.getElementById('nombreJugador').value = '';
+  
+  campoBusqueda.focus();
+  mostrarNotificacion("Nueva búsqueda - Ingresa otra ID");
+}
+
+// FUNCIÓN PARA SELECCIONAR ITEMS
+function toggleItemSelection(elemento, nombre, tipo) {
+  const itemId = `${tipo}-${nombre.replace(/\s+/g, '-').toLowerCase()}`;
+  
+  if (elemento.classList.contains('seleccionado')) {
+    elemento.classList.remove('seleccionado');
+    itemsSeleccionados = itemsSeleccionados.filter(item => item.id !== itemId);
+    mostrarNotificacion(`${nombre} deseleccionado`);
+  } else {
+    elemento.classList.add('seleccionado');
+    const nuevoItem = {
+      id: itemId,
+      nombre: nombre,
+      tipo: tipo,
+      elemento: elemento
+    };
+    itemsSeleccionados.push(nuevoItem);
+    mostrarNotificacion(`${nombre} seleccionado`);
+    playMenuSound('inicio');
+  }
+  
+  actualizarBotonDAR();
+}
+
+// Actualizar botón DAR
+function actualizarBotonDAR() {
+  const btnDar = document.querySelector('.btn-dar');
+  const totalItems = itemsSeleccionados.length;
+  
+  if (totalItems > 0) {
+    btnDar.textContent = `DAR (${totalItems})`;
+    btnDar.style.background = 'linear-gradient(145deg, #00ff88, #00cc66)';
+    btnDar.style.boxShadow = '0 10px 30px rgba(0, 255, 136, 0.6)';
+  } else {
+    btnDar.textContent = 'DAR';
+    btnDar.style.background = 'linear-gradient(145deg, #ffcc00, #ff9900)';
+    btnDar.style.boxShadow = '0 10px 30px rgba(255, 204, 0, 0.6)';
+  }
+}
+
+// FUNCIONES UTILITARIAS
+function generarTiempoAleatorio() {
+  const horas = Math.floor(Math.random() * 7) + 19;
+  const minutos = Math.floor(Math.random() * 60);
+  return `${horas}h ${minutos}min`;
+}
+
+function obtenerFechaHoraActual() {
+  const ahora = new Date();
+  const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  
+  const diaSemana = diasSemana[ahora.getDay()];
+  const dia = String(ahora.getDate()).padStart(2, '0');
+  const mes = meses[ahora.getMonth()];
+  const ano = ahora.getFullYear();
+  const horas = String(ahora.getHours()).padStart(2, '0');
+  const minutos = String(ahora.getMinutes()).padStart(2, '0');
+  const segundos = String(ahora.getSeconds()).padStart(2, '0');
+  
+  return `${diaSemana}, ${dia} de ${mes} de ${ano} - ${horas}:${minutos}:${segundos}`;
+}
+
+// FUNCIÓN DAR RECOMPENSA
+function darRecompensa() {
+  const campoID = document.getElementById("playerID");
+  const nombreJugador = document.getElementById("nombreJugador").value.trim();
+  
+  const idMatch = campoID.value.match(/ID: (\d+)/);
+  const id = idMatch ? idMatch[1] : null;
+  
+  if (!id) {
+    mostrarNotificacion("Primero busca un ID válido");
+    return;
+  }
+  
+  if (!nombreJugador) {
+    mostrarNotificacion("Ingresa el nombre del jugador");
+    return;
+  }
+  
+  if (itemsSeleccionados.length === 0) {
+    mostrarNotificacion("Selecciona al menos un item");
+    return;
+  }
+  
+  // REPRODUCIR SONIDO ESPECÍFICO DEL BOTÓN DAR
+  playMenuSound('regalo');
+
+  setTimeout(() => {
+    mostrarModalExito(nombreJugador, id);
+  }, 500);
+}
+
+// MODAL DE ÉXITO
+function mostrarModalExito(usuario, playerId) {
+  const modal = document.getElementById('modalOverlay');
+  const playerName = document.getElementById('playerName');
+  const playerIdElement = document.getElementById('playerIDDisplay');
+  const itemsEnviados = document.getElementById('itemsEnviados');
+  const tiempoEntrega = document.getElementById('tiempoEntrega');
+  const fechaHora = document.getElementById('fechaHora');
+  const totalArticulos = document.getElementById('totalArticulos');
+  
+  playerName.textContent = `Jugador: ${usuario}`;
+  playerIdElement.textContent = `ID: ${playerId}`;
+  fechaHora.textContent = obtenerFechaHoraActual();
+  totalArticulos.textContent = `Artículos seleccionados: ${itemsSeleccionados.length}`;
+  tiempoEntrega.textContent = `Tu pedido llegará a tu cuenta en ${generarTiempoAleatorio()}`;
+  
+  // Generar grid de items enviados
+  itemsEnviados.innerHTML = '';
+  
+  if (itemsSeleccionados.length === 0) {
+    itemsEnviados.innerHTML = '<div style="text-align: center; color: #ffcc00; padding: 20px;">No hay artículos seleccionados</div>';
+  } else {
+    itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; margin: 20px 0 !important;';
+    
+    itemsSeleccionados.forEach((item) => {
+      let bgColor = '#555';
+      let emoji = '📦';
+      let textColor = '#fff';
+      
+      switch(item.tipo) {
+        case 'personaje': bgColor = '#666'; emoji = '👤'; break;
+        case 'arma': bgColor = '#8B4513'; emoji = '🔫'; break;
+        case 'vehiculo': bgColor = '#FFD700'; emoji = '🚗'; textColor = '#000'; break;
+        case 'mascota': bgColor = '#FF69B4'; emoji = '🐕'; break;
+        case 'emote': bgColor = '#FF1493'; emoji = '💃'; break;
+      }
+      
+      const itemDiv = document.createElement('div');
+      itemDiv.style.cssText = `
+        background: linear-gradient(145deg, #333, #444) !important;
+        border: 2px solid #ffcc00 !important;
+        border-radius: 12px !important;
+        padding: 15px 10px !important;
+        text-align: center !important;
+        box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important;
+      `;
+      
+      itemDiv.innerHTML = `
+        <div style="width: 60px !important; height: 60px !important; background: ${bgColor} !important; border-radius: 8px !important; margin: 0 auto 10px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 28px !important; color: ${textColor} !important;">${emoji}</div>
+        <div style="font-size: 12px !important; color: #ffcc00 !important; font-weight: bold !important;">${item.nombre}</div>
+      `;
+      
+      itemsEnviados.appendChild(itemDiv);
+    });
+  }
+  
+  modal.style.display = 'flex';
+}
+
+function cerrarModal() {
+  const modal = document.getElementById('modalOverlay');
+  modal.style.display = 'none';
+  
+  itemsSeleccionados = [];
+  document.querySelectorAll('.personaje, .item-card').forEach(elemento => {
+    elemento.classList.remove('seleccionado');
+  });
+  
+  actualizarBotonDAR();
+  mostrarNotificacion('Pedido completado - selecciones reiniciadas');
+}
+
+function mostrarNotificacion(mensaje) {
+  const existingNotification = document.querySelector('.notification');
+  if (existingNotification) {
+    existingNotification.remove();
+  }
+  
+  const notification = document.createElement('div');
+  notification.className = 'notification';
+  notification.textContent = mensaje;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => notification.classList.add('show'), 100);
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => notification.remove(), 500);
+  }, 3000);
+}
+
+// CONTROLES DE SONIDO PARA LA CONSOLA
 window.audioControls = {
-  enable: () => {
+  enable: function() {
     audioConfig.enabled = true;
     console.log('🔊 Sonidos ACTIVADOS');
+    mostrarNotificacion('Sonidos activados');
   },
-  disable: () => {
+  disable: function() {
     audioConfig.enabled = false;
     console.log('🔇 Sonidos DESACTIVADOS');
+    mostrarNotificacion('Sonidos desactivados');
   },
-  test: () => {
-    console.log('🔊 Probando sonido...');
-    playMenuSound('inicio');
+  setVolume: function(volume) {
+    const vol = Math.max(0, Math.min(100, volume)) / 100;
+    audioConfig.volume = vol;
+    console.log(`🔊 Volumen: ${volume}%`);
+    mostrarNotificación(`Volumen: ${volume}%`);
   },
-  volume: (vol) => {
-    audioConfig.volume = vol / 100;
-    Object.values(audioInstances).forEach(audio => {
-      audio.volume = audioConfig.volume;
-    });
-    console.log(`🔊 Volumen: ${vol}%`);
-  },
-  change: (newUrl) => {
-    // Limpiar instancias existentes
-    audioInstances = {};
-    
-    // Cambiar todas las URLs
-    Object.keys(menuSounds).forEach(key => {
-      menuSounds[key] = newUrl;
-    });
-    
-    console.log('🔊 Sonido cambiado a:', newUrl);
+  test: function() {
+    console.log('🔊 Probando sonido DAR...');
+    playMenuSound('regalo');
   }
 };
 
-// INSTRUCCIONES DE USO
-console.log(`
-🔊 SONIDOS CONFIGURADOS
-======================
-
-📁 Estructura necesaria:
-   Tu-Proyecto/
-   ├── index.html
-   └── sounds/
-       └── click.mp3
-
-🔧 Para cambiar el sonido:
-   Modifica solo: SONIDO_MENU = 'sounds/tu-archivo.mp3'
-
-🎮 Controles:
-   audioControls.enable()    - Activar
-   audioControls.disable()   - Desactivar  
-   audioControls.test()      - Probar
-   audioControls.volume(50)  - Volumen 50%
-
-⚠️ IMPORTANTE:
-   - Si no tienes el archivo: audioControls.disable()
-   - Usa servidor local: python -m http.server 8000
-`);
-
-// Auto-desactivar si no hay servidor
-if (window.location.protocol === 'file:') {
-  audioConfig.enabled = false;
-  console.log('🔇 Sonidos auto-desactivados (usa servidor local)');
-}
-
-    // FUNCIÓN PARA CAMBIAR SECCIONES
-    function cambiarSeccion(seccion) {
-      playMenuSound(seccion);
-      
-      document.querySelectorAll('.menu-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      
-      const clickedItem = document.querySelector(`[data-sound="${seccion}"]`);
-      if (clickedItem) {
-        clickedItem.classList.add('active');
-      }
-      
-      document.querySelectorAll('.section-content').forEach(section => {
-        section.classList.remove('active');
-      });
-      
-      const sectionElement = document.getElementById(`section-${seccion}`);
-      if (sectionElement) {
-        sectionElement.classList.add('active');
-        seccionActual = seccion;
-        mostrarNotificacion(`Navegando a: ${seccion.charAt(0).toUpperCase() + seccion.slice(1)}`);
-      }
-    }
-
-    // FUNCIÓN DE BÚSQUEDA
-    function buscarID() {
-      const id = document.getElementById("playerID").value.trim();
-      
-      if (!id) {
-        mostrarNotificacion("Por favor ingresa un ID válido");
-        return;
-      }
-
-      const campoBusqueda = document.getElementById("playerID");
-      campoBusqueda.value = `ID: ${id} - Usuario Encontrado`;
-      campoBusqueda.style.color = "#00ff88";
-      campoBusqueda.style.fontWeight = "700";
-      campoBusqueda.readOnly = true;
-      
-      const campoNombre = document.getElementById('campoNombreManual');
-      campoNombre.style.display = 'flex';
-      
-      setTimeout(() => {
-        document.getElementById('nombreJugador').focus();
-      }, 300);
-      
-      mostrarNotificacion("Usuario encontrado - Ingresa el nombre del jugador");
-    }
-
-    // FUNCIÓN PARA NUEVA BÚSQUEDA
-    function nuevaBusqueda() {
-      const campoBusqueda = document.getElementById("playerID");
-      campoBusqueda.value = '';
-      campoBusqueda.placeholder = "Ingresa tu ID de Free Fire";
-      campoBusqueda.style.color = "#fff";
-      campoBusqueda.style.fontWeight = "500";
-      campoBusqueda.readOnly = false;
-      
-      document.getElementById('campoNombreManual').style.display = 'none';
-      document.getElementById('nombreJugador').value = '';
-      
-      campoBusqueda.focus();
-      mostrarNotificacion("Nueva búsqueda - Ingresa otra ID");
-    }
-
-    // FUNCIÓN PARA SELECCIONAR ITEMS
-    function toggleItemSelection(elemento, nombre, tipo) {
-      const itemId = `${tipo}-${nombre.replace(/\s+/g, '-').toLowerCase()}`;
-      
-      if (elemento.classList.contains('seleccionado')) {
-        elemento.classList.remove('seleccionado');
-        itemsSeleccionados = itemsSeleccionados.filter(item => item.id !== itemId);
-        mostrarNotificacion(`${nombre} deseleccionado`);
-      } else {
-        elemento.classList.add('seleccionado');
-        const nuevoItem = {
-          id: itemId,
-          nombre: nombre,
-          tipo: tipo,
-          elemento: elemento
-        };
-        itemsSeleccionados.push(nuevoItem);
-        mostrarNotificacion(`${nombre} seleccionado`);
-      }
-      
-      actualizarBotonDAR();
-    }
-
-    // Actualizar botón DAR
-    function actualizarBotonDAR() {
-      const btnDar = document.querySelector('.btn-dar');
-      const totalItems = itemsSeleccionados.length;
-      
-      if (totalItems > 0) {
-        btnDar.textContent = `DAR (${totalItems})`;
-        btnDar.style.background = 'linear-gradient(145deg, #00ff88, #00cc66)';
-        btnDar.style.boxShadow = '0 10px 30px rgba(0, 255, 136, 0.6)';
-      } else {
-        btnDar.textContent = 'DAR';
-        btnDar.style.background = 'linear-gradient(145deg, #ffcc00, #ff9900)';
-        btnDar.style.boxShadow = '0 10px 30px rgba(255, 204, 0, 0.6)';
-      }
-    }
-
-    // FUNCIONES UTILITARIAS
-    function generarTiempoAleatorio() {
-      const horas = Math.floor(Math.random() * 7) + 19;
-      const minutos = Math.floor(Math.random() * 60);
-      return `${horas}h ${minutos}min`;
-    }
-
-    function obtenerFechaHoraActual() {
-      const ahora = new Date();
-      const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-      const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
-      
-      const diaSemana = diasSemana[ahora.getDay()];
-      const dia = String(ahora.getDate()).padStart(2, '0');
-      const mes = meses[ahora.getMonth()];
-      const ano = ahora.getFullYear();
-      const horas = String(ahora.getHours()).padStart(2, '0');
-      const minutos = String(ahora.getMinutes()).padStart(2, '0');
-      const segundos = String(ahora.getSeconds()).padStart(2, '0');
-      
-      return `${diaSemana}, ${dia} de ${mes} de ${ano} - ${horas}:${minutos}:${segundos}`;
-    }
-
-    // FUNCIÓN DAR RECOMPENSA
-    function darRecompensa() {
-      const campoID = document.getElementById("playerID");
-      const nombreJugador = document.getElementById("nombreJugador").value.trim();
-      
-      const idMatch = campoID.value.match(/ID: (\d+)/);
-      const id = idMatch ? idMatch[1] : null;
-      
-      if (!id) {
-        mostrarNotificacion("Primero busca un ID válido");
-        return;
-      }
-      
-      if (!nombreJugador) {
-        mostrarNotificacion("Ingresa el nombre del jugador");
-        return;
-      }
-      
-      if (itemsSeleccionados.length === 0) {
-        mostrarNotificacion("Selecciona al menos un item");
-        return;
-      }
-      
-      playMenuSound('regalo');
+// EVENT LISTENERS
+document.addEventListener('DOMContentLoaded', function() {
+  // Botones principales
+  document.querySelector('.btn-buscar').addEventListener('click', buscarID);
+  document.getElementById("playerID").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") buscarID();
+  });
+  document.querySelector('.btn-dar').addEventListener('click', darRecompensa);
+  document.querySelector('.btn-continuar').addEventListener('click', cerrarModal);
   
-      setTimeout(() => {
-        mostrarModalExito(nombreJugador, id);
-      }, 500);
-    }
+  // Modal
+  document.getElementById('modalOverlay').addEventListener('click', function(event) {
+    if (event.target === this) cerrarModal();
+  });
 
-    // MODAL DE ÉXITO
-    function mostrarModalExito(usuario, playerId) {
-      const modal = document.getElementById('modalOverlay');
-      const playerName = document.getElementById('playerName');
-      const playerIdElement = document.getElementById('playerIDDisplay');
-      const itemsEnviados = document.getElementById('itemsEnviados');
-      const tiempoEntrega = document.getElementById('tiempoEntrega');
-      const fechaHora = document.getElementById('fechaHora');
-      const totalArticulos = document.getElementById('totalArticulos');
-      
-      playerName.textContent = `Jugador: ${usuario}`;
-      playerIdElement.textContent = `ID: ${playerId}`;
-      fechaHora.textContent = obtenerFechaHoraActual();
-      totalArticulos.textContent = `Artículos seleccionados: ${itemsSeleccionados.length}`;
-      tiempoEntrega.textContent = `Tu pedido llegará a tu cuenta en ${generarTiempoAleatorio()}`;
-      
-      // Generar grid de items enviados
-      itemsEnviados.innerHTML = '';
-      
-      if (itemsSeleccionados.length === 0) {
-        itemsEnviados.innerHTML = '<div style="text-align: center; color: #ffcc00; padding: 20px;">No hay artículos seleccionados</div>';
-      } else {
-        itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; margin: 20px 0 !important;';
-        
-        itemsSeleccionados.forEach((item) => {
-          let bgColor = '#555';
-          let emoji = '📦';
-          let textColor = '#fff';
-          
-          switch(item.tipo) {
-            case 'personaje': bgColor = '#666'; emoji = '👤'; break;
-            case 'arma': bgColor = '#8B4513'; emoji = '🔫'; break;
-            case 'vehiculo': bgColor = '#FFD700'; emoji = '🚗'; textColor = '#000'; break;
-            case 'mascota': bgColor = '#FF69B4'; emoji = '🐕'; break;
-            case 'emote': bgColor = '#FF1493'; emoji = '💃'; break;
-          }
-          
-          const itemDiv = document.createElement('div');
-          itemDiv.style.cssText = `
-            background: linear-gradient(145deg, #333, #444) !important;
-            border: 2px solid #ffcc00 !important;
-            border-radius: 12px !important;
-            padding: 15px 10px !important;
-            text-align: center !important;
-            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important;
-          `;
-          
-          itemDiv.innerHTML = `
-            <div style="width: 60px !important; height: 60px !important; background: ${bgColor} !important; border-radius: 8px !important; margin: 0 auto 10px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 28px !important; color: ${textColor} !important;">${emoji}</div>
-            <div style="font-size: 12px !important; color: #ffcc00 !important; font-weight: bold !important;">${item.nombre}</div>
-          `;
-          
-          itemsEnviados.appendChild(itemDiv);
-        });
-      }
-      
-      modal.style.display = 'flex';
-    }
-
-    function cerrarModal() {
-      const modal = document.getElementById('modalOverlay');
-      modal.style.display = 'none';
-      
-      itemsSeleccionados = [];
-      document.querySelectorAll('.personaje, .item-card').forEach(elemento => {
-        elemento.classList.remove('seleccionado');
+  // Items seleccionables
+  function initItemListeners() {
+    document.querySelectorAll('.personaje').forEach(personaje => {
+      const nombre = personaje.querySelector('.nombre-skin').textContent;
+      const tipo = personaje.getAttribute('data-tipo') || 'personaje';
+      personaje.addEventListener('click', function() {
+        toggleItemSelection(this, nombre, tipo);
       });
-      
-      actualizarBotonDAR();
-      mostrarNotificacion('Pedido completado - selecciones reiniciadas');
-    }
-
-    function mostrarNotificacion(mensaje) {
-      const existingNotification = document.querySelector('.notification');
-      if (existingNotification) {
-        existingNotification.remove();
-      }
-      
-      const notification = document.createElement('div');
-      notification.className = 'notification';
-      notification.textContent = mensaje;
-      document.body.appendChild(notification);
-      
-      setTimeout(() => notification.classList.add('show'), 100);
-      setTimeout(() => {
-        notification.classList.remove('show');
-        setTimeout(() => notification.remove(), 500);
-      }, 3000);
-    }
-
-    // CONTROLES DE SONIDO AVANZADOS
-    window.soundControls = {
-      enable: function() {
-        audioConfig.enabled = true;
-        console.log('🔊 Sonidos ACTIVADOS - Asegúrate de usar servidor local');
-        mostrarNotificacion('Sonidos activados');
-      },
-      disable: function() {
-        audioConfig.enabled = false;
-        console.log('🔇 Sonidos DESACTIVADOS');
-        mostrarNotificacion('Sonidos desactivados');
-      },
-      setVolume: function(volume) {
-        const vol = Math.max(0, Math.min(100, volume)) / 100;
-        audioConfig.volume = vol;
-        Object.values(audioInstances).forEach(audio => audio.volume = vol);
-        console.log(`🔊 Volumen: ${volume}%`);
-        mostrarNotificacion(`Volumen: ${volume}%`);
-      },
-      test: function(soundKey) {
-        console.log(`🔊 Probando: ${soundKey}`);
-        playMenuSound(soundKey);
-      },
-      status: function() {
-        console.log(`🔊 Estado: ${audioConfig.enabled ? 'Activado' : 'Desactivado'} | Volumen: ${Math.round(audioConfig.volume * 100)}% | Protocolo: ${window.location.protocol}`);
-      }
-    };
-
-    // EVENT LISTENERS
-    document.addEventListener('DOMContentLoaded', function() {
-      // Botones principales
-      document.querySelector('.btn-buscar').addEventListener('click', buscarID);
-      document.getElementById("playerID").addEventListener("keypress", function(event) {
-        if (event.key === "Enter") buscarID();
-      });
-      document.querySelector('.btn-dar').addEventListener('click', darRecompensa);
-      document.querySelector('.btn-continuar').addEventListener('click', cerrarModal);
-      
-      // Modal
-      document.getElementById('modalOverlay').addEventListener('click', function(event) {
-        if (event.target === this) cerrarModal();
-      });
-
-      // Items seleccionables
-      function initItemListeners() {
-        document.querySelectorAll('.personaje').forEach(personaje => {
-          const nombre = personaje.querySelector('.nombre-skin').textContent;
-          const tipo = personaje.getAttribute('data-tipo') || 'personaje';
-          personaje.addEventListener('click', function() {
-            toggleItemSelection(this, nombre, tipo);
-          });
-        });
-
-        document.querySelectorAll('.item-card').forEach(itemCard => {
-          const nombre = itemCard.querySelector('.item-name').textContent;
-          const tipo = itemCard.getAttribute('data-tipo') || 'item';
-          itemCard.addEventListener('click', function() {
-            toggleItemSelection(this, nombre, tipo);
-          });
-        });
-      }
-
-      initItemListeners();
-
-      // Estado inicial
-      console.log('🎮 Free Fire Admin Panel cargado correctamente');
-      console.log('🔇 Sonidos desactivados - Usa soundControls.enable() para activar');
-      console.log('💡 Para sonidos: usa servidor local, no abras el archivo directamente');
-      
-      if (window.location.protocol === 'file:') {
-        console.log('⚠️ Archivo abierto directamente - Para sonidos usa: python -m http.server 8000');
-      }
     });
+
+    document.querySelectorAll('.item-card').forEach(itemCard => {
+      const nombre = itemCard.querySelector('.item-name').textContent;
+      const tipo = itemCard.getAttribute('data-tipo') || 'item';
+      itemCard.addEventListener('click', function() {
+        toggleItemSelection(this, nombre, tipo);
+      });
+    });
+  }
+
+  initItemListeners();
+
+  // Estado inicial
+  console.log('🎮 Free Fire Admin Panel cargado correctamente');
+  console.log('🔊 Sonidos configurados - Para GitHub Pages funciona automáticamente');
+  console.log('💡 Controles: audioControls.enable(), .disable(), .test(), .setVolume(50)');
+  
+  if (window.location.protocol === 'file:') {
+    console.log('⚠️ Archivo local - Para sonidos sube a GitHub Pages o usa servidor local');
+  }
+});
   </script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-          .then(registration => {
-            console.log('SW registrado: ', registration);
-          })
-          .catch(registrationError => {
-            console.log('SW falló: ', registrationError);
-          });
-      });
-    }
-    
-    let deferredPrompt;
-    window.addEventListener('beforeinstallprompt', (e) => {
-      deferredPrompt = e;
-      console.log('App se puede instalar');
-    });
-    
-    window.addEventListener('appinstalled', (evt) => {
-      console.log('App instalada exitosamente');
-    });
-    </script>
 </body>
 </html>
