@@ -252,23 +252,15 @@
       letter-spacing: 2px;
     }
 
+    /* RECURSOS CON EFECTOS DINÁMICOS */
     .recursos-panel {
       display: flex;
       gap: 50px;
       justify-content: center;
       width: 100%;
       animation: slideInFromRight 1s ease-out 0.3s both;
-    }
-
-    @keyframes slideInFromRight {
-      from {
-        opacity: 0;
-        transform: translateX(50px);
-      }
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      position: relative;
+      z-index: 2;
     }
 
     .recurso-real {
@@ -280,15 +272,51 @@
       border-radius: 20px;
       border: 2px solid rgba(255, 204, 0, 0.4);
       position: relative;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+      overflow: hidden;
+      animation: resourceFloat 8s ease-in-out infinite;
+    }
+
+    .recurso-real::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 204, 0, 0.1), transparent);
+      animation: resourceShine 3s ease-in-out infinite;
+      animation-delay: var(--delay, 0s);
+    }
+
+    .recurso-real:nth-child(1) { --delay: 0s; animation-delay: 0s; }
+    .recurso-real:nth-child(2) { --delay: 1s; animation-delay: 1s; }
+
+    @keyframes resourceFloat {
+      0%, 100% { transform: translateY(0px); }
+      25% { transform: translateY(-2px); }
+      50% { transform: translateY(0px); }
+      75% { transform: translateY(2px); }
+    }
+
+    @keyframes resourceShine {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
     }
 
     .recurso-real:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(255, 204, 0, 0.4);
-      border-color: rgba(255, 204, 0, 0.6);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 40px rgba(255, 204, 0, 0.4);
+      border-color: rgba(255, 204, 0, 0.8);
+      animation-play-state: paused;
     }
 
+    .recurso-real:hover::before {
+      animation-duration: 0.5s;
+    }
+
+    /* ICONOS DE RECURSOS CON EFECTOS */
     .icono-real {
       width: 45px;
       height: 45px;
@@ -301,8 +329,39 @@
       font-size: 22px;
       font-weight: bold;
       box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+      animation: iconSpin 6s linear infinite;
+      position: relative;
+      overflow: hidden;
     }
 
+    .icono-real::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      animation: iconGlow 2s linear infinite;
+    }
+
+    @keyframes iconSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes iconGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .icono-real:hover {
+      transform: scale(1.1);
+      animation-duration: 1s;
+      box-shadow: 0 8px 25px rgba(255, 204, 0, 0.6);
+    }
+
+    /* VALORES DE RECURSOS CON EFECTOS */
     .valor-real {
       width: 160px;
       padding: 14px;
@@ -316,12 +375,58 @@
       font-family: 'Rajdhani', sans-serif;
       box-shadow: inset 0 0 15px rgba(255, 204, 0, 0.1);
       transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .valor-real::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, transparent, rgba(255, 204, 0, 0.1), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
     }
 
     .valor-real:focus {
       outline: none;
       box-shadow: inset 0 0 15px rgba(255, 204, 0, 0.3), 0 0 15px rgba(255, 204, 0, 0.2);
       transform: scale(1.02);
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+    }
+
+    .valor-real:focus::before {
+      transform: translateX(100%);
+    }
+
+    /* PARTÍCULAS FLOTANTES DE FONDO */
+    .panel-admin::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(2px 2px at 20px 30px, rgba(255, 204, 0, 0.3), transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(0, 255, 255, 0.2), transparent),
+        radial-gradient(1px 1px at 90px 40px, rgba(255, 153, 0, 0.3), transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(0, 136, 255, 0.2), transparent),
+        radial-gradient(2px 2px at 160px 30px, rgba(255, 204, 0, 0.2), transparent);
+      background-repeat: repeat;
+      background-size: 200px 100px;
+      animation: particlesFloat 20s linear infinite;
+      pointer-events: none;
+      opacity: 0.6;
+      z-index: 1;
+    }
+
+    @keyframes particlesFloat {
+      0% { transform: translateY(100px); }
+      100% { transform: translateY(-100px); }
     }
 
     /* Buscador LIMPIO */
