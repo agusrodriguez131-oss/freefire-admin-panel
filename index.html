@@ -277,6 +277,16 @@
       animation: resourceFloat 8s ease-in-out infinite;
     }
 
+    /* Recurso solo imagen (sin input) */
+    .recurso-solo-imagen {
+      padding: 18px;
+      justify-content: center;
+    }
+
+    .recurso-solo-imagen .icono-real {
+      margin: 0;
+    }
+
     .recurso-real::before {
       content: '';
       position: absolute;
@@ -291,6 +301,7 @@
 
     .recurso-real:nth-child(1) { --delay: 0s; animation-delay: 0s; }
     .recurso-real:nth-child(2) { --delay: 1s; animation-delay: 1s; }
+    .recurso-real:nth-child(3) { --delay: 2s; animation-delay: 2s; }
 
     @keyframes resourceFloat {
       0%, 100% { transform: translateY(0px); }
@@ -1351,6 +1362,12 @@
             <img src="Imagenes/Diamante.png" alt="Diamante" style="width: 28px; height: 28px;">
           </div>
           <input type="number" id="diamante" value="93028" class="valor-real">
+        </div>
+        <div class="recurso-real">
+          <div class="icono-real">
+            <img src="Imagenes/TercerRecurso.png" alt="Tercer Recurso" style="width: 28px; height: 28px;">
+          </div>
+          <input type="number" id="tercerRecurso" value="15420" class="valor-real">
         </div>
       </div>
     </section>
