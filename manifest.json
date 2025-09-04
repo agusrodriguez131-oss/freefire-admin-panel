@@ -1,0 +1,28 @@
+{
+  "name": "Free Fire Admin Panel Pro",
+  "short_name": "FF Admin",
+  "description": "Panel de administración profesional para Free Fire by SakuraOldMvp",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0a1a",
+  "theme_color": "#ffcc00",
+  "orientation": "landscape-primary",
+  "scope": "./",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icon-512.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "categories": ["games", "utilities"],
+  "lang": "es",
+  "dir": "ltr"
+}
