@@ -2043,7 +2043,7 @@
       totalArticulos.textContent = `Artículos seleccionados: ${itemsSeleccionados.length}`;
       tiempoEntrega.textContent = `Tu pedido llegará a tu cuenta en ${generarTiempoAleatorio()}`;
       
-      // Generar grid de items enviados
+      // Generar grid de items enviados con imágenes reales
       itemsEnviados.innerHTML = '';
       
       if (itemsSeleccionados.length === 0) {
@@ -2052,18 +2052,6 @@
         itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; margin: 20px 0 !important;';
         
         itemsSeleccionados.forEach((item) => {
-          let bgColor = '#555';
-          let emoji = '📦';
-          let textColor = '#fff';
-          
-          switch(item.tipo) {
-            case 'personaje': bgColor = '#666'; emoji = '👤'; break;
-            case 'arma': bgColor = '#8B4513'; emoji = '🔫'; break;
-            case 'vehiculo': bgColor = '#FFD700'; emoji = '🚗'; textColor = '#000'; break;
-            case 'mascota': bgColor = '#FF69B4'; emoji = '🐕'; break;
-            case 'emote': bgColor = '#FF1493'; emoji = '💃'; break;
-          }
-          
           const itemDiv = document.createElement('div');
           itemDiv.style.cssText = `
             background: linear-gradient(145deg, #333, #444) !important;
@@ -2074,8 +2062,9 @@
             box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important;
           `;
           
+          // Usar la imagen real del artículo seleccionado
           itemDiv.innerHTML = `
-            <div style="width: 60px !important; height: 60px !important; background: ${bgColor} !important; border-radius: 8px !important; margin: 0 auto 10px !important; display: flex !important; align-items: center !important; justify-content: center !important; font-size: 28px !important; color: ${textColor} !important;">${emoji}</div>
+            <img src="${item.imagen}" alt="${item.nombre}" style="width: 60px !important; height: 60px !important; border-radius: 8px !important; margin: 0 auto 10px !important; display: block !important; object-fit: cover !important; border: 1px solid rgba(255, 204, 0, 0.3) !important;">
             <div style="font-size: 12px !important; color: #ffcc00 !important; font-weight: bold !important;">${item.nombre}</div>
           `;
           
