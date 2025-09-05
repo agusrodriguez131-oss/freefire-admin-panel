@@ -297,17 +297,17 @@
     }
 
     .icono-real {
-      width: 45px;
-      height: 45px;
+      width: 55px;
+      height: 55px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(145deg, #ffcc00, #ff9900);
+      background: transparent;
       border-radius: 50%;
       color: #000;
       font-size: 22px;
       font-weight: bold;
-      box-shadow: 0 5px 15px rgba(255, 204, 0, 0.3);
+      box-shadow: none;
       position: relative;
       overflow: hidden;
       transition: all 0.3s ease;
@@ -315,7 +315,6 @@
 
     .icono-real:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(255, 204, 0, 0.6);
     }
 
     .valor-real {
@@ -1433,28 +1432,28 @@
 <body>
   <div class="sidebar-menu">
     <div class="menu-item active" onclick="cambiarSeccion('inicio')">
-      <img src="Imagenes/inicio.png" alt="Inicio" style="width: 24px; height: 24px;">
+      <img src="imagenes/inicio.png" alt="Inicio" style="width: 24px; height: 24px;">
     </div>
     <div class="menu-item" onclick="cambiarSeccion('personajes')">
-      <img src="Imagenes/personajes.png" alt="Personajes" style="width: 24px; height: 24px;">
+      <img src="imagenes/personajes.png" alt="Personajes" style="width: 24px; height: 24px;">
     </div>
     <div class="menu-item" onclick="cambiarSeccion('armas')">
-      <img src="Imagenes/armas.png" alt="Armas" style="width: 24px; height: 24px;">
+      <img src="imagenes/armas.png" alt="Armas" style="width: 24px; height: 24px;">
     </div>
     <div class="menu-item" onclick="cambiarSeccion('vehiculos')">
-      <img src="Imagenes/vehiculos.png" alt="Vehículos" style="width: 24px; height: 24px;">
+      <img src="imagenes/vehiculos.png" alt="Vehículos" style="width: 24px; height: 24px;">
     </div>
     <div class="menu-item" onclick="cambiarSeccion('mascotas')">
-      <img src="Imagenes/mascotas.png" alt="Mascotas" style="width: 24px; height: 24px;">
+      <img src="imagenes/mascotas.png" alt="Mascotas" style="width: 24px; height: 24px;">
     </div>
     <div class="menu-item" onclick="cambiarSeccion('emotes')">
-      <img src="Imagenes/emotes.png" alt="Emotes" style="width: 24px; height: 24px;">
+      <img src="imagenes/emotes.png" alt="Emotes" style="width: 24px; height: 24px;">
     </div>
     <div class="menu-item" onclick="cambiarSeccion('configuracion')">
-      <img src="Imagenes/configuracion.png" alt="Configuración" style="width: 24px; height: 24px;">
+      <img src="imagenes/configuracion.png" alt="Configuración" style="width: 24px; height: 24px;">
     </div>
     <div class="menu-item" onclick="cambiarSeccion('ayuda')">
-      <img src="Imagenes/ayuda.png" alt="Ayuda" style="width: 24px; height: 24px;">
+      <img src="imagenes/ayuda.png" alt="Ayuda" style="width: 24px; height: 24px;">
     </div>
   </div>
 
@@ -1473,19 +1472,19 @@
       <div class="recursos-panel">
         <div class="recurso-real">
           <div class="icono-real">
-            <img src="Imagenes/oro.png" alt="Oro" style="width: 28px; height: 28px;">
+            <img src="Imagenes/oro.png" alt="Oro" style="width: 40px; height: 40px;">
           </div>
           <input type="number" id="oro" value="4173265" class="valor-real">
         </div>
         <div class="recurso-real">
           <div class="icono-real">
-            <img src="Imagenes/diamante.png" alt="Diamante" style="width: 28px; height: 28px;">
+            <img src="Imagenes/diamante.png" alt="Diamante" style="width: 40px; height: 40px;">
           </div>
           <input type="number" id="diamante" value="93028" class="valor-real">
         </div>
         <div class="recurso-real recurso-solo-imagen">
           <div class="icono-real">
-            <img src="Imagenes/tercer-recurso.png" alt="Tercer Recurso" style="width: 28px; height: 28px;">
+            <img src="Imagenes/tercer-recurso.png" alt="Tercer Recurso" style="width: 40px; height: 40px;">
           </div>
         </div>
       </div>
