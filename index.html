@@ -541,7 +541,7 @@
       max-width: 1000px;
       margin: 0 auto;
       height: 600px;
-      overflow: hidden;
+      overflow: hidden; /* REMOVIDO EL SCROLL PRINCIPAL */
       border-radius: 20px;
       background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(20, 20, 40, 0.3));
       backdrop-filter: blur(10px);
@@ -551,7 +551,7 @@
     .section-content {
       display: none;
       height: 100%;
-      overflow-y: auto;
+      overflow: hidden; /* REMOVIDO EL SCROLL DE LAS SECCIONES */
       padding: 20px;
       padding-right: 15px;
     }
@@ -572,25 +572,7 @@
       }
     }
 
-    .section-content::-webkit-scrollbar {
-      width: 10px;
-    }
-
-    .section-content::-webkit-scrollbar-track {
-      background: linear-gradient(45deg, rgba(255, 204, 0, 0.1), rgba(255, 153, 0, 0.1));
-      border-radius: 15px;
-    }
-
-    .section-content::-webkit-scrollbar-thumb {
-      background: linear-gradient(45deg, #ffcc00, #ff9900);
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
-    }
-
-    .section-content::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(45deg, #ff9900, #ffcc00);
-      box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-    }
+    /* ELIMINADAS LAS REGLAS DE SCROLLBAR PARA .section-content */
 
     .section-header {
       text-align: center;
@@ -1223,18 +1205,11 @@
       }
     }
 
-    .modal-body {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-    }
-
+    /* MANTENER SOLO EL SCROLL DE itemsEnviados */
     #itemsEnviados {
-      max-height: 250px;
+      max-height: 300px;
       overflow-y: auto;
       padding-right: 10px;
-      flex-shrink: 0;
     }
 
     #itemsEnviados::-webkit-scrollbar {
