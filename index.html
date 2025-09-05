@@ -540,7 +540,7 @@
       max-width: 1000px;
       margin: 0 auto;
       height: 600px;
-      overflow: hidden; /* REMOVIDO EL SCROLL PRINCIPAL */
+      overflow: hidden;
       border-radius: 20px;
       background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(20, 20, 40, 0.3));
       backdrop-filter: blur(10px);
@@ -550,9 +550,10 @@
     .section-content {
       display: none;
       height: 100%;
-      overflow: hidden; /* REMOVIDO EL SCROLL DE LAS SECCIONES */
+      overflow-y: auto;
+      overflow-x: hidden;
       padding: 20px;
-      padding-right: 15px;
+      padding-right: 10px;
     }
 
     .section-content.active {
@@ -571,7 +572,32 @@
       }
     }
 
-    /* ELIMINADAS LAS REGLAS DE SCROLLBAR PARA .section-content */
+    /* SCROLLBAR PERSONALIZADO PARA SECCIONES */
+    .section-content::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .section-content::-webkit-scrollbar-track {
+      background: linear-gradient(145deg, rgba(255, 204, 0, 0.1), rgba(255, 153, 0, 0.1));
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    .section-content::-webkit-scrollbar-thumb {
+      background: linear-gradient(145deg, #ffcc00, #ff9900);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+      border: 2px solid rgba(255, 204, 0, 0.2);
+    }
+
+    .section-content::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(145deg, #ff9900, #ffcc00);
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+    }
+
+    .section-content::-webkit-scrollbar-thumb:active {
+      background: linear-gradient(145deg, #ffaa00, #ff7700);
+    }
 
     .section-header {
       text-align: center;
@@ -1003,10 +1029,9 @@
       max-width: 650px;
       width: 95%;
       max-height: 90vh;
-      overflow-y: auto;
+      overflow: hidden;
       text-align: center;
       position: relative;
-      overflow-x: hidden;
       animation: modalAppear 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: 
         0 0 30px rgba(255, 68, 68, 0.4),
@@ -2347,6 +2372,7 @@
       console.log('🔊 Sonidos configurados - Para GitHub Pages funciona automáticamente');
       console.log('💡 Controles: audioControls.enable(), .disable(), .test(), .setVolume(50)');
       console.log('🎵 Controles específicos: audioControls.setMenuVolume(30), audioControls.setDarVolume(90)');
+      console.log('🖱️ SCROLL HABILITADO en todos los catálogos');
       
       if (window.location.protocol === 'file:') {
         console.log('⚠️ Archivo local - Para sonidos sube a GitHub Pages o usa servidor local');
