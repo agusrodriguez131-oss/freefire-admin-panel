@@ -537,7 +537,7 @@
 
     .content-container {
       width: 100%;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       height: 600px;
       overflow: hidden;
@@ -552,8 +552,8 @@
       height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
-      padding: 20px;
-      padding-right: 10px;
+      padding: 25px;
+      padding-right: 15px;
     }
 
     .section-content.active {
@@ -635,9 +635,9 @@
 
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 15px;
-      max-width: 850px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
@@ -688,164 +688,258 @@
       font-family: 'Rajdhani', sans-serif;
     }
 
-    .grid-personajes {
+    /* NUEVO GRID MEJORADO PARA ITEMS */
+    .items-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      justify-items: center;
-      max-width: 950px;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
       margin: 0 auto;
-    }
-
-    .personaje {
-      width: 200px;
-      height: 280px;
-      background: linear-gradient(145deg, rgba(30, 30, 60, 0.9), rgba(50, 50, 100, 0.9));
-      backdrop-filter: blur(10px);
-      border-radius: 25px;
-      padding: 22px;
-      text-align: center;
-      border: 3px solid transparent;
-      cursor: pointer;
-      transition: all 0.5s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .personaje::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transition: left 0.5s;
-    }
-
-    .personaje:hover::before {
-      left: 100%;
-    }
-
-    .personaje:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(255, 204, 0, 0.3);
-      border-color: #ffcc00;
-    }
-
-    .personaje.seleccionado {
-      border-color: #ffcc00;
-      background: linear-gradient(145deg, rgba(50, 50, 80, 0.9), rgba(70, 70, 120, 0.9));
-      box-shadow: 0 0 30px rgba(255, 204, 0, 0.6), inset 0 0 20px rgba(255, 204, 0, 0.1);
-      transform: scale(1.05);
-    }
-
-    .personaje-imagen {
-      width: 100%;
-      height: 200px;
-      border-radius: 18px;
-      object-fit: contain;
-      object-position: center;
-      border: 2px solid rgba(255, 204, 0, 0.3);
-      transition: all 0.3s ease;
-      background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(20, 20, 40, 0.3));
-    }
-
-    .personaje:hover .personaje-imagen {
-      border-color: rgba(255, 204, 0, 0.6);
-      box-shadow: 0 5px 15px rgba(255, 204, 0, 0.2);
-    }
-
-    .nombre-skin {
-      margin-top: 18px;
-      font-size: 18px;
-      font-weight: 600;
-      color: #ffcc00;
-      font-family: 'Rajdhani', sans-serif;
-      transition: all 0.3s ease;
-    }
-
-    .personaje:hover .nombre-skin {
-      color: #fff;
-    }
-
-    .grid-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      max-width: 950px;
-      margin: 0 auto;
+      padding: 10px;
     }
 
     .item-card {
-      background: linear-gradient(145deg, rgba(30, 30, 60, 0.9), rgba(50, 50, 100, 0.9));
-      backdrop-filter: blur(10px);
-      border: 3px solid transparent;
-      border-radius: 25px;
-      padding: 22px;
+      background: linear-gradient(145deg, rgba(10, 15, 35, 0.95), rgba(25, 35, 60, 0.95));
+      backdrop-filter: blur(15px);
+      border: 3px solid rgba(255, 204, 0, 0.3);
+      border-radius: 20px;
+      padding: 15px;
       text-align: center;
       cursor: pointer;
-      transition: all 0.5s ease;
+      transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
+      height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .item-card::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-      transition: left 0.5s;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        transparent,
+        rgba(255, 204, 0, 0.1),
+        transparent,
+        rgba(0, 255, 255, 0.1),
+        transparent
+      );
+      animation: itemRotate 6s linear infinite;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
     .item-card:hover::before {
-      left: 100%;
+      opacity: 1;
+    }
+
+    @keyframes itemRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     .item-card:hover {
-      border-color: #ffcc00;
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(255, 204, 0, 0.3);
+      border-color: rgba(255, 204, 0, 0.8);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 
+        0 20px 40px rgba(255, 204, 0, 0.3),
+        0 0 30px rgba(255, 204, 0, 0.2);
     }
 
     .item-card.seleccionado {
-      border-color: #ffcc00;
-      background: linear-gradient(145deg, rgba(50, 50, 80, 0.9), rgba(70, 70, 120, 0.9));
-      box-shadow: 0 0 30px rgba(255, 204, 0, 0.6), inset 0 0 20px rgba(255, 204, 0, 0.1);
+      border-color: #00ff88;
+      background: linear-gradient(145deg, rgba(0, 60, 30, 0.9), rgba(0, 80, 40, 0.9));
+      box-shadow: 
+        0 0 40px rgba(0, 255, 136, 0.6), 
+        inset 0 0 20px rgba(0, 255, 136, 0.1);
       transform: scale(1.05);
+    }
+
+    .item-imagen-container {
+      width: 100%;
+      height: 160px;
+      border-radius: 15px;
+      background: linear-gradient(145deg, rgba(0, 0, 0, 0.4), rgba(40, 40, 70, 0.4));
+      border: 2px solid rgba(255, 204, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 15px;
     }
 
     .item-imagen {
       width: 100%;
-      height: 150px;
-      border-radius: 18px;
-      object-fit: cover;
-      margin-bottom: 18px;
-      border: 2px solid rgba(255, 204, 0, 0.3);
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
       transition: all 0.3s ease;
+      border-radius: 13px;
     }
 
     .item-card:hover .item-imagen {
-      border-color: rgba(255, 204, 0, 0.6);
-      box-shadow: 0 5px 15px rgba(255, 204, 0, 0.2);
+      transform: scale(1.05);
+      filter: brightness(1.1) saturate(1.2);
+    }
+
+    .item-card:hover .item-imagen-container {
+      border-color: rgba(255, 204, 0, 0.8);
+      box-shadow: 0 0 20px rgba(255, 204, 0, 0.3);
     }
 
     .item-name {
       color: #ffcc00;
-      font-weight: 600;
-      font-size: 18px;
+      font-weight: 700;
+      font-size: 16px;
       font-family: 'Rajdhani', sans-serif;
       transition: all 0.3s ease;
+      text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+      line-height: 1.2;
+      margin-top: auto;
     }
 
     .item-card:hover .item-name {
       color: #fff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+      transform: scale(1.05);
+    }
+
+    .item-card.seleccionado .item-name {
+      color: #00ff88;
+      text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+    }
+
+    /* PERSONALIZACIÓN ESPECIAL PARA PERSONAJES */
+    .personajes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 25px;
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 15px;
+    }
+
+    .personaje-card {
+      background: linear-gradient(145deg, rgba(15, 25, 45, 0.95), rgba(30, 45, 75, 0.95));
+      backdrop-filter: blur(15px);
+      border: 3px solid rgba(0, 255, 255, 0.4);
+      border-radius: 25px;
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.5s ease;
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .personaje-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(
+        transparent,
+        rgba(0, 255, 255, 0.15),
+        transparent,
+        rgba(255, 204, 0, 0.1),
+        transparent
+      );
+      animation: personajeGlow 8s linear infinite;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .personaje-card:hover::before {
+      opacity: 1;
+    }
+
+    @keyframes personajeGlow {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .personaje-card:hover {
+      border-color: rgba(0, 255, 255, 0.9);
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 
+        0 25px 50px rgba(0, 255, 255, 0.4),
+        0 0 40px rgba(0, 255, 255, 0.3);
+    }
+
+    .personaje-card.seleccionado {
+      border-color: #00ff88;
+      background: linear-gradient(145deg, rgba(0, 60, 30, 0.9), rgba(0, 80, 40, 0.9));
+      box-shadow: 
+        0 0 50px rgba(0, 255, 136, 0.7), 
+        inset 0 0 25px rgba(0, 255, 136, 0.1);
+      transform: scale(1.08);
+    }
+
+    .personaje-imagen-container {
+      width: 100%;
+      height: 200px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(40, 40, 70, 0.3));
+      border: 2px solid rgba(0, 255, 255, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .personaje-imagen {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transition: all 0.4s ease;
+      border-radius: 18px;
+    }
+
+    .personaje-card:hover .personaje-imagen {
+      transform: scale(1.08);
+      filter: brightness(1.15) saturate(1.3);
+    }
+
+    .personaje-card:hover .personaje-imagen-container {
+      border-color: rgba(0, 255, 255, 0.9);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+    }
+
+    .personaje-name {
+      color: #00ffff;
+      font-weight: 700;
+      font-size: 18px;
+      font-family: 'Rajdhani', sans-serif;
+      transition: all 0.3s ease;
+      text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+      line-height: 1.3;
+      margin-top: auto;
+    }
+
+    .personaje-card:hover .personaje-name {
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+      transform: scale(1.05);
+    }
+
+    .personaje-card.seleccionado .personaje-name {
+      color: #00ff88;
+      text-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
     }
 
     .volume-controls {
@@ -1384,23 +1478,14 @@
         gap: 20px;
       }
 
-      .grid-personajes {
+      .personajes-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 15px;
       }
 
-      .personaje {
-        width: 160px;
-        height: 240px;
-        padding: 18px;
-      }
-
-      .personaje-imagen {
-        height: 160px;
-      }
-
-      .grid-items {
-        gap: 12px;
+      .items-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
       }
 
       .btn-dar {
@@ -1436,22 +1521,14 @@
         font-size: 18px;
       }
 
-      .grid-personajes {
+      .personajes-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 12px;
       }
 
-      .personaje {
-        width: 140px;
-        height: 220px;
-      }
-
-      .personaje-imagen {
-        height: 140px;
-      }
-
-      .grid-items {
-        gap: 10px;
+      .items-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
     }
   </style>
@@ -1586,271 +1663,388 @@
         </div>
       </section>
 
+      <!-- SECCIÓN PERSONAJES REESTRUCTURADA -->
       <section class="section-content" id="section-personajes">
         <div class="section-header">
           <h2>Personajes y Skins</h2>
           <p>Selecciona los personajes para entregar</p>
         </div>
-        <div class="grid-personajes">
-          <div class="personaje" data-tipo="personaje">
-            <img src="imagenes/sakurah.png">
-            <p class="nombre-skin">Sakura S1</p>
+        <div class="personajes-grid">
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/sakurah.png" alt="Sakura S1" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Sakura S1</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="imagenes/hiphoph.png">
-            <p class="nombre-skin">Hip Hop S2</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/hiphoph.png" alt="Hip Hop S2" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Hip Hop S2</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/666666/ffffff?text=SKIN+3" alt="Reina Francotiradora" class="personaje-imagen">
-            <p class="nombre-skin">Reina Francotiradora</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje3.png" alt="Reina Francotiradora" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Reina Francotiradora</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/777777/ffffff?text=SKIN+4" alt="Dragón Cibernético" class="personaje-imagen">
-            <p class="nombre-skin">Dragón Cibernético</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje4.png" alt="Dragón Cibernético" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Dragón Cibernético</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/888888/ffffff?text=SKIN+5" alt="Ninja Fantasma" class="personaje-imagen">
-            <p class="nombre-skin">Ninja Fantasma</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje5.png" alt="Ninja Fantasma" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Ninja Fantasma</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/999999/ffffff?text=SKIN+6" alt="Vikingo Feroz" class="personaje-imagen">
-            <p class="nombre-skin">Vikingo Feroz</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje6.png" alt="Vikingo Feroz" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Vikingo Feroz</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/AA1122/ffffff?text=SKIN+7" alt="Samurai Dorado" class="personaje-imagen">
-            <p class="nombre-skin">Samurai Dorado</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje7.png" alt="Samurai Dorado" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Samurai Dorado</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/BB2233/ffffff?text=SKIN+8" alt="Cazadora Élite" class="personaje-imagen">
-            <p class="nombre-skin">Cazadora Élite</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje8.png" alt="Cazadora Élite" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Cazadora Élite</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/CC3344/ffffff?text=SKIN+9" alt="Mago Oscuro" class="personaje-imagen">
-            <p class="nombre-skin">Mago Oscuro</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje9.png" alt="Mago Oscuro" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Mago Oscuro</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/DD4455/ffffff?text=SKIN+10" alt="Pirata Cósmico" class="personaje-imagen">
-            <p class="nombre-skin">Pirata Cósmico</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje10.png" alt="Pirata Cósmico" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Pirata Cósmico</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/EE5566/ffffff?text=SKIN+11" alt="Ángel Guardián" class="personaje-imagen">
-            <p class="nombre-skin">Ángel Guardián</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje11.png" alt="Ángel Guardián" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Ángel Guardián</div>
           </div>
-          <div class="personaje" data-tipo="personaje">
-            <img src="https://via.placeholder.com/200x200/FF6677/ffffff?text=SKIN+12" alt="Demonio Rojo" class="personaje-imagen">
-            <p class="nombre-skin">Demonio Rojo</p>
+          <div class="personaje-card" data-tipo="personaje">
+            <div class="personaje-imagen-container">
+              <img src="imagenes/personaje12.png" alt="Demonio Rojo" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Demonio Rojo</div>
           </div>
         </div>
       </section>
 
+      <!-- SECCIÓN ARMAS REESTRUCTURADA -->
       <section class="section-content" id="section-armas">
         <div class="section-header">
           <h2>Arsenal de Armas</h2>
           <p>Gestiona y entrega armas especiales</p>
         </div>
-        <div class="grid-items">
+        <div class="items-grid">
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/8B4513/ffffff?text=AK47" alt="AK-47 Dragón" class="item-imagen">
-            <p class="item-name">AK-47 Dragón</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/ak47-dragon.png" alt="AK-47 Dragón" class="item-imagen">
+            </div>
+            <div class="item-name">AK-47 Dragón</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/4169E1/ffffff?text=AWM" alt="AWM Imperial" class="item-imagen">
-            <p class="item-name">AWM Imperial</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/awm-imperial.png" alt="AWM Imperial" class="item-imagen">
+            </div>
+            <div class="item-name">AWM Imperial</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/FF6347/ffffff?text=M4A1" alt="M4A1 Fuego" class="item-imagen">
-            <p class="item-name">M4A1 Fuego</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/m4a1-fuego.png" alt="M4A1 Fuego" class="item-imagen">
+            </div>
+            <div class="item-name">M4A1 Fuego</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/32CD32/ffffff?text=KATANA" alt="Katana Samurai" class="item-imagen">
-            <p class="item-name">Katana Samurai</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/katana-samurai.png" alt="Katana Samurai" class="item-imagen">
+            </div>
+            <div class="item-name">Katana Samurai</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/FF1493/ffffff?text=SCAR+L" alt="SCAR-L Élite" class="item-imagen">
-            <p class="item-name">SCAR-L Élite</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/scar-elite.png" alt="SCAR-L Élite" class="item-imagen">
+            </div>
+            <div class="item-name">SCAR-L Élite</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/00CED1/ffffff?text=UMP45" alt="UMP45 Pro" class="item-imagen">
-            <p class="item-name">UMP45 Pro</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/ump45-pro.png" alt="UMP45 Pro" class="item-imagen">
+            </div>
+            <div class="item-name">UMP45 Pro</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/9932CC/ffffff?text=MP40" alt="MP40 Vintage" class="item-imagen">
-            <p class="item-name">MP40 Vintage</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/mp40-vintage.png" alt="MP40 Vintage" class="item-imagen">
+            </div>
+            <div class="item-name">MP40 Vintage</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/FFD700/000000?text=GROZA" alt="Groza Dorada" class="item-imagen">
-            <p class="item-name">Groza Dorada</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/groza-dorada.png" alt="Groza Dorada" class="item-imagen">
+            </div>
+            <div class="item-name">Groza Dorada</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/DC143C/ffffff?text=M1014" alt="M1014 Sangre" class="item-imagen">
-            <p class="item-name">M1014 Sangre</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/m1014-sangre.png" alt="M1014 Sangre" class="item-imagen">
+            </div>
+            <div class="item-name">M1014 Sangre</div>
           </div>
           <div class="item-card" data-tipo="arma">
-            <img src="https://via.placeholder.com/200x150/7B68EE/ffffff?text=VSS" alt="VSS Fantasma" class="item-imagen">
-            <p class="item-name">VSS Fantasma</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/vss-fantasma.png" alt="VSS Fantasma" class="item-imagen">
+            </div>
+            <div class="item-name">VSS Fantasma</div>
           </div>
         </div>
       </section>
 
+      <!-- SECCIÓN VEHÍCULOS REESTRUCTURADA -->
       <section class="section-content" id="section-vehiculos">
         <div class="section-header">
           <h2>Garage de Vehículos</h2>
           <p>Colección de vehículos especiales</p>
         </div>
-        <div class="grid-items">
+        <div class="items-grid">
           <div class="item-card" data-tipo="vehiculo">
-            <img src="https://via.placeholder.com/200x150/FFD700/000000?text=McLAREN" alt="McLaren Dorado" class="item-imagen">
-            <p class="item-name">McLaren Dorado</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/mclaren-dorado.png" alt="McLaren Dorado" class="item-imagen">
+            </div>
+            <div class="item-name">McLaren Dorado</div>
           </div>
           <div class="item-card" data-tipo="vehiculo">
-            <img src="https://via.placeholder.com/200x150/8A2BE2/ffffff?text=MOTO" alt="Moto Cyber" class="item-imagen">
-            <p class="item-name">Moto Cyber</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/moto-cyber.png" alt="Moto Cyber" class="item-imagen">
+            </div>
+            <div class="item-name">Moto Cyber</div>
           </div>
           <div class="item-card" data-tipo="vehiculo">
-            <img src="https://via.placeholder.com/200x150/FF4500/ffffff?text=HELI" alt="Helicóptero VIP" class="item-imagen">
-            <p class="item-name">Helicóptero VIP</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/helicoptero-vip.png" alt="Helicóptero VIP" class="item-imagen">
+            </div>
+            <div class="item-name">Helicóptero VIP</div>
           </div>
           <div class="item-card" data-tipo="vehiculo">
-            <img src="https://via.placeholder.com/200x150/C0C0C0/000000?text=LAMBO" alt="Lamborghini Plata" class="item-imagen">
-            <p class="item-name">Lamborghini Plata</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/lamborghini-plata.png" alt="Lamborghini Plata" class="item-imagen">
+            </div>
+            <div class="item-name">Lamborghini Plata</div>
           </div>
           <div class="item-card" data-tipo="vehiculo">
-            <img src="https://via.placeholder.com/200x150/DC143C/ffffff?text=FERRARI" alt="Ferrari Rojo" class="item-imagen">
-            <p class="item-name">Ferrari Rojo</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/ferrari-rojo.png" alt="Ferrari Rojo" class="item-imagen">
+            </div>
+            <div class="item-name">Ferrari Rojo</div>
           </div>
           <div class="item-card" data-tipo="vehiculo">
-            <img src="https://via.placeholder.com/200x150/000000/ffffff?text=BATMAN" alt="Batimóvil" class="item-imagen">
-            <p class="item-name">Batimóvil</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/batimovil.png" alt="Batimóvil" class="item-imagen">
+            </div>
+            <div class="item-name">Batimóvil</div>
           </div>
           <div class="item-card" data-tipo="vehiculo">
-            <img src="https://via.placeholder.com/200x150/00FF00/000000?text=MONSTER" alt="Monster Truck" class="item-imagen">
-            <p class="item-name">Monster Truck</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/monster-truck.png" alt="Monster Truck" class="item-imagen">
+            </div>
+            <div class="item-name">Monster Truck</div>
           </div>
           <div class="item-card" data-tipo="vehiculo">
-            <img src="https://via.placeholder.com/200x150/1E90FF/ffffff?text=JET" alt="Jet Privado" class="item-imagen">
-            <p class="item-name">Jet Privado</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/jet-privado.png" alt="Jet Privado" class="item-imagen">
+            </div>
+            <div class="item-name">Jet Privado</div>
           </div>
         </div>
       </section>
 
+      <!-- SECCIÓN MASCOTAS REESTRUCTURADA -->
       <section class="section-content" id="section-mascotas">
         <div class="section-header">
           <h2>Mascotas Compañeras</h2>
           <p>Mascotas con habilidades especiales</p>
         </div>
-        <div class="grid-items">
+        <div class="items-grid">
           <div class="item-card" data-tipo="mascota">
-            <img src="https://via.placeholder.com/200x150/FF69B4/ffffff?text=PERRO" alt="Perro Guardián" class="item-imagen">
-            <p class="item-name">Perro Guardián</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/perro-guardian.png" alt="Perro Guardián" class="item-imagen">
+            </div>
+            <div class="item-name">Perro Guardián</div>
           </div>
           <div class="item-card" data-tipo="mascota">
-            <img src="https://via.placeholder.com/200x150/9932CC/ffffff?text=AGUILA" alt="Águila Explorador" class="item-imagen">
-            <p class="item-name">Águila Explorador</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/aguila-explorador.png" alt="Águila Explorador" class="item-imagen">
+            </div>
+            <div class="item-name">Águila Explorador</div>
           </div>
           <div class="item-card" data-tipo="mascota">
-            <img src="https://via.placeholder.com/200x150/00CED1/ffffff?text=LOBO" alt="Lobo Alfa" class="item-imagen">
-            <p class="item-name">Lobo Alfa</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/lobo-alfa.png" alt="Lobo Alfa" class="item-imagen">
+            </div>
+            <div class="item-name">Lobo Alfa</div>
           </div>
           <div class="item-card" data-tipo="mascota">
-            <img src="https://via.placeholder.com/200x150/FFD700/000000?text=LEON" alt="León Dorado" class="item-imagen">
-            <p class="item-name">León Dorado</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/leon-dorado.png" alt="León Dorado" class="item-imagen">
+            </div>
+            <div class="item-name">León Dorado</div>
           </div>
           <div class="item-card" data-tipo="mascota">
-            <img src="https://via.placeholder.com/200x150/32CD32/ffffff?text=DRAGON" alt="Dragón Verde" class="item-imagen">
-            <p class="item-name">Dragón Verde</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/dragon-verde.png" alt="Dragón Verde" class="item-imagen">
+            </div>
+            <div class="item-name">Dragón Verde</div>
           </div>
           <div class="item-card" data-tipo="mascota">
-            <img src="https://via.placeholder.com/200x150/FF4500/ffffff?text=TIGER" alt="Tigre Feroz" class="item-imagen">
-            <p class="item-name">Tigre Feroz</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/tigre-feroz.png" alt="Tigre Feroz" class="item-imagen">
+            </div>
+            <div class="item-name">Tigre Feroz</div>
           </div>
           <div class="item-card" data-tipo="mascota">
-            <img src="https://via.placeholder.com/200x150/8A2BE2/ffffff?text=PHOENIX" alt="Fénix Místico" class="item-imagen">
-            <p class="item-name">Fénix Místico</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/fenix-mistico.png" alt="Fénix Místico" class="item-imagen">
+            </div>
+            <div class="item-name">Fénix Místico</div>
           </div>
         </div>
       </section>
 
+      <!-- SECCIÓN EMOTES REESTRUCTURADA -->
       <section class="section-content" id="section-emotes">
         <div class="section-header">
           <h2>Gestos y Emotes</h2>
           <p>Expresiones y bailes únicos</p>
         </div>
-        <div class="grid-items">
+        <div class="items-grid">
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/FF1493/ffffff?text=BAILE" alt="Baile Victoria" class="item-imagen">
-            <p class="item-name">Baile Victoria</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/baile-victoria.png" alt="Baile Victoria" class="item-imagen">
+            </div>
+            <div class="item-name">Baile Victoria</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/00FF7F/000000?text=BREAK" alt="Break Dance" class="item-imagen">
-            <p class="item-name">Break Dance</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/break-dance.png" alt="Break Dance" class="item-imagen">
+            </div>
+            <div class="item-name">Break Dance</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/FF8C00/ffffff?text=SALUDO" alt="Saludo Real" class="item-imagen">
-            <p class="item-name">Saludo Real</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/saludo-real.png" alt="Saludo Real" class="item-imagen">
+            </div>
+            <div class="item-name">Saludo Real</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/9932CC/ffffff?text=ROBOT" alt="Robot Dance" class="item-imagen">
-            <p class="item-name">Robot Dance</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/robot-dance.png" alt="Robot Dance" class="item-imagen">
+            </div>
+            <div class="item-name">Robot Dance</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/FFD700/000000?text=WINNER" alt="Celebración" class="item-imagen">
-            <p class="item-name">Celebración</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/celebracion.png" alt="Celebración" class="item-imagen">
+            </div>
+            <div class="item-name">Celebración</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/DC143C/ffffff?text=ANGRY" alt="Grito Feroz" class="item-imagen">
-            <p class="item-name">Grito Feroz</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/grito-feroz.png" alt="Grito Feroz" class="item-imagen">
+            </div>
+            <div class="item-name">Grito Feroz</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/00CED1/ffffff?text=CHILL" alt="Relajado" class="item-imagen">
-            <p class="item-name">Relajado</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/relajado.png" alt="Relajado" class="item-imagen">
+            </div>
+            <div class="item-name">Relajado</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/FF69B4/ffffff?text=LOVE" alt="Corazón" class="item-imagen">
-            <p class="item-name">Corazón</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/corazon.png" alt="Corazón" class="item-imagen">
+            </div>
+            <div class="item-name">Corazón</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/32CD32/ffffff?text=PEACE" alt="Paz" class="item-imagen">
-            <p class="item-name">Paz</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/paz.png" alt="Paz" class="item-imagen">
+            </div>
+            <div class="item-name">Paz</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/4169E1/ffffff?text=COOL" alt="Genial" class="item-imagen">
-            <p class="item-name">Genial</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/genial.png" alt="Genial" class="item-imagen">
+            </div>
+            <div class="item-name">Genial</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/FF4500/ffffff?text=FIRE" alt="En Llamas" class="item-imagen">
-            <p class="item-name">En Llamas</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/en-llamas.png" alt="En Llamas" class="item-imagen">
+            </div>
+            <div class="item-name">En Llamas</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/8B4513/ffffff?text=TOUGH" alt="Rudo" class="item-imagen">
-            <p class="item-name">Rudo</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/rudo.png" alt="Rudo" class="item-imagen">
+            </div>
+            <div class="item-name">Rudo</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/FF6347/ffffff?text=LAUGH" alt="Risa" class="item-imagen">
-            <p class="item-name">Risa</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/risa.png" alt="Risa" class="item-imagen">
+            </div>
+            <div class="item-name">Risa</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/9370DB/ffffff?text=MAGIC" alt="Mágico" class="item-imagen">
-            <p class="item-name">Mágico</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/magico.png" alt="Mágico" class="item-imagen">
+            </div>
+            <div class="item-name">Mágico</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/20B2AA/ffffff?text=WAVE" alt="Saludo Amistoso" class="item-imagen">
-            <p class="item-name">Saludo Amistoso</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/saludo-amistoso.png" alt="Saludo Amistoso" class="item-imagen">
+            </div>
+            <div class="item-name">Saludo Amistoso</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/B22222/ffffff?text=POWER" alt="Poder" class="item-imagen">
-            <p class="item-name">Poder</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/poder.png" alt="Poder" class="item-imagen">
+            </div>
+            <div class="item-name">Poder</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/00BFFF/ffffff?text=FLEX" alt="Presumir" class="item-imagen">
-            <p class="item-name">Presumir</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/presumir.png" alt="Presumir" class="item-imagen">
+            </div>
+            <div class="item-name">Presumir</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/FFB6C1/000000?text=SHY" alt="Tímido" class="item-imagen">
-            <p class="item-name">Tímido</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/timido.png" alt="Tímido" class="item-imagen">
+            </div>
+            <div class="item-name">Tímido</div>
           </div>
           <div class="item-card" data-tipo="emote">
-            <img src="https://via.placeholder.com/200x150/7B68EE/ffffff?text=NINJA" alt="Ninja" class="item-imagen">
-            <p class="item-name">Ninja</p>
+            <div class="item-imagen-container">
+              <img src="imagenes/ninja.png" alt="Ninja" class="item-imagen">
+            </div>
+            <div class="item-name">Ninja</div>
           </div>
         </div>
       </section>
@@ -1893,34 +2087,48 @@
           <p>Guías y soporte técnico</p>
         </div>
         
-        <div class="grid-items">
+        <div class="items-grid">
           <div class="item-card" style="border: 3px solid #00ff88; cursor: default;">
-            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #00ff88, #00cc66); display: flex; align-items: center; justify-content: center; font-size: 60px;">📚</div>
-            <p class="item-name" style="color: #00ff88;">Guía de Inicio</p>
+            <div class="item-imagen-container" style="border-color: #00ff88;">
+              <div style="width: 100%; height: 100%; border-radius: 13px; background: linear-gradient(145deg, #00ff88, #00cc66); display: flex; align-items: center; justify-content: center; font-size: 60px;">📚</div>
+            </div>
+            <div class="item-name" style="color: #00ff88;">Guía de Inicio</div>
           </div>
           <div class="item-card" style="border: 3px solid #ffcc00; cursor: default;">
-            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #ffcc00, #ff9900); display: flex; align-items: center; justify-content: center; font-size: 60px;">❓</div>
-            <p class="item-name" style="color: #ffcc00;">FAQ</p>
+            <div class="item-imagen-container" style="border-color: #ffcc00;">
+              <div style="width: 100%; height: 100%; border-radius: 13px; background: linear-gradient(145deg, #ffcc00, #ff9900); display: flex; align-items: center; justify-content: center; font-size: 60px;">❓</div>
+            </div>
+            <div class="item-name" style="color: #ffcc00;">FAQ</div>
           </div>
           <div class="item-card" style="border: 3px solid #ff6666; cursor: default;">
-            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #ff6666, #ff4444); display: flex; align-items: center; justify-content: center; font-size: 60px;">🛠️</div>
-            <p class="item-name" style="color: #ff6666;">Solución de Problemas</p>
+            <div class="item-imagen-container" style="border-color: #ff6666;">
+              <div style="width: 100%; height: 100%; border-radius: 13px; background: linear-gradient(145deg, #ff6666, #ff4444); display: flex; align-items: center; justify-content: center; font-size: 60px;">🛠️</div>
+            </div>
+            <div class="item-name" style="color: #ff6666;">Solución de Problemas</div>
           </div>
           <div class="item-card" style="border: 3px solid #8a2be2; cursor: default;">
-            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #8a2be2, #6a1ba2); display: flex; align-items: center; justify-content: center; font-size: 60px;">📞</div>
-            <p class="item-name" style="color: #8a2be2;">Contacto</p>
+            <div class="item-imagen-container" style="border-color: #8a2be2;">
+              <div style="width: 100%; height: 100%; border-radius: 13px; background: linear-gradient(145deg, #8a2be2, #6a1ba2); display: flex; align-items: center; justify-content: center; font-size: 60px;">📞</div>
+            </div>
+            <div class="item-name" style="color: #8a2be2;">Contacto</div>
           </div>
           <div class="item-card" style="border: 3px solid #00ffff; cursor: default;">
-            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #00ffff, #0088ff); display: flex; align-items: center; justify-content: center; font-size: 60px;">🎮</div>
-            <p class="item-name" style="color: #00ffff;">Controles</p>
+            <div class="item-imagen-container" style="border-color: #00ffff;">
+              <div style="width: 100%; height: 100%; border-radius: 13px; background: linear-gradient(145deg, #00ffff, #0088ff); display: flex; align-items: center; justify-content: center; font-size: 60px;">🎮</div>
+            </div>
+            <div class="item-name" style="color: #00ffff;">Controles</div>
           </div>
           <div class="item-card" style="border: 3px solid #ff8c00; cursor: default;">
-            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #ff8c00, #ff6600); display: flex; align-items: center; justify-content: center; font-size: 60px;">🔒</div>
-            <p class="item-name" style="color: #ff8c00;">Seguridad</p>
+            <div class="item-imagen-container" style="border-color: #ff8c00;">
+              <div style="width: 100%; height: 100%; border-radius: 13px; background: linear-gradient(145deg, #ff8c00, #ff6600); display: flex; align-items: center; justify-content: center; font-size: 60px;">🔒</div>
+            </div>
+            <div class="item-name" style="color: #ff8c00;">Seguridad</div>
           </div>
           <div class="item-card" style="border: 3px solid #32cd32; cursor: default;">
-            <div style="width: 100%; height: 150px; border-radius: 18px; margin-bottom: 18px; background: linear-gradient(145deg, #32cd32, #228b22); display: flex; align-items: center; justify-content: center; font-size: 60px;">📝</div>
-            <p class="item-name" style="color: #32cd32;">Tutoriales</p>
+            <div class="item-imagen-container" style="border-color: #32cd32;">
+              <div style="width: 100%; height: 100%; border-radius: 13px; background: linear-gradient(145deg, #32cd32, #228b22); display: flex; align-items: center; justify-content: center; font-size: 60px;">📝</div>
+            </div>
+            <div class="item-name" style="color: #32cd32;">Tutoriales</div>
           </div>
         </div>
       </section>
@@ -2191,7 +2399,7 @@
       modal.style.display = 'none';
       
       itemsSeleccionados = [];
-      document.querySelectorAll('.personaje, .item-card').forEach(elemento => {
+      document.querySelectorAll('.personaje-card, .item-card').forEach(elemento => {
         elemento.classList.remove('seleccionado');
       });
       
@@ -2319,20 +2527,25 @@
 
       // Inicializar listeners de items
       function initItemListeners() {
-        document.querySelectorAll('.personaje').forEach(personaje => {
-          const nombre = personaje.querySelector('.nombre-skin').textContent;
+        // Listeners para personajes
+        document.querySelectorAll('.personaje-card').forEach(personaje => {
+          const nombre = personaje.querySelector('.personaje-name').textContent;
           const tipo = personaje.getAttribute('data-tipo') || 'personaje';
           personaje.addEventListener('click', function() {
             toggleItemSelection(this, nombre, tipo);
           });
         });
 
+        // Listeners para items (armas, vehículos, mascotas, emotes)
         document.querySelectorAll('.item-card').forEach(itemCard => {
-          const nombre = itemCard.querySelector('.item-name').textContent;
-          const tipo = itemCard.getAttribute('data-tipo') || 'item';
-          itemCard.addEventListener('click', function() {
-            toggleItemSelection(this, nombre, tipo);
-          });
+          // Solo añadir listener si no es de la sección de ayuda
+          if (!itemCard.style.cursor || itemCard.style.cursor !== 'default') {
+            const nombre = itemCard.querySelector('.item-name').textContent;
+            const tipo = itemCard.getAttribute('data-tipo') || 'item';
+            itemCard.addEventListener('click', function() {
+              toggleItemSelection(this, nombre, tipo);
+            });
+          }
         });
       }
 
@@ -2369,15 +2582,22 @@
       }
 
       // Logs de inicio
-      console.log('🎮 Free Fire Admin Panel cargado correctamente');
-      console.log('✨ Efectos visuales mejorados activados para el modal');
-      console.log('🔊 Sonidos configurados - Para GitHub Pages funciona automáticamente');
-      console.log('💡 Controles: audioControls.enable(), .disable(), .test(), .setVolume(50)');
-      console.log('🎵 Controles específicos: audioControls.setMenuVolume(30), audioControls.setDarVolume(90)');
-      console.log('🖱️ SCROLL HABILITADO en todos los catálogos');
+      console.log('🎮 Free Fire Admin Panel REESTRUCTURADO cargado correctamente');
+      console.log('✨ Nuevas clases CSS optimizadas para mejor presentación de imágenes');
+      console.log('🖼️ Estructura mejorada: .personajes-grid y .items-grid con contenedores de imagen');
+      console.log('🎨 Efectos visuales premium: rotación cónica, hover mejorados, animaciones fluidas');
+      console.log('📱 Responsive design optimizado para todas las pantallas');
+      console.log('🔧 Coloca tus imágenes PNG en la carpeta "imagenes/" con los nombres correctos');
+      console.log('💡 Estructura de archivos sugerida:');
+      console.log('   📂 imagenes/');
+      console.log('      🖼️ sakurah.png, hiphoph.png (personajes)');
+      console.log('      🖼️ ak47-dragon.png, awm-imperial.png (armas)');
+      console.log('      🖼️ mclaren-dorado.png, moto-cyber.png (vehículos)');
+      console.log('      🖼️ perro-guardian.png, aguila-explorador.png (mascotas)');
+      console.log('      🖼️ baile-victoria.png, break-dance.png (emotes)');
       
       if (window.location.protocol === 'file:') {
-        console.log('⚠️ Archivo local - Para sonidos sube a GitHub Pages o usa servidor local');
+        console.log('⚠️ Archivo local - Para mejor experiencia sube a GitHub Pages o usa servidor local');
       }
     });
   </script>
