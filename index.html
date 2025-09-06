@@ -1214,10 +1214,12 @@
       overflow: hidden;
     }
 
+    /* CORRECCIÓN DEL ICONO DEL MODAL - REMOVER FILTRO NEGRO */
     .modal-icon img {
-      width: 40px;
-      height: 40px;
-      filter: brightness(0) saturate(100%);
+      width: 50px;
+      height: 50px;
+      /* QUITAMOS filter: brightness(0) saturate(100%); */
+      object-fit: contain;
     }
 
     @keyframes successIconPulse {
@@ -2192,7 +2194,7 @@
       <div class="modal-header">
         <div class="modal-icon">
           <!-- Cambiar por tu imagen PNG -->
-          <img src="Imagenes/vdev.png" alt="Éxito" style="width: 40px; height: 40px; filter: brightness(0) saturate(100%);">
+          <img src="Imagenes/vdev.png" alt="Éxito" style="width: 50px; height: 50px; object-fit: contain;">
           <!-- O si prefieres emoji: ✓ -->
         </div>
         <div class="modal-title">Pedido realizado con éxito!</div>
