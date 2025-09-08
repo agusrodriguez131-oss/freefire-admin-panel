@@ -1555,6 +1555,9 @@
     <div class="menu-item" onclick="cambiarSeccion('emotes')">
       <img src="Imagenes/emotes.png" alt="Emotes" style="width: 24px; height: 24px;">
     </div>
+    <div class="menu-item" onclick="cambiarSeccion('especiales')">
+      <img src="Imagenes/especiales.png" alt="Especiales" style="width: 24px; height: 24px;">
+    </div>
     <div class="menu-item" onclick="cambiarSeccion('configuracion')">
       <img src="Imagenes/configuracion.png" alt="Configuración" style="width: 24px; height: 24px;">
     </div>
@@ -2101,6 +2104,52 @@
         </div>
       </section>
 
+      <!-- NUEVA SECCIÓN ESPECIALES CON EFECTO CELESTE IGUAL A EMOTES -->
+      <section class="section-content" id="section-especiales">
+        <div class="section-header">
+          <h2>Artículos Especiales</h2>
+          <p>Colección exclusiva de artículos únicos</p>
+        </div>
+        <div class="personajes-grid">
+          <div class="personaje-card" data-tipo="especial">
+            <div class="personaje-imagen-container">
+              <img src="Imagenes/especial1.png" alt="Artículo Especial 1" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Especial Premium 1</div>
+          </div>
+          <div class="personaje-card" data-tipo="especial">
+            <div class="personaje-imagen-container">
+              <img src="Imagenes/especial2.png" alt="Artículo Especial 2" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Especial Premium 2</div>
+          </div>
+          <div class="personaje-card" data-tipo="especial">
+            <div class="personaje-imagen-container">
+              <img src="Imagenes/especial3.png" alt="Artículo Especial 3" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Especial Premium 3</div>
+          </div>
+          <div class="personaje-card" data-tipo="especial">
+            <div class="personaje-imagen-container">
+              <img src="Imagenes/especial4.png" alt="Artículo Especial 4" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Especial Premium 4</div>
+          </div>
+          <div class="personaje-card" data-tipo="especial">
+            <div class="personaje-imagen-container">
+              <img src="Imagenes/especial5.png" alt="Artículo Especial 5" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Especial Premium 5</div>
+          </div>
+          <div class="personaje-card" data-tipo="especial">
+            <div class="personaje-imagen-container">
+              <img src="Imagenes/especial6.png" alt="Artículo Especial 6" class="personaje-imagen">
+            </div>
+            <div class="personaje-name">Especial Premium 6</div>
+          </div>
+        </div>
+      </section>
+
       <section class="section-content" id="section-configuracion">
         <div class="section-header">
           <h2>Configuración del Panel</h2>
@@ -2235,6 +2284,7 @@
       vehiculos: 'sounds/click.mp3',
       mascotas: 'sounds/click.mp3',
       emotes: 'sounds/click.mp3',
+      especiales: 'sounds/click.mp3',
       configuracion: 'sounds/click.mp3',
       ayuda: 'sounds/click.mp3',
       regalo: 'sounds/regalo.mp3'
@@ -2635,13 +2685,15 @@
 
       // Logs de inicio
       console.log('🎮 Free Fire Admin Panel REESTRUCTURADO cargado correctamente');
-      console.log('✨ Nuevas clases CSS optimizadas para mejor presentación de imágenes');
+      console.log('✨ Nueva sección "Especiales" agregada con efectos celestes');
       console.log('🖼️ Estructura mejorada: .personajes-grid y .items-grid con contenedores de imagen');
       console.log('🎨 Efectos visuales premium: rotación cónica, hover mejorados, animaciones fluidas');
       console.log('📱 Responsive design optimizado para todas las pantallas');
       console.log('🔧 Coloca tus imágenes PNG en la carpeta "imagenes/" con los nombres correctos');
       console.log('💡 Estructura de archivos sugerida:');
       console.log('   📂 imagenes/');
+      console.log('      🖼️ especiales.png (icono del menú)');
+      console.log('      🖼️ especial1.png a especial6.png (artículos especiales)');
       console.log('      🖼️ sakurah.png, hiphoph.png (personajes)');
       console.log('      🖼️ ak47-dragon.png, awm-imperial.png (armas)');
       console.log('      🖼️ mclaren-dorado.png, moto-cyber.png (vehículos)');
