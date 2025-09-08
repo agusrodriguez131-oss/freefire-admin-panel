@@ -2653,6 +2653,24 @@
 
       initItemListeners();
 
+      // Inicializar gestión de items si estamos en esa sección
+      if (seccionActual === 'gestion') {
+        cargarItemsEnGestion();
+        gestorItems.actualizarVersionActual();
+      }
+
+      // Event listener para cuando se cambia a la sección de gestión
+      const originalCambiarSeccion = window.cambiarSeccion;
+      window.cambiarSeccion = function(seccion) {
+        originalCambiarSeccion(seccion);
+        if (seccion === 'gestion') {
+          setTimeout(() => {
+            cargarItemsEnGestion();
+            gestorItems.actualizarVersionActual();
+          }, 100);
+        }
+      };
+
       // Controles de volumen
       const volumenMenu = document.getElementById('volumenMenu');
       const textoMenu = document.getElementById('textoMenu');
