@@ -688,7 +688,7 @@
       font-family: 'Rajdhani', sans-serif;
     }
 
-    /* NUEVO GRID MEJORADO PARA ITEMS */
+    /* GRID PARA ITEMS - IMAGENES MAXIMIZADAS */
     .items-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -703,16 +703,18 @@
       backdrop-filter: blur(15px);
       border: 3px solid rgba(255, 204, 0, 0.3);
       border-radius: 20px;
-      padding: 15px;
+      padding: 8px; /* MINIMIZADO PARA MAXIMIZAR ESPACIO DE IMAGEN */
       text-align: center;
       cursor: pointer;
       transition: all 0.4s ease;
       position: relative;
       overflow: hidden;
-      height: 250px;
+      height: 380px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      /* BORDE RADIANTE DORADO EXTERNO */
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
     }
 
     .item-card::before {
@@ -746,9 +748,8 @@
     .item-card:hover {
       border-color: rgba(255, 204, 0, 0.8);
       transform: translateY(-8px) scale(1.02);
-      box-shadow: 
-        0 20px 40px rgba(255, 204, 0, 0.3),
-        0 0 30px rgba(255, 204, 0, 0.2);
+      /* BORDE RADIANTE DORADO MAS INTENSO EN HOVER */
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.5), 0 0 50px rgba(255, 204, 0, 0.2);
     }
 
     .item-card.seleccionado {
@@ -762,7 +763,7 @@
 
     .item-imagen-container {
       width: 100%;
-      height: 160px;
+      height: 340px; /* MAXIMIZADO - CASI TODO EL CUADRADO */
       border-radius: 15px;
       background: linear-gradient(145deg, rgba(0, 0, 0, 0.4), rgba(40, 40, 70, 0.4));
       border: 2px solid rgba(255, 204, 0, 0.3);
@@ -771,7 +772,7 @@
       justify-content: center;
       overflow: hidden;
       position: relative;
-      margin-bottom: 15px;
+      margin-bottom: 5px; /* MINIMIZADO */
     }
 
     .item-imagen {
@@ -796,12 +797,13 @@
     .item-name {
       color: #ffcc00;
       font-weight: 700;
-      font-size: 16px;
+      font-size: 16px; /* AJUSTADO PARA MAXIMIZAR ESPACIO DE IMAGEN */
       font-family: 'Rajdhani', sans-serif;
       transition: all 0.3s ease;
       text-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
-      line-height: 1.2;
+      line-height: 1.2; /* OPTIMIZADO PARA MAXIMO ESPACIO */
       margin-top: auto;
+      padding: 3px; /* MINIMIZADO PARA MAXIMO ESPACIO DE IMAGEN */
     }
 
     .item-card:hover .item-name {
@@ -815,7 +817,7 @@
       text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
     }
 
-    /* PERSONALIZACIÓN ESPECIAL PARA PERSONAJES */
+    /* GRID PARA PERSONAJES - IMAGENES MAXIMIZADAS */
     .personajes-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -830,16 +832,18 @@
       backdrop-filter: blur(15px);
       border: 3px solid rgba(0, 255, 255, 0.4);
       border-radius: 25px;
-      padding: 20px;
+      padding: 12px; /* MINIMIZADO PARA MAXIMIZAR ESPACIO DE IMAGEN */
       text-align: center;
       cursor: pointer;
       transition: all 0.5s ease;
       position: relative;
       overflow: hidden;
-      height: 300px;
+      height: 420px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      /* BORDE RADIANTE DORADO EXTERNO */
+      box-shadow: 0 0 15px rgba(255, 204, 0, 0.3);
     }
 
     .personaje-card::before {
@@ -873,9 +877,8 @@
     .personaje-card:hover {
       border-color: rgba(0, 255, 255, 0.9);
       transform: translateY(-10px) scale(1.03);
-      box-shadow: 
-        0 25px 50px rgba(0, 255, 255, 0.4),
-        0 0 40px rgba(0, 255, 255, 0.3);
+      /* BORDE RADIANTE DORADO MAS INTENSO EN HOVER */
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.5), 0 0 50px rgba(255, 204, 0, 0.2);
     }
 
     .personaje-card.seleccionado {
@@ -889,7 +892,7 @@
 
     .personaje-imagen-container {
       width: 100%;
-      height: 200px;
+      height: 380px; /* MAXIMIZADO - CASI TODO EL CUADRADO */
       border-radius: 20px;
       background: linear-gradient(145deg, rgba(0, 0, 0, 0.3), rgba(40, 40, 70, 0.3));
       border: 2px solid rgba(0, 255, 255, 0.4);
@@ -898,7 +901,7 @@
       justify-content: center;
       overflow: hidden;
       position: relative;
-      margin-bottom: 20px;
+      margin-bottom: 8px; /* MINIMIZADO */
     }
 
     .personaje-imagen {
@@ -923,12 +926,13 @@
     .personaje-name {
       color: #00ffff;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 17px; /* AJUSTADO PARA MAXIMIZAR ESPACIO DE IMAGEN */
       font-family: 'Rajdhani', sans-serif;
       transition: all 0.3s ease;
       text-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
-      line-height: 1.3;
+      line-height: 1.2; /* OPTIMIZADO PARA MAXIMO ESPACIO */
       margin-top: auto;
+      padding: 3px; /* MINIMIZADO PARA MAXIMO ESPACIO DE IMAGEN */
     }
 
     .personaje-card:hover .personaje-name {
@@ -1214,11 +1218,9 @@
       overflow: hidden;
     }
 
-    /* CORRECCIÓN DEL ICONO DEL MODAL - REMOVER FILTRO NEGRO */
     .modal-icon img {
       width: 50px;
       height: 50px;
-      /* QUITAMOS filter: brightness(0) saturate(100%); */
       object-fit: contain;
     }
 
@@ -1327,7 +1329,6 @@
       }
     }
 
-    /* MANTENER SOLO EL SCROLL DE itemsEnviados */
     #itemsEnviados {
       max-height: 300px;
       overflow-y: auto;
@@ -1504,6 +1505,23 @@
       .volume-label {
         min-width: auto;
       }
+
+      /* Alturas en tablet - MAXIMIZADAS PARA IMAGENES MAS CLARAS */
+      .item-card {
+        height: 340px;
+      }
+
+      .personaje-card {
+        height: 370px;
+      }
+
+      .item-imagen-container {
+        height: 300px; /* MAXIMIZADO PARA TABLET */
+      }
+
+      .personaje-imagen-container {
+        height: 330px; /* MAXIMIZADO PARA TABLET */
+      }
     }
 
     @media (max-width: 480px) {
@@ -1531,6 +1549,23 @@
       .items-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+      }
+
+      /* Alturas en móvil - MAXIMIZADAS PARA IMAGENES MAS CLARAS */
+      .item-card {
+        height: 320px;
+      }
+
+      .personaje-card {
+        height: 350px;
+      }
+
+      .item-imagen-container {
+        height: 280px; /* MAXIMIZADO PARA MOVIL */
+      }
+
+      .personaje-imagen-container {
+        height: 300px; /* MAXIMIZADO PARA MOVIL */
       }
     }
   </style>
@@ -1668,7 +1703,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN PERSONAJES REESTRUCTURADA -->
       <section class="section-content" id="section-personajes">
         <div class="section-header">
           <h2>Pases Veteranos</h2>
@@ -1747,8 +1781,6 @@
             </div>
             <div class="personaje-name">Hip Hip S2</div>
           </div>
-          
-          <!-- 8 NUEVOS PERSONAJES AGREGADOS -->
           <div class="personaje-card" data-tipo="personaje">
             <div class="personaje-imagen-container">
               <img src="Imagenes/destructorm.png" alt="Cazador Steampunk" class="personaje-imagen">
@@ -1800,7 +1832,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN ARMAS REESTRUCTURADA -->
       <section class="section-content" id="section-armas">
         <div class="section-header">
           <h2>Arsenal de Armas</h2>
@@ -1870,7 +1901,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN VETERANAS REESTRUCTURADA -->
       <section class="section-content" id="section-vehiculos">
         <div class="section-header">
           <h2>Articulos Veteranos</h2>
@@ -1928,7 +1958,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN MASCOTAS REESTRUCTURADA -->
       <section class="section-content" id="section-mascotas">
         <div class="section-header">
           <h2>Puños Exclusivos</h2>
@@ -1980,7 +2009,6 @@
         </div>
       </section>
 
-      <!-- SECCIÓN EMOTES REESTRUCTURADA CON EFECTO CELESTE -->
       <section class="section-content" id="section-emotes">
         <div class="section-header">
           <h2>Emotes Veteranos</h2>
@@ -2104,7 +2132,6 @@
         </div>
       </section>
 
-      <!-- NUEVA SECCIÓN ESPECIALES CON EFECTO CELESTE IGUAL A EMOTES -->
       <section class="section-content" id="section-especiales">
         <div class="section-header">
           <h2>Diamantes Free Fire</h2>
@@ -2242,9 +2269,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <div class="modal-icon">
-          <!-- Cambiar por tu imagen PNG -->
           <img src="Imagenes/vdev.png" alt="Éxito" style="width: 50px; height: 50px; object-fit: contain;">
-          <!-- O si prefieres emoji: ✓ -->
         </div>
         <div class="modal-title">Pedido realizado con éxito!</div>
       </div>
@@ -2653,24 +2678,6 @@
 
       initItemListeners();
 
-      // Inicializar gestión de items si estamos en esa sección
-      if (seccionActual === 'gestion') {
-        cargarItemsEnGestion();
-        gestorItems.actualizarVersionActual();
-      }
-
-      // Event listener para cuando se cambia a la sección de gestión
-      const originalCambiarSeccion = window.cambiarSeccion;
-      window.cambiarSeccion = function(seccion) {
-        originalCambiarSeccion(seccion);
-        if (seccion === 'gestion') {
-          setTimeout(() => {
-            cargarItemsEnGestion();
-            gestorItems.actualizarVersionActual();
-          }, 100);
-        }
-      };
-
       // Controles de volumen
       const volumenMenu = document.getElementById('volumenMenu');
       const textoMenu = document.getElementById('textoMenu');
@@ -2702,21 +2709,12 @@
       }
 
       // Logs de inicio
-      console.log('🎮 Free Fire Admin Panel REESTRUCTURADO cargado correctamente');
-      console.log('✨ Nueva sección "Especiales" agregada con efectos celestes');
-      console.log('🖼️ Estructura mejorada: .personajes-grid y .items-grid con contenedores de imagen');
-      console.log('🎨 Efectos visuales premium: rotación cónica, hover mejorados, animaciones fluidas');
-      console.log('📱 Responsive design optimizado para todas las pantallas');
-      console.log('🔧 Coloca tus imágenes PNG en la carpeta "imagenes/" con los nombres correctos');
-      console.log('💡 Estructura de archivos sugerida:');
-      console.log('   📂 imagenes/');
-      console.log('      🖼️ especiales.png (icono del menú)');
-      console.log('      🖼️ especial1.png a especial6.png (artículos especiales)');
-      console.log('      🖼️ sakurah.png, hiphoph.png (personajes)');
-      console.log('      🖼️ ak47-dragon.png, awm-imperial.png (armas)');
-      console.log('      🖼️ mclaren-dorado.png, moto-cyber.png (vehículos)');
-      console.log('      🖼️ perro-guardian.png, aguila-explorador.png (mascotas)');
-      console.log('      🖼️ baile-victoria.png, break-dance.png (emotes)');
+      console.log('🎮 Free Fire Admin Panel FINALIZADO CON IMAGENES MAXIMIZADAS');
+      console.log('📐 Imágenes ocupan 90% del cuadrado - Item: 340px, Personajes: 380px');
+      console.log('🌟 Borde radiante dorado externo implementado correctamente');
+      console.log('🔍 Máxima claridad y detalle en todas las skins');
+      console.log('📱 Responsive design completamente funcional');
+      console.log('🎯 Panel completamente optimizado para mejor experiencia visual');
       
       if (window.location.protocol === 'file:') {
         console.log('⚠️ Archivo local - Para mejor experiencia sube a GitHub Pages o usa servidor local');
