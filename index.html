@@ -1955,6 +1955,66 @@
             </div>
             <div class="item-name">Remera Galletas Veterana</div>
           </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/gorro1.png" alt="Gorro Veterano" class="item-imagen">
+            </div>
+            <div class="item-name">Gorro Veterano Elite</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/mochila1.png" alt="Mochila Veterana" class="item-imagen">
+            </div>
+            <div class="item-name">Mochila Veterana S1</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/pantalon1.png" alt="Pantalón Veterano" class="item-imagen">
+            </div>
+            <div class="item-name">Pantalón Veterano Pro</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/zapatos1.png" alt="Zapatos Veteranos" class="item-imagen">
+            </div>
+            <div class="item-name">Zapatos Veteranos Gold</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/lentes1.png" alt="Lentes Veteranos" class="item-imagen">
+            </div>
+            <div class="item-name">Lentes Veteranos VIP</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/guantes1.png" alt="Guantes Veteranos" class="item-imagen">
+            </div>
+            <div class="item-name">Guantes Veteranos Max</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/casco1.png" alt="Casco Veterano" class="item-imagen">
+            </div>
+            <div class="item-name">Casco Veterano Legendary</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/paracaidas1.png" alt="Paracaídas Veterano" class="item-imagen">
+            </div>
+            <div class="item-name">Paracaídas Veterano Alpha</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/collar1.png" alt="Collar Veterano" class="item-imagen">
+            </div>
+            <div class="item-name">Collar Veterano Diamond</div>
+          </div>
+          <div class="item-card" data-tipo="vehiculo">
+            <div class="item-imagen-container">
+              <img src="Imagenes/anillo1.png" alt="Anillo Veterano" class="item-imagen">
+            </div>
+            <div class="item-name">Anillo Veterano Supreme</div>
+          </div>
         </div>
       </section>
 
@@ -2473,6 +2533,7 @@
       }, 500);
     }
 
+    // FUNCIÓN MEJORADA CON TEXTOS Y ARTÍCULOS MÁS GRANDES
     function mostrarModalExito(usuario, playerId) {
       const modal = document.getElementById('modalOverlay');
       const playerName = document.getElementById('playerName');
@@ -2482,36 +2543,54 @@
       const fechaHora = document.getElementById('fechaHora');
       const totalArticulos = document.getElementById('totalArticulos');
       
+      // TEXTOS MÁS GRANDES - Aplicar estilos mejorados
       playerName.textContent = `Jugador: ${usuario}`;
+      playerName.style.fontSize = '22px'; // Aumentado de tamaño por defecto
+      playerName.style.fontWeight = 'bold';
+      
       playerIdElement.textContent = `ID: ${playerId}`;
+      playerIdElement.style.fontSize = '20px'; // Aumentado
+      playerIdElement.style.fontWeight = 'bold';
+      
       fechaHora.textContent = obtenerFechaHoraActual();
+      fechaHora.style.fontSize = '16px'; // Aumentado de 14px
+      fechaHora.style.fontWeight = '500';
+      
       totalArticulos.textContent = `Artículos seleccionados: ${itemsSeleccionados.length}`;
+      totalArticulos.style.fontSize = '18px'; // Aumentado de 14px
+      totalArticulos.style.fontWeight = 'bold';
+      
       tiempoEntrega.textContent = `Tu pedido llegará a tu cuenta en ${generarTiempoAleatorio()}`;
+      tiempoEntrega.style.fontSize = '22px'; // Aumentado de 20px
+      tiempoEntrega.style.fontWeight = 'bold';
       
       itemsEnviados.innerHTML = '';
       
       if (itemsSeleccionados.length === 0) {
-        itemsEnviados.innerHTML = '<div style="text-align: center; color: #ffcc00; padding: 20px;">No hay artículos seleccionados</div>';
+        itemsEnviados.innerHTML = '<div style="text-align: center; color: #ffcc00; padding: 20px; font-size: 18px;">No hay artículos seleccionados</div>';
       } else {
-        itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; margin: 20px 0 !important;';
+        // GRID MÁS GRANDE PARA ARTÍCULOS
+        itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; margin: 25px 0 !important;';
         
         itemsSeleccionados.forEach((item, index) => {
           const itemDiv = document.createElement('div');
           itemDiv.className = 'item-card-modal';
+          // ARTÍCULOS MÁS GRANDES - Aumentar padding, tamaños de imagen y texto
           itemDiv.style.cssText = `
             background: linear-gradient(145deg, #333, #444) !important;
             border: 2px solid #ffcc00 !important;
             border-radius: 12px !important;
-            padding: 15px 10px !important;
+            padding: 20px 15px !important;
             text-align: center !important;
             box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important;
             position: relative !important;
             overflow: hidden !important;
+            min-height: 140px !important;
           `;
           
           itemDiv.innerHTML = `
-            <img src="${item.imagen}" alt="${item.nombre}" style="width: 60px !important; height: 60px !important; border-radius: 8px !important; margin: 0 auto 10px !important; display: block !important; object-fit: cover !important; border: 1px solid rgba(255, 204, 0, 0.3) !important;">
-            <div style="font-size: 12px !important; color: #ffcc00 !important; font-weight: bold !important;">${item.nombre}</div>
+            <img src="${item.imagen}" alt="${item.nombre}" style="width: 80px !important; height: 80px !important; border-radius: 10px !important; margin: 0 auto 15px !important; display: block !important; object-fit: cover !important; border: 2px solid rgba(255, 204, 0, 0.5) !important;">
+            <div style="font-size: 14px !important; color: #ffcc00 !important; font-weight: bold !important; line-height: 1.3 !important;">${item.nombre}</div>
           `;
           
           itemsEnviados.appendChild(itemDiv);
@@ -2709,12 +2788,11 @@
       }
 
       // Logs de inicio
-      console.log('🎮 Free Fire Admin Panel FINALIZADO CON IMAGENES MAXIMIZADAS');
-      console.log('📐 Imágenes ocupan 90% del cuadrado - Item: 340px, Personajes: 380px');
-      console.log('🌟 Borde radiante dorado externo implementado correctamente');
-      console.log('🔍 Máxima claridad y detalle en todas las skins');
-      console.log('📱 Responsive design completamente funcional');
-      console.log('🎯 Panel completamente optimizado para mejor experiencia visual');
+      console.log('🎮 Free Fire Admin Panel MEJORADO CON MODAL MAS GRANDE');
+      console.log('📝 Textos del modal aumentados significativamente');
+      console.log('🖼️ Artículos del modal más grandes (80px) con mejor espaciado');
+      console.log('💎 Todas las funcionalidades mantienen su calidad original');
+      console.log('🎯 Panel completamente optimizado y funcional');
       
       if (window.location.protocol === 'file:') {
         console.log('⚠️ Archivo local - Para mejor experiencia sube a GitHub Pages o usa servidor local');
