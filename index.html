@@ -2735,72 +2735,79 @@
       }, 500);
     }
 
-    // FUNCIÓN MEJORADA CON TEXTOS Y ARTÍCULOS MÁS GRANDES
-    function mostrarModalExito(usuario, playerId) {
-      const modal = document.getElementById('modalOverlay');
-      const playerName = document.getElementById('playerName');
-      const playerIdElement = document.getElementById('playerIDDisplay');
-      const itemsEnviados = document.getElementById('itemsEnviados');
-      const tiempoEntrega = document.getElementById('tiempoEntrega');
-      const fechaHora = document.getElementById('fechaHora');
-      const totalArticulos = document.getElementById('totalArticulos');
+    // FUNCIÓN CORREGIDA - SIN PROBLEMAS DE ESCAPE HTML
+function mostrarModalExito(usuario, playerId) {
+  const modal = document.getElementById('modalOverlay');
+  const playerName = document.getElementById('playerName');
+  const playerIdElement = document.getElementById('playerIDDisplay');
+  const itemsEnviados = document.getElementById('itemsEnviados');
+  const tiempoEntrega = document.getElementById('tiempoEntrega');
+  const fechaHora = document.getElementById('fechaHora');
+  const totalArticulos = document.getElementById('totalArticulos');
+  
+  // Limpiar y establecer textos
+  playerName.textContent = 'Jugador: ' + usuario;
+  playerName.style.fontSize = '22px';
+  playerName.style.fontWeight = 'bold';
+  
+  playerIdElement.textContent = 'ID: ' + playerId;
+  playerIdElement.style.fontSize = '20px';
+  playerIdElement.style.fontWeight = 'bold';
+  
+  fechaHora.textContent = obtenerFechaHoraActual();
+  fechaHora.style.fontSize = '16px';
+  fechaHora.style.fontWeight = '500';
+  
+  totalArticulos.textContent = 'Artículos seleccionados: ' + itemsSeleccionados.length;
+  totalArticulos.style.fontSize = '18px';
+  totalArticulos.style.fontWeight = 'bold';
+  
+  tiempoEntrega.textContent = 'Tu pedido llegará a tu cuenta en ' + generarTiempoAleatorio();
+  tiempoEntrega.style.fontSize = '22px';
+  tiempoEntrega.style.fontWeight = 'bold';
+  
+  // Limpiar contenedor de items
+  itemsEnviados.innerHTML = '';
+  
+  if (itemsSeleccionados.length === 0) {
+    const noItemsDiv = document.createElement('div');
+    noItemsDiv.style.cssText = 'text-align: center; color: #ffcc00; padding: 20px; font-size: 18px;';
+    noItemsDiv.textContent = 'No hay artículos seleccionados';
+    itemsEnviados.appendChild(noItemsDiv);
+  } else {
+    // Configurar grid
+    itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; margin: 25px 0 !important;';
+    
+    // Crear elementos de forma segura
+    itemsSeleccionados.forEach((item, index) => {
+      // Crear contenedor principal
+      const itemDiv = document.createElement('div');
+      itemDiv.className = 'item-card-modal';
+      itemDiv.style.cssText = 'background: linear-gradient(145deg, #333, #444) !important; border: 2px solid #ffcc00 !important; border-radius: 12px !important; padding: 20px 15px !important; text-align: center !important; box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important; position: relative !important; overflow: hidden !important; min-height: 140px !important;';
       
-      // TEXTOS MÁS GRANDES - Aplicar estilos mejorados
-      playerName.textContent = `Jugador: ${usuario}`;
-      playerName.style.fontSize = '22px'; // Aumentado de tamaño por defecto
-      playerName.style.fontWeight = 'bold';
+      // Crear imagen de forma segura
+      const img = document.createElement('img');
+      img.src = item.imagen || '';
+      img.alt = item.nombre || '';
+      img.style.cssText = 'width: 80px !important; height: 80px !important; border-radius: 10px !important; margin: 0 auto 15px !important; display: block !important; object-fit: contain !important; border: 2px solid rgba(255, 204, 0, 0.5) !important; background: rgba(0,0,0,0.3) !important;';
       
-      playerIdElement.textContent = `ID: ${playerId}`;
-      playerIdElement.style.fontSize = '20px'; // Aumentado
-      playerIdElement.style.fontWeight = 'bold';
+      // Crear texto de forma segura
+      const textDiv = document.createElement('div');
+      textDiv.style.cssText = 'font-size: 14px !important; color: #ffcc00 !important; font-weight: bold !important; line-height: 1.3 !important;';
+      textDiv.textContent = item.nombre || '';
       
-      fechaHora.textContent = obtenerFechaHoraActual();
-      fechaHora.style.fontSize = '16px'; // Aumentado de 14px
-      fechaHora.style.fontWeight = '500';
+      // Agregar elementos al contenedor
+      itemDiv.appendChild(img);
+      itemDiv.appendChild(textDiv);
       
-      totalArticulos.textContent = `Artículos seleccionados: ${itemsSeleccionados.length}`;
-      totalArticulos.style.fontSize = '18px'; // Aumentado de 14px
-      totalArticulos.style.fontWeight = 'bold';
-      
-      tiempoEntrega.textContent = `Tu pedido llegará a tu cuenta en ${generarTiempoAleatorio()}`;
-      tiempoEntrega.style.fontSize = '22px'; // Aumentado de 20px
-      tiempoEntrega.style.fontWeight = 'bold';
-      
-      itemsEnviados.innerHTML = '';
-      
-      if (itemsSeleccionados.length === 0) {
-        itemsEnviados.innerHTML = '<div style="text-align: center; color: #ffcc00; padding: 20px; font-size: 18px;">No hay artículos seleccionados</div>';
-      } else {
-        // GRID MÁS GRANDE PARA ARTÍCULOS
-        itemsEnviados.style.cssText = 'display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 20px !important; margin: 25px 0 !important;';
-        
-        itemsSeleccionados.forEach((item, index) => {
-          const itemDiv = document.createElement('div');
-          itemDiv.className = 'item-card-modal';
-          // ARTÍCULOS MÁS GRANDES - Aumentar padding, tamaños de imagen y texto
-          itemDiv.style.cssText = `
-            background: linear-gradient(145deg, #333, #444) !important;
-            border: 2px solid #ffcc00 !important;
-            border-radius: 12px !important;
-            padding: 20px 15px !important;
-            text-align: center !important;
-            box-shadow: 0 0 20px rgba(255, 204, 0, 0.3) !important;
-            position: relative !important;
-            overflow: hidden !important;
-            min-height: 140px !important;
-          `;
-          
-          itemDiv.innerHTML = `
-            <img src="${item.imagen}" alt="${item.nombre}" style="width: 80px !important; height: 80px !important; border-radius: 10px !important; margin: 0 auto 15px !important; display: block !important; object-fit: cover !important; border: 2px solid rgba(255, 204, 0, 0.5) !important;">
-            <div style="font-size: 14px !important; color: #ffcc00 !important; font-weight: bold !important; line-height: 1.3 !important;">${item.nombre}</div>
-          `;
-          
-          itemsEnviados.appendChild(itemDiv);
-        });
-      }
-      
-      modal.style.display = 'flex';
-    }
+      // Agregar al contenedor principal
+      itemsEnviados.appendChild(itemDiv);
+    });
+  }
+  
+  // Mostrar modal
+  modal.style.display = 'flex';
+}
 
     function cerrarModal() {
       const modal = document.getElementById('modalOverlay');
