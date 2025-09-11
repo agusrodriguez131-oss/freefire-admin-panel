@@ -75,6 +75,7 @@
       top: 0;
       z-index: 100;
       box-shadow: 5px 0 25px rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
     }
 
     .menu-item {
@@ -946,6 +947,201 @@
       text-shadow: 0 0 20px rgba(0, 255, 136, 0.7);
     }
 
+    /* EFECTOS ESPECIALES PARA SECCIÓN EVENTOS */
+    /* Efecto Aurora Boreal de Fondo */
+    #section-eventos {
+      position: relative;
+    }
+
+    #section-eventos .section-header {
+      position: relative;
+      z-index: 2;
+    }
+
+    #section-eventos .items-grid {
+      position: relative;
+      z-index: 2;
+    }
+
+    #section-eventos::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(0, 255, 150, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 60%, rgba(138, 43, 226, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 40% 80%, rgba(255, 20, 147, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 20%, rgba(0, 191, 255, 0.13) 0%, transparent 50%),
+        radial-gradient(ellipse at 90% 90%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+      animation: auroraBoreal 15s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    #section-eventos::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        linear-gradient(45deg, 
+          transparent 30%, 
+          rgba(0, 255, 150, 0.05) 35%, 
+          rgba(138, 43, 226, 0.03) 45%, 
+          transparent 50%,
+          rgba(255, 20, 147, 0.04) 60%,
+          rgba(0, 191, 255, 0.06) 70%,
+          transparent 75%
+        );
+      animation: auroraWave 20s linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    @keyframes auroraBoreal {
+      0%, 100% {
+        opacity: 0.7;
+        transform: translateY(0px) scale(1);
+      }
+      25% {
+        opacity: 0.9;
+        transform: translateY(-10px) scale(1.02);
+      }
+      50% {
+        opacity: 0.6;
+        transform: translateY(-5px) scale(0.98);
+      }
+      75% {
+        opacity: 0.8;
+        transform: translateY(-15px) scale(1.01);
+      }
+    }
+
+    @keyframes auroraWave {
+      0% {
+        transform: translateX(-100%) rotate(0deg);
+      }
+      100% {
+        transform: translateX(100%) rotate(360deg);
+      }
+    }
+
+    /* Efectos Premium en Cards de Eventos */
+    #section-eventos .item-card {
+      position: relative;
+      background: linear-gradient(145deg, rgba(15, 25, 45, 0.95), rgba(30, 45, 75, 0.95));
+      border: 3px solid rgba(255, 215, 0, 0.6);
+      box-shadow: 
+        0 0 20px rgba(255, 215, 0, 0.4),
+        0 0 40px rgba(138, 43, 226, 0.2),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+      z-index: 2;
+    }
+
+    /* Resplandor Premium Animado (sin hover) */
+    #section-eventos .item-card::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, 
+        #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8, #6c5ce7, #00b894
+      );
+      border-radius: 23px;
+      z-index: -1;
+      animation: premiumGlow 4s ease-in-out infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes premiumGlow {
+      0%, 100% {
+        background: linear-gradient(45deg, 
+          #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8, #6c5ce7, #00b894
+        );
+        transform: scale(1);
+      }
+      50% {
+        background: linear-gradient(45deg, 
+          #00b894, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7, #fd79a8, #6c5ce7
+        );
+        transform: scale(1.02);
+      }
+    }
+
+    /* Efecto de Brillo en Bordes de Imágenes */
+    #section-eventos .item-imagen-container {
+      border: 2px solid rgba(255, 215, 0, 0.8);
+      box-shadow: 
+        0 0 15px rgba(255, 215, 0, 0.5),
+        inset 0 0 15px rgba(255, 255, 255, 0.1);
+      animation: premiumImageGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes premiumImageGlow {
+      0%, 100% {
+        border-color: rgba(255, 215, 0, 0.8);
+        box-shadow: 
+          0 0 15px rgba(255, 215, 0, 0.5),
+          inset 0 0 15px rgba(255, 255, 255, 0.1);
+      }
+      33% {
+        border-color: rgba(255, 20, 147, 0.8);
+        box-shadow: 
+          0 0 15px rgba(255, 20, 147, 0.5),
+          inset 0 0 15px rgba(255, 255, 255, 0.1);
+      }
+      66% {
+        border-color: rgba(0, 191, 255, 0.8);
+        box-shadow: 
+          0 0 15px rgba(0, 191, 255, 0.5),
+          inset 0 0 15px rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    /* Texto Premium con Brillo */
+    #section-eventos .item-name {
+      color: #ffd700;
+      text-shadow: 
+        0 0 10px rgba(255, 215, 0, 0.8),
+        0 0 20px rgba(255, 215, 0, 0.4),
+        0 0 30px rgba(255, 215, 0, 0.2);
+      animation: premiumTextGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes premiumTextGlow {
+      0% {
+        text-shadow: 
+          0 0 10px rgba(255, 215, 0, 0.8),
+          0 0 20px rgba(255, 215, 0, 0.4),
+          0 0 30px rgba(255, 215, 0, 0.2);
+      }
+      100% {
+        text-shadow: 
+          0 0 15px rgba(255, 215, 0, 1),
+          0 0 25px rgba(255, 215, 0, 0.6),
+          0 0 35px rgba(255, 215, 0, 0.4),
+          0 0 45px rgba(255, 20, 147, 0.3);
+      }
+    }
+
+    /* Card seleccionada en eventos */
+    #section-eventos .item-card.seleccionado {
+      border-color: #00ff88;
+      background: linear-gradient(145deg, rgba(0, 60, 30, 0.9), rgba(0, 80, 40, 0.9));
+      box-shadow: 
+        0 0 50px rgba(0, 255, 136, 0.8), 
+        0 0 80px rgba(255, 215, 0, 0.4),
+        inset 0 0 25px rgba(0, 255, 136, 0.2);
+      transform: scale(1.05);
+    }
+
     .volume-controls {
       background: linear-gradient(145deg, rgba(0, 0, 0, 0.7), rgba(20, 20, 40, 0.7));
       backdrop-filter: blur(15px);
@@ -1584,6 +1780,9 @@
     <div class="menu-item" onclick="cambiarSeccion('vehiculos')">
       <img src="Imagenes/vehiculos.png" alt="Vehículos" style="width: 24px; height: 24px;">
     </div>
+    <div class="menu-item" onclick="cambiarSeccion('eventos')">
+      <img src="Imagenes/eventos.png" alt="Eventos" style="width: 24px; height: 24px;">
+    </div>
     <div class="menu-item" onclick="cambiarSeccion('mascotas')">
       <img src="Imagenes/mascotas.png" alt="Mascotas" style="width: 24px; height: 24px;">
     </div>
@@ -1896,7 +2095,32 @@
             <div class="item-imagen-container">
               <img src="Imagenes/famas.png" alt="VSS Fantasma" class="item-imagen">
             </div>
-            <div class="item-name">FAMAS Evolutiuva</div>
+            <div class="item-name">FAMAS Evolutiva</div>
+          </div>
+          <!-- NUEVOS 4 CUADRADOS AÑADIDOS PARA ARMAS -->
+          <div class="item-card" data-tipo="arma">
+            <div class="item-imagen-container">
+              <img src="Imagenes/awm.png" alt="AWM Elite" class="item-imagen">
+            </div>
+            <div class="item-name">AWM Dragon Supreme</div>
+          </div>
+          <div class="item-card" data-tipo="arma">
+            <div class="item-imagen-container">
+              <img src="Imagenes/m4a1.png" alt="M4A1 Legendary" class="item-imagen">
+            </div>
+            <div class="item-name">M4A1 Gold Fury</div>
+          </div>
+          <div class="item-card" data-tipo="arma">
+            <div class="item-imagen-container">
+              <img src="Imagenes/kar98k.png" alt="Kar98k Royal" class="item-imagen">
+            </div>
+            <div class="item-name">Kar98K Royal Edition</div>
+          </div>
+          <div class="item-card" data-tipo="arma">
+            <div class="item-imagen-container">
+              <img src="Imagenes/vector.png" alt="Vector Ultimate" class="item-imagen">
+            </div>
+            <div class="item-name">Vector Ultimate Pro</div>
           </div>
         </div>
       </section>
@@ -2014,6 +2238,124 @@
               <img src="Imagenes/anillo1.png" alt="Anillo Veterano" class="item-imagen">
             </div>
             <div class="item-name">Anillo Veterano Supreme</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- NUEVA SECCIÓN EVENTOS CON 18 CUADROS -->
+      <section class="section-content" id="section-eventos">
+        <div class="section-header">
+          <h2>Eventos Especiales</h2>
+          <p>Colección de items exclusivos de eventos</p>
+        </div>
+        <div class="items-grid">
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento1.png" alt="Evento 1" class="item-imagen">
+            </div>
+            <div class="item-name">Evento Sakura Limited</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento2.png" alt="Evento 2" class="item-imagen">
+            </div>
+            <div class="item-name">Bundle Dragon King</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento3.png" alt="Evento 3" class="item-imagen">
+            </div>
+            <div class="item-name">Pase Elite Especial</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento4.png" alt="Evento 4" class="item-imagen">
+            </div>
+            <div class="item-name">Mega Bundle Gold</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento5.png" alt="Evento 5" class="item-imagen">
+            </div>
+            <div class="item-name">Evento Warrior Plus</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento6.png" alt="Evento 6" class="item-imagen">
+            </div>
+            <div class="item-name">Pack Cyber Ninja</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento7.png" alt="Evento 7" class="item-imagen">
+            </div>
+            <div class="item-name">Evento Aurora Boreal</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento8.png" alt="Evento 8" class="item-imagen">
+            </div>
+            <div class="item-name">Bundle Fire Beast</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento9.png" alt="Evento 9" class="item-imagen">
+            </div>
+            <div class="item-name">Evento Ocean Storm</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento10.png" alt="Evento 10" class="item-imagen">
+            </div>
+            <div class="item-name">Pack Elite Hunter</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento11.png" alt="Evento 11" class="item-imagen">
+            </div>
+            <div class="item-name">Evento Galaxy Wars</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento12.png" alt="Evento 12" class="item-imagen">
+            </div>
+            <div class="item-name">Bundle Shadow Lord</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento13.png" alt="Evento 13" class="item-imagen">
+            </div>
+            <div class="item-name">Evento Phoenix Rise</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento14.png" alt="Evento 14" class="item-imagen">
+            </div>
+            <div class="item-name">Pack Thunder Strike</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento15.png" alt="Evento 15" class="item-imagen">
+            </div>
+            <div class="item-name">Evento Crystal Legacy</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento16.png" alt="Evento 16" class="item-imagen">
+            </div>
+            <div class="item-name">Bundle Mystic Forest</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento17.png" alt="Evento 17" class="item-imagen">
+            </div>
+            <div class="item-name">Evento Neon Fighter</div>
+          </div>
+          <div class="item-card" data-tipo="evento">
+            <div class="item-imagen-container">
+              <img src="Imagenes/evento18.png" alt="Evento 18" class="item-imagen">
+            </div>
+            <div class="item-name">Pack Ultimate Legend</div>
           </div>
         </div>
       </section>
@@ -2367,6 +2709,7 @@
       personajes: 'sounds/click.mp3', 
       armas: 'sounds/click.mp3',
       vehiculos: 'sounds/click.mp3',
+      eventos: 'sounds/click.mp3',
       mascotas: 'sounds/click.mp3',
       emotes: 'sounds/click.mp3',
       especiales: 'sounds/click.mp3',
@@ -2742,7 +3085,7 @@
           });
         });
 
-        // Listeners para items (armas, vehículos, mascotas, emotes)
+        // Listeners para items (armas, vehículos, eventos, mascotas, emotes)
         document.querySelectorAll('.item-card').forEach(itemCard => {
           // Solo añadir listener si no es de la sección de ayuda
           if (!itemCard.style.cursor || itemCard.style.cursor !== 'default') {
@@ -2788,11 +3131,11 @@
       }
 
       // Logs de inicio
-      console.log('🎮 Free Fire Admin Panel MEJORADO CON MODAL MAS GRANDE');
-      console.log('📝 Textos del modal aumentados significativamente');
-      console.log('🖼️ Artículos del modal más grandes (80px) con mejor espaciado');
-      console.log('💎 Todas las funcionalidades mantienen su calidad original');
-      console.log('🎯 Panel completamente optimizado y funcional');
+      console.log('🎮 Free Fire Admin Panel - ACTUALIZADO CON NUEVAS SECCIONES');
+      console.log('✅ Nueva sección "EVENTOS" agregada con 18 cuadros');
+      console.log('✅ Sección "Arsenal de Armas" ampliada con 4 cuadros adicionales');
+      console.log('📊 Total de secciones: 10 (Inicio, Personajes, Armas, Vehículos, Eventos, Mascotas, Emotes, Especiales, Configuración, Ayuda)');
+      console.log('🎯 Panel completamente funcional y optimizado');
       
       if (window.location.protocol === 'file:') {
         console.log('⚠️ Archivo local - Para mejor experiencia sube a GitHub Pages o usa servidor local');
